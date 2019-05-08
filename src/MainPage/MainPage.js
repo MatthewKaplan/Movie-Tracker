@@ -6,7 +6,6 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
         MainPage component
         <Carousel />
       </div>
