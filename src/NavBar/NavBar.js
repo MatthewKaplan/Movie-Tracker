@@ -1,13 +1,32 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import "./_NavBar.scss";
+import "./NavBar.css";
+import { fetchMovieTvData } from "../api/index";
 
 class NavBar extends React.Component {
-  //will need to set up state to conditionally render navbar variants depending on what page we are on.
-  //example: on LoginPage hide the login button. If user logged in, render login to say logout.
+  state = { searchUrl: "https://api.themoviedb.org/3/search/movie?" };
+
+  searchChangeHandler = event => {
+    const searchTerm = event.target.value;
+    this.performSearch(searchTerm);
+  };
+
+  performSearch = async searchTerm => {
+    const { searchUrl } = this.state;
+    try {
+      const searchedMovies = await fetchMovieTvData(
+        searchUrl,
+        "&query=" + searchTerm
+      );
+    } catch (error) {
+      this.setState({
+        error: error
+      });
+    }
+  };
+
   render() {
     return (
-      <div className="nav-bar">
+            <div className="nav-bar">
         <header className="header">
           <div className="left-page-links">
             <NavLink to="/home" className="nav">
@@ -24,6 +43,11 @@ class NavBar extends React.Component {
             </NavLink>
           </div>
           <h1 className="header-title">Movie-Tracker</h1>
+                       <input
+            className="search"
+            type="text"
+            onChange={this.searchChangeHandler}
+          />
           <NavLink to="/login" className="nav login">
             Login
           </NavLink>
