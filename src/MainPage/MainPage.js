@@ -1,14 +1,30 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
+import SplashImage from "../SplashImage/SplashImage";
 import Carousel from "../Carousel/Carousel";
+import "./_MainPage.scss";
 
 class MainPage extends React.Component {
   render() {
     return (
-      <div>
-        MainPage component
-        <Carousel />
-      </div>
+      <main class="main-page">
+        <SplashImage />
+        <div class="main-section">
+          <section className="genres">
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+          </section>
+          <section className="main-release">Main Release</section>
+        </div>
+        <div className="carousel-section">
+          <Carousel />
+          <Carousel />
+          <Carousel />
+        </div>
+      </main>
     );
   }
 }

@@ -26,15 +26,33 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <header>
-        <nav className="navBar">
-          <input
+            <div className="nav-bar">
+        <header className="header">
+          <div className="left-page-links">
+            <NavLink to="/home" className="nav">
+              Home
+            </NavLink>
+            <NavLink to="/mylist" className="nav">
+              MyList
+            </NavLink>
+            <NavLink to="/movies" className="nav">
+              Movies
+            </NavLink>
+            <NavLink to="/tv_shows" className="nav">
+              TV Shows
+            </NavLink>
+          </div>
+          <h1 className="header-title">Movie-Tracker</h1>
+                       <input
             className="search"
             type="text"
             onChange={this.searchChangeHandler}
           />
-        </nav>
-      </header>
+          <NavLink to="/login" className="nav login">
+            Login
+          </NavLink>
+        </header>
+      </div>
     );
   }
 }
