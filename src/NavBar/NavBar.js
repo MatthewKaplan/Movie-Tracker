@@ -1,6 +1,7 @@
 import React from "react";
-import "./NavBar.css";
+import "./_NavBar.scss";
 import { fetchMovieTvData } from "../api/index";
+import { NavLink } from "react-router-dom";
 
 class NavBar extends React.Component {
   state = { searchUrl: "https://api.themoviedb.org/3/search/movie?" };
@@ -26,7 +27,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-            <div className="nav-bar">
+      <div className="nav-bar">
         <header className="header">
           <div className="left-page-links">
             <NavLink to="/home" className="nav">
@@ -43,14 +44,16 @@ class NavBar extends React.Component {
             </NavLink>
           </div>
           <h1 className="header-title">Movie-Tracker</h1>
-                       <input
-            className="search"
-            type="text"
-            onChange={this.searchChangeHandler}
-          />
-          <NavLink to="/login" className="nav login">
-            Login
-          </NavLink>
+          <div className="right-page-links">
+            <input
+              className="search"
+              type="text"
+              onChange={this.searchChangeHandler}
+            />
+            <NavLink to="/login" className="nav login">
+              Login
+            </NavLink>
+          </div>
         </header>
       </div>
     );
