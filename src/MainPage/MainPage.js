@@ -8,6 +8,22 @@ class MainPage extends React.Component {
     return (
       <main class="main-page">
         <SplashImage />
+        <div class="main-section">
+          <section className="genres">
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+            <div className="genre">Genre</div>
+          </section>
+          <section className="main-release">Main Release</section>
+        </div>
+        <div className="carousel-section">
+          <Carousel />
+          <Carousel />
+          <Carousel />
+        </div>
       </main>
     );
   }
