@@ -1,0 +1,10 @@
+.splash-image {
+  border: 1px solid red;
+  width: 1280px;
+  height: 720px;
+  background-color: lightgrey;
+  margin: 0 auto;
+  transform: translateY(-10%);
+  position: relative;
+  z-index: -1;
+}
