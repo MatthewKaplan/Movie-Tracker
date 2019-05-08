@@ -6,9 +6,9 @@ import "./_MainPage.scss";
 class MainPage extends React.Component {
   render() {
     return (
-      <main class="main-page">
+      <main className="main-page">
         <SplashImage />
-        <div class="main-section">
+        <div className="main-section">
           <section className="genres">
             <div className="genre">Genre</div>
             <div className="genre">Genre</div>
