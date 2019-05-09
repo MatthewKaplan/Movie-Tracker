@@ -7,7 +7,6 @@ import LoginPage from "../LoginPage/LoginPage";
 import { Switch, Router, Route } from "react-router-dom";
 
 class App extends Component {
-
   render() {
     return (
       <div className="App">
@@ -19,6 +18,8 @@ class App extends Component {
         <Route path="/FamilyMovies" component={GenrePage} />
         <Route path="/HorrorMovies" component={GenrePage} />
         <Route path="/RomanceMovies" component={GenrePage} />
+        <Route exact path="/home" component={MainPage} />
+        <Route exact path="/login" component={LoginPage} />
       </div>
     );
   }

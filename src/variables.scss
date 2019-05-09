@@ -1,6 +1,7 @@
 $background-color: rgb(0, 0, 0);
 $border: rgba(255, 34, 34, 0.548);
-$text-w: rgb(224, 224, 224);
+$text-w: rgb(238, 238, 238);
+$text-w-dark: rgba(100, 100, 100, 0.479);
 $sub-title: 24px;
 
 @mixin hover-state($n) {

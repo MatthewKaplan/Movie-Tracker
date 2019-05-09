@@ -3,7 +3,7 @@
 .splash-image {
   min-width: 1280px;
   height: 720px;
-  opacity: 0.65;
+  opacity: 0.75;
   box-shadow: inset 0px 0px 1px 3px $background-color;
   background: linear-gradient(
       rgba(0, 0, 0, 0.555) 15%,
@@ -20,7 +20,7 @@
   transition: 2s opacity ease-in-out;
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
 
