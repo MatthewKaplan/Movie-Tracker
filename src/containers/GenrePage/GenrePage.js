@@ -4,16 +4,31 @@ import {
   fetchGenres
 } from "../../actions";
 import { connect } from "react-redux";
+import MovieCard from "../MovieCard/MovieCard";
 
 class GenrePage extends React.Component {
   componentDidMount() {
     this.props.fetchGenres();
   }
+
+  renderMovieCards = () => {
+    return this.props.genre.map(movie => (
+      <MovieCard
+        key={movie.id}
+        title={movie.title}
+        img={movie.backdrop_path}
+      />
+    ));
+  }
+
+
+
+
   render() {
     console.log(this.props.genre);
     return (
       <div className="genre-container">
-        <h1 className="genre-title">WE MADE IT!</h1>
+        {this.renderMovieCards()}
       </div>
     );
   }

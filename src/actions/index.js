@@ -28,8 +28,6 @@ export const fetchNews = () => async dispatch => {
 };
 
 export const fetchGenres = (path) => async dispatch => {
-  console.log("fetching")
   const response = await movieDB.get(`/discover/movie?${apiKey}${path}`);
-  console.log(response)
   dispatch({ type: "FETCH_GENRES", payload: response.data.results });
 };
