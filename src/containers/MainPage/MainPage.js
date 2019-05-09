@@ -2,11 +2,13 @@ import React from "react";
 import SplashImage from "../SplashImage/SplashImage";
 import Carousel from "../Carousel/Carousel";
 import MovieCard from "../MovieCard/MovieCard";
+import News from "../News/News";
 import "./_MainPage.scss";
 import {
   fetchPopularMovies,
   fetchPopularTv,
-  fetchUpcoming
+  fetchUpcoming,
+  fetchNews
 } from "../../actions";
 import { connect } from "react-redux";
 
@@ -15,6 +17,7 @@ class MainPage extends React.Component {
     this.props.fetchPopularMovies();
     this.props.fetchPopularTv();
     this.props.fetchUpcoming();
+    this.props.fetchNews();
   }
 
   renderPopularMovies = () => {
@@ -40,7 +43,6 @@ class MainPage extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <main className="main-page">
         <SplashImage />
@@ -73,6 +75,14 @@ class MainPage extends React.Component {
           <footer className="main-footer">
             <p>hello</p>
           </footer>
+          <News />
+        </div>
+        <div className="carousel-section">
+          <Carousel>{this.renderPopularMovies()}</Carousel>
+
+          <Carousel>{this.renderPopularTvShows()}</Carousel>
+
+          <Carousel>{this.renderComingSoon()}</Carousel>
         </div>
       </main>
     );
@@ -80,10 +90,15 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { movies: state.movies, tv: state.tv, upcoming: state.upcoming };
+  return {
+    movies: state.movies,
+    tv: state.tv,
+    upcoming: state.upcoming,
+    news: state.news
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchPopularMovies, fetchPopularTv, fetchUpcoming }
+  { fetchPopularMovies, fetchPopularTv, fetchUpcoming, fetchNews }
 )(MainPage);
