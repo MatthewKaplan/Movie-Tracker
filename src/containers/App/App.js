@@ -11,6 +11,13 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" component={NavBar} />
+        <Route exact path="/" component={MainPage} />
+        <Route path="/ActionMovies" component={GenrePage} />
+        <Route path="/ComedyMovies" component={GenrePage} />
+        <Route path="/Documentaries" component={GenrePage} />
+        <Route path="/FamilyMovies" component={GenrePage} />
+        <Route path="/HorrorMovies" component={GenrePage} />
+        <Route path="/RomanceMovies" component={GenrePage} />
         <Route exact path="/home" component={MainPage} />
         <Route exact path="/login" component={LoginPage} />
       </div>

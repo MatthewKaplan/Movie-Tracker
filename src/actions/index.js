@@ -26,3 +26,10 @@ export const fetchNews = () => async dispatch => {
   const response = await newYorkTimes.get(`/topstories/v2/movies.json?${nytApiKey}`);
   dispatch({ type: "FETCH_NEWS", payload: response.data.results });
 };
+
+export const fetchGenres = (path) => async dispatch => {
+  console.log("fetching")
+  const response = await movieDB.get(`/discover/movie?${apiKey}${path}`);
+  console.log(response)
+  dispatch({ type: "FETCH_GENRES", payload: response.data.results });
+};
