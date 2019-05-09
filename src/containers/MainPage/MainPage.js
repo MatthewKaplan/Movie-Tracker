@@ -1,9 +1,11 @@
 import React from "react";
 import SplashImage from "../SplashImage/SplashImage";
 import Carousel from "../Carousel/Carousel";
+import MovieCard from "../MovieCard/MovieCard";
 import "./_MainPage.scss";
 
 class MainPage extends React.Component {
+
   render() {
     return (
       <main className="main-page">

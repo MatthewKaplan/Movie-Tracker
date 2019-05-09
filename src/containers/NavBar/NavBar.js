@@ -1,6 +1,6 @@
 import React from "react";
 import "./_NavBar.scss";
-import { fetchMovieTvData } from "../api/index";
+import { fetchMovieTvData } from "../../api/index";
 import { NavLink } from "react-router-dom";
 
 class NavBar extends React.Component {
