@@ -2,7 +2,11 @@ import movieDB from "../api/movieDB";
 import apiKey from '../api/apiKey';
 
 export const fetchPopularMovies = () => async dispatch => {
-  const response = await movieDB.get(`/discover/movie?${apiKey}&sort_by=popularity.desc`);
+  const response = await movieDB.get(`/discover/movie?${apiKey}&sort_by=popularity.desc`)
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+
   dispatch({ type: "FETCH_POPULAR_MOVIES", payload: response.data.results });
 };
 
