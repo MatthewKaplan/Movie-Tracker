@@ -4,12 +4,12 @@
   margin: 0 auto;
   display: flex;
   position: relative;
-  z-index: -2;
+  z-index: 2;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  border: 2px dashed green;
-  background-color: rgb(153, 169, 184);
+  // border: 2px dashed green;
+  background-color: $background-color;
   // transform: translateY(-3.5%);
   max-width: 1280px;
 }
@@ -34,11 +34,17 @@
     height: 175px;
     width: 150px;
     margin: 0.4rem;
+    &:hover {
+      color: red;
+    }
   }
   .main-release {
     border: 1px solid red;
     height: 555px;
     width: 360px;
+  }
+  &:hover {
+    color: red;
   }
 }
 

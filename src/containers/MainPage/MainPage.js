@@ -8,7 +8,7 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <main className="main-page">
+      <div className="main-page">
         <SplashImage />
         <div className="main-section">
           <section className="genres">
@@ -26,7 +26,7 @@ class MainPage extends React.Component {
           <Carousel />
           <Carousel />
         </div>
-      </main>
+      </div>
     );
   }
 }
