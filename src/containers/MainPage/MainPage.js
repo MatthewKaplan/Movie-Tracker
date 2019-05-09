@@ -92,6 +92,7 @@ class MainPage extends React.Component {
                 to="/Documentaries"
                 component={GenrePage}
                 className="genre"
+                onClick={() => this.handleClick("&with_genres=99")}
               >
                 <div>
                   <h1>Documentaries</h1>
