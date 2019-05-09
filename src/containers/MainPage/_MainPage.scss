@@ -3,15 +3,15 @@
 .main-page {
   margin: 0 auto;
   display: flex;
+  justify-content: space-evenly;
   position: relative;
   z-index: 2;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  // border: 2px dashed green;
   background-color: $background-color;
-  // transform: translateY(-3.5%);
   max-width: 1280px;
+  border: 1px solid red;
 }
 
 .main-section {
@@ -19,10 +19,10 @@
   transform: translateY(-20%);
   justify-content: space-around;
   align-items: center;
-  border: 1px solid pink;
+  border: 1px solid rgba(255, 192, 203, 0.342);
   width: 80%;
   .genres {
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -30,25 +30,36 @@
     width: 380px;
   }
   .genre {
-    border: 1px solid red;
+    @include hover-state(8);
+    background: url("https://assets.fontsinuse.com/static/use-media-items/50/49197/full-2700x3910/58b6d005/Moonlight_poster.jpeg?resolution=0");
+    background-size: cover;
+    // border: 1px solid red;
     height: 175px;
     width: 150px;
     margin: 0.4rem;
-    &:hover {
-      color: red;
-    }
   }
   .main-release {
-    border: 1px solid red;
+    @include hover-state(8);
+    background-image: url("https://www.hypable.com/wp-content/uploads/2018/12/bladerunner2049ff.jpg");
+    background-size: cover;
+    // border: 1px solid red;
+    margin: 0 10px;
     height: 555px;
     width: 360px;
   }
-  &:hover {
-    color: red;
-  }
+  // &:hover {
+  //   color: red;
+  // }
 }
 
 .carousel-section {
   border: 1px solid red;
   width: 80%;
+}
+
+.main-footer {
+  border: 1px solid red;
+  height: 300px;
+  margin-top: 3rem;
+  width: 100%;
 }

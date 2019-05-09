@@ -40,7 +40,7 @@ class MainPage extends React.Component {
   };
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="main-page">
         <SplashImage />
@@ -53,7 +53,8 @@ class MainPage extends React.Component {
             <div className="genre">Genre</div>
             <div className="genre">Genre</div>
           </section>
-          <section className="main-release">Main Release</section>
+          <section className="main-release" />
+          <section className="main-release" />
         </div>
         <div className="carousel-section">
           <Carousel>{this.renderPopularMovies()}</Carousel>
@@ -62,6 +63,9 @@ class MainPage extends React.Component {
 
           <Carousel>{this.renderComingSoon()}</Carousel>
         </div>
+        <footer className="main-footer">
+          <p>hello</p>
+        </footer>
       </div>
     );
   }

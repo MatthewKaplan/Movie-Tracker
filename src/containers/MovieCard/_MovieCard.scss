@@ -1,9 +1,12 @@
+@import "../../variables.scss";
+
 .movie-card {
+  @include hover-state(8);
   border: 1px solid blue;
   margin: 0 0.4rem;
   height: 250px;
-  width: 250px;
-  background-size: 250px 250px;
+  width: 500px;
+  background-size: cover;
   color: white;
   background-repeat: no-repeat;
   text-align: center;
@@ -12,7 +15,9 @@
   align-items: flex-end;
 }
 
-.movieBackdrop {
-  height: 200px;
-  width: 200px;
-}
+// .movieBackdrop {
+//   height: 100px;
+//   width: 100px;
+//   // background: cover;
+//   // width: auto;
+// }
