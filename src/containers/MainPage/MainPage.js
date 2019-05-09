@@ -5,7 +5,6 @@ import MovieCard from "../MovieCard/MovieCard";
 import "./_MainPage.scss";
 
 class MainPage extends React.Component {
-
   render() {
     return (
       <div className="main-page">
@@ -19,13 +18,17 @@ class MainPage extends React.Component {
             <div className="genre">Genre</div>
             <div className="genre">Genre</div>
           </section>
-          <section className="main-release">Main Release</section>
+          <section className="main-release" />
+          <section className="main-release" />
         </div>
         <div className="carousel-section">
           <Carousel />
           <Carousel />
           <Carousel />
         </div>
+        <footer className="main-footer">
+          <p>hello</p>
+        </footer>
       </div>
     );
   }

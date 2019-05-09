@@ -1,3 +1,20 @@
 $background-color: rgb(0, 0, 0);
 
 $text-w: white;
+
+@mixin hover-state($n) {
+  cursor: pointer;
+  opacity: 0.1 * $n;
+  transition: 0.15s all ease-in;
+  // transition: 0.3s transform ease-out;
+  &:hover {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  &:active {
+    filter: brightness(0.3);
+  }
+  // &:focus {
+  //   transform: scale(1.03);
+  // }
+}
