@@ -44,30 +44,38 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div className="main-page">
+      <main className="main-page">
         <SplashImage />
-        <div className="main-section">
-          <section className="genres">
-            <div className="genre">Genre</div>
-            <div className="genre">Genre</div>
-            <div className="genre">Genre</div>
-            <div className="genre">Genre</div>
-            <div className="genre">Genre</div>
-            <div className="genre">Genre</div>
+        <div className="under-splash">
+          <section className="major-release-container">
+            <h1 className="container-title">Major Releases</h1>
+            <section className="major-release-section">
+              <article className="main-release" />
+              <article className="main-release" />
+              <News />
+            </section>
           </section>
-          <News />
+          <section className="genre-container">
+            <h1 className="container-title">Genres</h1>
+            <section className="genres">
+              <div className="genre">Genre</div>
+              <div className="genre">Genre</div>
+              <div className="genre">Genre</div>
+              <div className="genre">Genre</div>
+              <div className="genre">Genre</div>
+              <div className="genre">Genre</div>
+            </section>
+            <section className="carousel-section">
+              <Carousel>{this.renderPopularMovies()}</Carousel>
+              <Carousel>{this.renderPopularTvShows()}</Carousel>
+              <Carousel>{this.renderComingSoon()}</Carousel>
+            </section>
+            <footer className="main-footer">
+              <p>hello</p>
+            </footer>
+          </section>
         </div>
-        <div className="carousel-section">
-          <Carousel>{this.renderPopularMovies()}</Carousel>
-
-          <Carousel>{this.renderPopularTvShows()}</Carousel>
-
-          <Carousel>{this.renderComingSoon()}</Carousel>
-        </div>
-        <footer className="main-footer">
-          <p>hello</p>
-        </footer>
-      </div>
+      </main>
     );
   }
 }

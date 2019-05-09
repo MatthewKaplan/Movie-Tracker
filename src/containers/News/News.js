@@ -55,11 +55,11 @@ export class News extends Component {
         <div className="slide-container">
           {slideDisplay}
           <Arrow
-            className="arrow-one"
+            className="arrow-one arrow"
             onClick={this.changeSlidesPositionForward}
           />
           <Arrow
-            className="arrow-two"
+            className="arrow-two arrow"
             onClick={this.changeSlidesPositionBack}
           />
         </div>

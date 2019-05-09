@@ -3,7 +3,6 @@
 .main-page {
   margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
   position: relative;
   z-index: 2;
   flex-direction: column;
@@ -11,54 +10,68 @@
   min-height: 100vh;
   background-color: $background-color;
   max-width: 1280px;
-  border: 1px solid red;
 }
 
-.main-section {
+.under-splash {
+  // border: 1px solid red;
+  transform: translateY(-3%);
   display: flex;
-  transform: translateY(-20%);
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid rgba(255, 192, 203, 0.342);
-  width: 80%;
-  .genres {
-    // border: 1px solid red;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    height: 575px;
-    width: 380px;
-  }
-  .genre {
-    @include hover-state(8);
-    background: url("https://assets.fontsinuse.com/static/use-media-items/50/49197/full-2700x3910/58b6d005/Moonlight_poster.jpeg?resolution=0");
-    background-size: cover;
-    // border: 1px solid red;
-    height: 175px;
-    width: 150px;
-    margin: 0.4rem;
-  }
+  max-width: 1280px;
+}
+
+.container-title {
+  color: $text-w;
+  font-size: $sub-title;
+  margin-left: 5px;
+}
+
+.major-release-section {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+
   .main-release {
     @include hover-state(8);
     background-image: url("https://www.hypable.com/wp-content/uploads/2018/12/bladerunner2049ff.jpg");
     background-size: cover;
-    // border: 1px solid red;
-    margin: 0 10px;
-    height: 555px;
-    width: 360px;
+    height: 525px;
+    width: 350px;
+    &:nth-child(2) {
+      margin: 0 2.5rem 0 0.8rem;
+    }
   }
-  // &:hover {
-  //   color: red;
-  // }
 }
 
-.carousel-section {
-  border: 1px solid red;
-  width: 80%;
+.genres {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 575px;
+}
+.genre {
+  @include hover-state(8);
+  background: url("https://assets.fontsinuse.com/static/use-media-items/50/49197/full-2700x3910/58b6d005/Moonlight_poster.jpeg?resolution=0");
+  background-size: cover;
+  background-position: center;
+  height: 175px;
+  width: 48%;
+  margin: 0.4rem;
+}
+
+.carousel-section,
+.major-release-container,
+.genre-container {
+  // border: 1px solid red;
+  margin-top: 2.5rem;
+  width: 100%;
 }
 
 .main-footer {
-  border: 1px solid red;
+  // border: 2px solid green;
   height: 300px;
   margin-top: 3rem;
   width: 100%;
