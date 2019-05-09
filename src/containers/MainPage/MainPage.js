@@ -48,7 +48,6 @@ class MainPage extends React.Component {
   };
 
   handleClick = (endPath) => {
-    console.log('hello')
     this.props.fetchGenres(endPath);
   }
 
