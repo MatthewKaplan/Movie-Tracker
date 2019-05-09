@@ -2,6 +2,8 @@ import React from "react";
 import SplashImage from "../SplashImage/SplashImage";
 import Carousel from "../Carousel/Carousel";
 import MovieCard from "../MovieCard/MovieCard";
+import { Link } from "react-router-dom";
+import GenrePage from "../GenrePage/GenrePage";
 import News from "../News/News";
 import "./_MainPage.scss";
 import {
@@ -58,12 +60,36 @@ class MainPage extends React.Component {
           <section className="genre-container">
             <h1 className="container-title">Genres</h1>
             <section className="genres">
-              <div className="genre">Genre</div>
-              <div className="genre">Genre</div>
-              <div className="genre">Genre</div>
-              <div className="genre">Genre</div>
-              <div className="genre">Genre</div>
-              <div className="genre">Genre</div>
+              <Link to="/ActionMovies" component={GenrePage} className="genre">
+                <div>
+                  <h1>Action</h1>
+                </div>
+              </Link>
+              <Link to="/ComedyMovies" component={GenrePage} className="genre">
+                <div>
+                  <h1>Comedy</h1>
+                </div>
+              </Link>
+              <Link to="/Documentaries" component={GenrePage} className="genre">
+                <div>
+                  <h1>Documentaries</h1>
+                </div>
+              </Link>
+              <Link to="/FamilyMovies" component={GenrePage} className="genre">
+                <div>
+                  <h1>Family</h1>
+                </div>
+              </Link>
+              <Link to="/HorrorMovies" component={GenrePage} className="genre">
+                <div>
+                  <h1>Horror</h1>
+                </div>
+              </Link>
+              <Link to="/RomanceMovies" component={GenrePage} className="genre">
+                <div>
+                  <h1>Romance</h1>
+                </div>
+              </Link>
             </section>
             <section className="carousel-section">
               <Carousel>{this.renderPopularMovies()}</Carousel>
