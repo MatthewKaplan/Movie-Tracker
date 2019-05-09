@@ -1,8 +1,15 @@
 .movie-card {
   border: 1px solid blue;
   margin: 0 0.4rem;
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
+  background-size: 250px 250px;
+  color: white;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .movieBackdrop {

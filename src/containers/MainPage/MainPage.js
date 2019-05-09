@@ -27,7 +27,7 @@ class MainPage extends React.Component {
     return this.props.tv.map(tvShow => (
       <MovieCard
         key={tvShow.id}
-        title={tvShow.title}
+        title={tvShow.name}
         img={tvShow.backdrop_path}
       />
     ));
@@ -40,6 +40,7 @@ class MainPage extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div className="main-page">
         <SplashImage />
