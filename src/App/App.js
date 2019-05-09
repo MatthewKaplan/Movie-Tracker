@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "../NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
+import GenrePage from "../GenrePage/GenrePage";
+import LoginPage from "../LoginPage/LoginPage";
 import { fetchMovieTvData } from "../api/index";
-import { Route } from "react-router-dom";
+import { Switch, Router, Route } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -33,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar movieUrl={this.state.movieUrl} />
+        <Route path="/" component={NavBar} />
         <Route exact path="/" component={MainPage} />
       </div>
     );
