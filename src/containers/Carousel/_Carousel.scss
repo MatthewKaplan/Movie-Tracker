@@ -1,5 +1,14 @@
 @import "../../variables.scss";
 
+.carousel-container {
+  border: 1px solid blue;
+  h1 {
+    align-self: flex-start;
+    margin: 0.4rem 0;
+    color: white;
+  }
+}
+
 .carousel {
   border: 1px solid red;
   display: flex;
@@ -8,11 +17,6 @@
   align-items: center;
   margin: 1rem 0;
   overflow: scroll;
-  h3 {
-    align-self: flex-start;
-    margin: 0.4rem;
-    color: white;
-  }
 }
 
 .carousel-cards {
