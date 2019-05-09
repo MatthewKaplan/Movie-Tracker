@@ -9,6 +9,7 @@ class MovieCard extends React.Component {
         <img
           src={`https://image.tmdb.org/t/p/w500/${this.props.img}`}
           alt="img poster"
+          height='100px'
         />
       </div>
     );

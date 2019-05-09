@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./_Carousel.scss";
-import { fetchMovieTvData } from "../api/index";
+import { fetchMovieTvData } from "../../api/index";
 
 class Carousel extends React.Component {
   constructor() {
