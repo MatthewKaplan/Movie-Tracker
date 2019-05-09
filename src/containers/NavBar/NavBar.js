@@ -1,10 +1,11 @@
 import React from "react";
 import "./_NavBar.scss";
-import { fetchMovieTvData } from "../../api/index";
+import movieDB from "../../api/movieDB";
+import apiKey from "../../api/apiKey";
 import { NavLink } from "react-router-dom";
 
 class NavBar extends React.Component {
-  state = { searchUrl: "https://api.themoviedb.org/3/search/movie?" };
+  state = { error: "" };
 
   searchChangeHandler = event => {
     const searchTerm = event.target.value;
@@ -12,12 +13,12 @@ class NavBar extends React.Component {
   };
 
   performSearch = async searchTerm => {
-    const { searchUrl } = this.state;
     try {
-      const searchedMovies = await fetchMovieTvData(
-        searchUrl,
-        "&query=" + searchTerm
+      const searchedMovies = await movieDB.get(
+        `/search/movie?${apiKey}&query=${searchTerm}`
       );
+      const response = searchedMovies.data.results;
+      console.log(response);
     } catch (error) {
       this.setState({
         error: error
