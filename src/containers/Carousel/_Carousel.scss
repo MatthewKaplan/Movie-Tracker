@@ -1,16 +1,20 @@
 @import "../../variables.scss";
 
 .carousel-container {
-  border: 1px solid blue;
+  margin: 0 auto;
+  // border: 1px solid blue;
+  width: 99%;
   h1 {
+    // border: 1px solid red;
     align-self: flex-start;
-    margin: 0.4rem 0;
-    color: white;
+    padding: 1rem 0 0 0;
+    color: $text-w;
+    font-size: $sub-title;
   }
 }
 
 .carousel {
-  border: 1px solid red;
+  // border: 1px solid red;
   display: flex;
   justify-content: center;
   flex-direction: column;
