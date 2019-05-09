@@ -1,0 +1,86 @@
+.slideshow-section {
+  height: 65%;
+  div {
+    position: relative;
+    height: 555px;
+    width: 600px;
+  }
+
+  .slide-image {
+    box-sizing: border-box;
+    position: relative;
+    background-position: top center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: table;
+    padding: 40px;
+    h4 {
+        position: relative;
+        z-index: 3;
+        font-size: 2.5em;
+        letter-spacing: 0.02em;
+        text-shadow: 2px 2px 5px black;
+        display: table-cell;
+        vertical-align: bottom;
+        color: white;
+    }
+  }
+  .slide-container {
+      position: relative;
+      box-shadow: 0px 2px 10px 3px #0000006b;
+      border-radius: 5px;
+      .slide {
+          text-decoration: none;
+      }
+      &::after {
+          content: "";
+          top: 0px;
+          right: 0px;
+          background: linear-gradient(to left, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%);
+          position: absolute;
+          width: 100px;
+          z-index: 2;
+          height: 100%;
+      }
+      &::before {
+          content: "";
+          left: 0px;
+          background: linear-gradient(to right, rgba(35,31,32,1) 0%,rgba(125,185,232,0) 100%);
+          position: absolute;
+          width: 100px;
+          z-index: 2;
+          height: 100%;
+      }
+  }
+  .arrow-one {
+      z-index: 3;
+      fill: #ffffff;
+      height: 50px;
+      width: 70px;
+      top: 45%;
+      right: 0px;
+      position: absolute;
+      transform: rotate(180deg) scale(0.8);
+      transition: 0.5s;
+      &:hover {
+          transform: rotate(180deg) scale(1);
+          fill: #999999;
+      }
+  }
+  .arrow-two {
+      z-index: 3;
+      fill: #ffffff;
+      height: 50px;
+      width: 70px;
+      top: 45%;
+      left: 0px;
+      position: absolute;
+      transform: scale(0.8);
+      transition: 0.5s;
+      &:hover {
+          transform: scale(1);
+          fill: #999999;
+      }
+  }
+}
