@@ -35,7 +35,7 @@
   width: 100%;
 
   .main-release {
-    @include hover-state(8);
+    @include hover-state(8.5);
     background-image: url("https://www.hypable.com/wp-content/uploads/2018/12/bladerunner2049ff.jpg");
     background-size: cover;
     height: 525px;
@@ -53,7 +53,7 @@
   height: 575px;
 }
 .genre {
-  @include hover-state(8);
+  @include hover-state(8.5);
   background: url("https://assets.fontsinuse.com/static/use-media-items/50/49197/full-2700x3910/58b6d005/Moonlight_poster.jpeg?resolution=0");
   background-size: cover;
   background-position: center;
@@ -67,12 +67,5 @@
 .genre-container {
   // border: 1px solid red;
   margin-top: 2.5rem;
-  width: 100%;
-}
-
-.main-footer {
-  // border: 2px solid green;
-  height: 300px;
-  margin-top: 3rem;
   width: 100%;
 }

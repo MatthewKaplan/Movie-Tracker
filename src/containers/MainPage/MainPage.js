@@ -3,6 +3,7 @@ import SplashImage from "../SplashImage/SplashImage";
 import Carousel from "../Carousel/Carousel";
 import MovieCard from "../MovieCard/MovieCard";
 import News from "../News/News";
+import Footer from "../Footer/Footer";
 import "./_MainPage.scss";
 import {
   fetchPopularMovies,
@@ -70,11 +71,9 @@ class MainPage extends React.Component {
               <Carousel>{this.renderPopularTvShows()}</Carousel>
               <Carousel>{this.renderComingSoon()}</Carousel>
             </section>
-            <footer className="main-footer">
-              <p>hello</p>
-            </footer>
           </section>
         </div>
+        <Footer />
       </main>
     );
   }
