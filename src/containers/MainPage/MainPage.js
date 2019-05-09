@@ -102,6 +102,7 @@ class MainPage extends React.Component {
                 to="/FamilyMovies"
                 component={GenrePage}
                 className="genre"
+                onClick={() => this.handleClick("&with_genres=10751")}
               >
                 <div>
                   <h1>Family</h1>
