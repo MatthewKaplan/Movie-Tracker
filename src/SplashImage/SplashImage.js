@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./_SplashImage.scss";
 
 class SplashImage extends React.Component {
