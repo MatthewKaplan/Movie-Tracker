@@ -41,7 +41,7 @@ class Carousel extends React.Component {
       <div key={movie.id}>
         <h4>{movie.title}</h4>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           alt="img poster"
         />
       </div>
@@ -58,7 +58,7 @@ class Carousel extends React.Component {
             <MovieCard 
               key={movie.id}
               title={movie.title}
-              img={movie.poster_path}
+              img={movie.backdrop_path}
               />)
         }
         </div>

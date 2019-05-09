@@ -5,11 +5,10 @@ class MovieCard extends React.Component {
   render() {
     return (
       <div className="movie-card">
-        <h1>{this.props.title}</h1>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${this.props.img}`}
+          src={`https://image.tmdb.org/t/p/original${this.props.img}`}
+          className="movieBackdrop"
           alt="img poster"
-          height='100px'
         />
       </div>
     );
