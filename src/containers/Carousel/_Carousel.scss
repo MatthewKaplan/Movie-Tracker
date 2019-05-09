@@ -14,13 +14,21 @@
 }
 
 .carousel {
-  // border: 1px solid red;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   margin: 1rem 0;
   overflow: scroll;
+}
+
+.left::-webkit-scrollbar {
+  display: none;
+}
+
+.left {
+  -ms-overflow-style: none; // IE 10+
+  overflow: -moz-scrollbars-none; // Firefox
 }
 
 .carousel-cards {

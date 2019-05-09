@@ -6,7 +6,7 @@ class Carousel extends React.Component {
     return (
       <div className="carousel-container">
         <h1>Popular Movies</h1>
-        <section className="carousel">
+        <section className="carousel left">
           <div className="carousel-cards">{this.props.children}</div>
         </section>
       </div>
