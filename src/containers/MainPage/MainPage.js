@@ -12,7 +12,8 @@ import {
   fetchPopularTv,
   fetchUpcoming,
   fetchNews,
-  fetchGenres
+  fetchGenres,
+  fetchSearch
 } from "../../actions";
 import { connect } from "react-redux";
 
@@ -23,6 +24,7 @@ class MainPage extends React.Component {
     this.props.fetchUpcoming();
     this.props.fetchNews();
     this.props.fetchGenres();
+    this.props.fetchSearch();
   }
 
   renderPopularMovies = () => {
@@ -47,95 +49,110 @@ class MainPage extends React.Component {
     ));
   };
 
-  handleClick = (endPath) => {
+  renderSearchResults = () => {
+    return this.props.search.map(userSearch => (
+      <MovieCard
+        key={userSearch.id}
+        title={userSearch.title}
+        img={userSearch.backdrop_path}
+      />
+    ));
+  };
+
+  handleClick = endPath => {
     this.props.fetchGenres(endPath);
-  }
+  };
 
   render() {
-    console.log(this.props.genre)
     return (
       <main className="main-page">
-        <SplashImage />
-        <div className="under-splash">
-          <section className="major-release-container">
-            <h1 className="container-title">Major Releases</h1>
-            <section className="major-release-section">
-              <article className="main-release" />
-              <article className="main-release" />
-              <News />
-            </section>
-          </section>
-          <section className="genre-container">
-            <h1 className="container-title">Genres</h1>
-            <section className="genres">
-              <NavLink
-                to="/ActionMovies"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=28")}
-              >
-                <div>
-                  <h1>Action</h1>
-                </div>
-              </NavLink>
-              <Link
-                to="/ComedyMovies"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=35")}
-              >
-                <div>
-                  <h1>Comedy</h1>
-                </div>
-              </Link>
-              <Link
-                to="/Documentaries"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=99")}
-              >
-                <div>
-                  <h1>Documentaries</h1>
-                </div>
-              </Link>
-              <Link
-                to="/FamilyMovies"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=10751")}
-              >
-                <div>
-                  <h1>Family</h1>
-                </div>
-              </Link>
-              <Link
-                to="/HorrorMovies"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=27")}
-              >
-                <div>
-                  <h1>Horror</h1>
-                </div>
-              </Link>
-              <Link
-                to="/RomanceMovies"
-                component={GenrePage}
-                className="genre"
-                onClick={() => this.handleClick("&with_genres=10749")}
-              >
-                <div>
-                  <h1>Romance</h1>
-                </div>
-              </Link>
-            </section>
-            <section className="carousel-section">
-              <Carousel>{this.renderPopularMovies()}</Carousel>
-              <Carousel>{this.renderPopularTvShows()}</Carousel>
-              <Carousel>{this.renderComingSoon()}</Carousel>
-            </section>
-          </section>
-        </div>
+        {this.props.search.length > 0 ? (
+          <div className="searchCardResults">{this.renderSearchResults()}</div>
+        ) : (
+          <div>
+            <SplashImage />
+            <div className="under-splash">
+              <section className="major-release-container">
+                <h1 className="container-title">Major Releases</h1>
+                <section className="major-release-section">
+                  <article className="main-release" />
+                  <article className="main-release" />
+                  <News />
+                </section>
+              </section>
+              <section className="genre-container">
+                <h1 className="container-title">Genres</h1>
+                <section className="genres">
+                  <NavLink
+                    to="/ActionMovies"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=28")}
+                  >
+                    <div>
+                      <h1>Action</h1>
+                    </div>
+                  </NavLink>
+                  <Link
+                    to="/ComedyMovies"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=35")}
+                  >
+                    <div>
+                      <h1>Comedy</h1>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/Documentaries"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=99")}
+                  >
+                    <div>
+                      <h1>Documentaries</h1>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/FamilyMovies"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=10751")}
+                  >
+                    <div>
+                      <h1>Family</h1>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/HorrorMovies"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=27")}
+                  >
+                    <div>
+                      <h1>Horror</h1>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/RomanceMovies"
+                    component={GenrePage}
+                    className="genre"
+                    onClick={() => this.handleClick("&with_genres=10749")}
+                  >
+                    <div>
+                      <h1>Romance</h1>
+                    </div>
+                  </Link>
+                </section>
+                <section className="carousel-section">
+                  <Carousel>{this.renderPopularMovies()}</Carousel>
+                  <Carousel>{this.renderPopularTvShows()}</Carousel>
+                  <Carousel>{this.renderComingSoon()}</Carousel>
+                </section>
+              </section>
+            </div>
+          </div>
+        )}
         <Footer />
       </main>
     );
@@ -148,11 +165,19 @@ const mapStateToProps = state => {
     tv: state.tv,
     upcoming: state.upcoming,
     news: state.news,
-    genre: state.genre
+    genre: state.genre,
+    search: state.search
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchPopularMovies, fetchPopularTv, fetchUpcoming, fetchNews, fetchGenres }
+  {
+    fetchPopularMovies,
+    fetchPopularTv,
+    fetchUpcoming,
+    fetchNews,
+    fetchGenres,
+    fetchSearch
+  }
 )(MainPage);

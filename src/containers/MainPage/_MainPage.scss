@@ -70,3 +70,10 @@
   margin-top: 2.5rem;
   width: 100%;
 }
+
+.searchCardResults {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 80px;
+  margin-top:200px;
+}
