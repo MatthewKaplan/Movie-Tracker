@@ -86,61 +86,61 @@ class MainPage extends React.Component {
                   <NavLink
                     to="/ActionMovies"
                     component={GenrePage}
-                    className="genre"
+                    className="genre action"
                     onClick={() => this.handleClick("&with_genres=28")}
                   >
                     <div>
-                      <h1>Action</h1>
+                      <h1 className="genreTitle">Action</h1>
                     </div>
                   </NavLink>
                   <Link
                     to="/ComedyMovies"
                     component={GenrePage}
-                    className="genre"
+                    className="genre comedy"
                     onClick={() => this.handleClick("&with_genres=35")}
                   >
                     <div>
-                      <h1>Comedy</h1>
+                      <h1 className="genreTitle">Comedy</h1>
                     </div>
                   </Link>
                   <Link
                     to="/Documentaries"
                     component={GenrePage}
-                    className="genre"
+                    className="genre documentaries"
                     onClick={() => this.handleClick("&with_genres=99")}
                   >
                     <div>
-                      <h1>Documentaries</h1>
+                      <h1 className="genreTitle">Documentaries</h1>
                     </div>
                   </Link>
                   <Link
                     to="/FamilyMovies"
                     component={GenrePage}
-                    className="genre"
+                    className="genre family"
                     onClick={() => this.handleClick("&with_genres=10751")}
                   >
                     <div>
-                      <h1>Family</h1>
+                      <h1 className="genreTitle">Family</h1>
                     </div>
                   </Link>
                   <Link
                     to="/HorrorMovies"
                     component={GenrePage}
-                    className="genre"
+                    className="genre horror"
                     onClick={() => this.handleClick("&with_genres=27")}
                   >
                     <div>
-                      <h1>Horror</h1>
+                      <h1 className="genreTitle">Horror</h1>
                     </div>
                   </Link>
                   <Link
                     to="/RomanceMovies"
                     component={GenrePage}
-                    className="genre"
+                    className="genre romance"
                     onClick={() => this.handleClick("&with_genres=10749")}
                   >
                     <div>
-                      <h1>Romance</h1>
+                      <h1 className="genreTitle">Romance</h1>
                     </div>
                   </Link>
                 </section>

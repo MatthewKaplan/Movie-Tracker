@@ -13,7 +13,6 @@
 }
 
 .under-splash {
-  // border: 1px solid red;
   transform: translateY(-3%);
   display: flex;
   flex-direction: column;
@@ -52,6 +51,41 @@
   flex-wrap: wrap;
   height: 575px;
   color: white;
+
+  .genreTitle {
+    font-size: 40px;
+    margin-top: 0;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+
+  .horror {
+    background-image: url("https://i.imgur.com/COmAJiV.jpg");
+  }
+
+  .documentaries {
+    background-image: url("https://i.imgur.com/X2IBLKh.jpg");
+    background-position: 50% 35%;
+  }
+
+  .action {
+    background-image: url("https://i.imgur.com/FLII2dO.jpg");
+  }
+
+  .romance {
+    background-image: url("https://i.imgur.com/S7CyGk2.jpg");
+    background-position: 25% 25%;
+  }
+
+  .family {
+    background-image: url("https://i.imgur.com/6JYnIoV.jpg");
+    background-position: 50% 20%;
+  }
+
+  .comedy {
+    background-image: url("https://i.imgur.com/4FY035F.jpg");
+    background-position: 50% 30%;
+  }
 }
 .genre {
   @include hover-state(8.5);
@@ -66,7 +100,6 @@
 .carousel-section,
 .major-release-container,
 .genre-container {
-  // border: 1px solid red;
   margin-top: 2.5rem;
   width: 100%;
 }
