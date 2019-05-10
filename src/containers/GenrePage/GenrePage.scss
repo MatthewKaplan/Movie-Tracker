@@ -1,4 +1,7 @@
-.genre-title {
-  color: white;
-  font-size: 100px;
+.genre-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 80px;
+  margin: 0 auto;
+  justify-items: center;
 }

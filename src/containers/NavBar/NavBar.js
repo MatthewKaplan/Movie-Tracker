@@ -2,28 +2,24 @@ import React from "react";
 import "./_NavBar.scss";
 import movieDB from "../../api/movieDB";
 import apiKey from "../../api/apiKey";
-import { NavLink } from "react-router-dom";
+import GenrePage from "../GenrePage/GenrePage";
+import { NavLink, Redirect } from "react-router-dom";
+import { fetchSearch } from "../../actions";
+import { connect } from "react-redux";
 
 class NavBar extends React.Component {
-  state = { error: "" };
+  state = { error: "", userSearch: "" };
+
+  componentDidMount() {
+    this.props.fetchSearch();
+  }
 
   searchChangeHandler = event => {
     const searchTerm = event.target.value;
-    this.performSearch(searchTerm);
-  };
-
-  performSearch = async searchTerm => {
-    try {
-      const searchedMovies = await movieDB.get(
-        `/search/movie?${apiKey}&query=${searchTerm}`
-      );
-      const response = searchedMovies.data.results;
-      console.log(response);
-    } catch (error) {
-      this.setState({
-        error: error
-      });
-    }
+    this.setState({
+      userSearch: searchTerm
+    });
+    this.props.fetchSearch(searchTerm);
   };
 
   render() {
@@ -61,4 +57,13 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  return {
+    search: state.search
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSearch }
+)(NavBar);

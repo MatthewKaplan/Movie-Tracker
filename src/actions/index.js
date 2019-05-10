@@ -28,6 +28,11 @@ export const fetchNews = () => async dispatch => {
 };
 
 export const fetchGenres = (path) => async dispatch => {
-  const response = await movieDB.get(`/discover/movie?${apiKey}${path}`);
+  const response = await movieDB.get(`/discover/movie?${apiKey}${path}&page=3`);
   dispatch({ type: "FETCH_GENRES", payload: response.data.results });
 };
+
+export const fetchSearch = (searchTerm) => async dispatch => {
+  const response = await movieDB.get(`/search/movie?${apiKey}&query=${searchTerm}`);
+  dispatch({ type: "FETCH_SEARCH", payload: response.data.results });
+}
