@@ -5,12 +5,16 @@ import upcomingReducer from './upcomingReducer';
 import newsReducer from './newsReducer';
 import genreReducer from './genreReducer';
 import searchReducer from './searchReducer';
+import userReducer from './userReducer';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   movies: moviesReducer,
   tv: tvReducer,
   upcoming: upcomingReducer,
   news: newsReducer,
   genre: genreReducer,
-  search: searchReducer
+  search: searchReducer,
+  user: userReducer
 });
+
+export default rootReducer;

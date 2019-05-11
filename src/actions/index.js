@@ -36,3 +36,13 @@ export const fetchSearch = (searchTerm) => async dispatch => {
   const response = await movieDB.get(`/search/movie?${apiKey}&query=${searchTerm}`);
   dispatch({ type: "FETCH_SEARCH", payload: response.data.results });
 }
+
+export const setUser = (user) => ({
+  type: 'SET_USER',
+  user
+})
+
+export const createUser = (user) => ({
+  type: 'CREATE_USER',
+  user
+})
