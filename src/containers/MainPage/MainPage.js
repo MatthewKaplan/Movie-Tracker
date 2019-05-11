@@ -5,6 +5,8 @@ import MovieCard from "../MovieCard/MovieCard";
 import { NavLink, Link } from "react-router-dom";
 import GenrePage from "../GenrePage/GenrePage";
 import News from "../News/News";
+import { apiKey } from "../../api/apiKey";
+import { nytApiKey } from "../../api/nytApiKey";
 import Footer from "../Footer/Footer";
 import "./_MainPage.scss";
 import {
@@ -16,21 +18,32 @@ import {
   fetchSearch
 } from "../../actions";
 import { connect } from "react-redux";
+import { fetchData, fetchNewsData } from "../../apiCalls/apiCalls";
 
 class MainPage extends React.Component {
   componentDidMount() {
-    this.props.fetchPopularMovies();
-    this.props.fetchPopularTv();
-    this.props.fetchUpcoming();
-    this.props.fetchNews();
-    this.props.fetchGenres();
-    this.props.fetchSearch();
+    this.renderNewsResults();
+    this.fetchPopularMovies();
+    this.fetchPopularTvShows();
+    this.fetchComingSoon();
   }
+
+  fetchPopularMovies = () => {
+    fetchData(`/discover/movie?${apiKey}&sort_by=popularity.desc`).then(
+      response => this.props.fetchPopularMovies(response.results)
+    );
+  };
 
   renderPopularMovies = () => {
     return this.props.movies.map(movie => (
       <MovieCard key={movie.id} title={movie.title} img={movie.backdrop_path} />
     ));
+  };
+
+  fetchPopularTvShows = () => {
+    fetchData(`/discover/tv?${apiKey}&sort_by=popularity.desc`).then(response =>
+      this.props.fetchPopularTv(response.results)
+    );
   };
 
   renderPopularTvShows = () => {
@@ -43,6 +56,12 @@ class MainPage extends React.Component {
     ));
   };
 
+  fetchComingSoon = () => {
+    fetchData(`/movie/upcoming?${apiKey}`).then(response =>
+      this.props.fetchUpcoming(response.results)
+    );
+  };
+
   renderComingSoon = () => {
     return this.props.upcoming.map(film => (
       <MovieCard key={film.id} title={film.title} img={film.backdrop_path} />
@@ -50,7 +69,7 @@ class MainPage extends React.Component {
   };
 
   renderSearchResults = () => {
-    return this.props.search.map(userSearch => (
+    return this.props.searchResults.map(userSearch => (
       <MovieCard
         key={userSearch.id}
         title={userSearch.title}
@@ -59,14 +78,22 @@ class MainPage extends React.Component {
     ));
   };
 
+  renderNewsResults = () => {
+    fetchNewsData(`/topstories/v2/movies.json?${nytApiKey}`).then(response =>
+      this.props.fetchNews(response.results)
+    );
+  };
+
   handleClick = endPath => {
-    this.props.fetchGenres(endPath);
+    fetchData(`/discover/movie?${apiKey}${endPath}&page=3`).then(response =>
+      this.props.fetchGenres(response.results)
+    );
   };
 
   render() {
     return (
       <main className="main-page">
-        {this.props.search.length > 0 ? (
+        {this.props.searchResults.length > 0 ? (
           <div className="searchCardResults">{this.renderSearchResults()}</div>
         ) : (
           <div>
@@ -85,7 +112,6 @@ class MainPage extends React.Component {
                 <section className="genres">
                   <NavLink
                     to="/ActionMovies"
-                    component={GenrePage}
                     className="genre action"
                     onClick={() => this.handleClick("&with_genres=28")}
                   >
@@ -95,7 +121,6 @@ class MainPage extends React.Component {
                   </NavLink>
                   <Link
                     to="/ComedyMovies"
-                    component={GenrePage}
                     className="genre comedy"
                     onClick={() => this.handleClick("&with_genres=35")}
                   >
@@ -105,7 +130,6 @@ class MainPage extends React.Component {
                   </Link>
                   <Link
                     to="/Documentaries"
-                    component={GenrePage}
                     className="genre documentaries"
                     onClick={() => this.handleClick("&with_genres=99")}
                   >
@@ -115,7 +139,6 @@ class MainPage extends React.Component {
                   </Link>
                   <Link
                     to="/FamilyMovies"
-                    component={GenrePage}
                     className="genre family"
                     onClick={() => this.handleClick("&with_genres=10751")}
                   >
@@ -125,7 +148,6 @@ class MainPage extends React.Component {
                   </Link>
                   <Link
                     to="/HorrorMovies"
-                    component={GenrePage}
                     className="genre horror"
                     onClick={() => this.handleClick("&with_genres=27")}
                   >
@@ -166,18 +188,21 @@ const mapStateToProps = state => {
     upcoming: state.upcoming,
     news: state.news,
     genre: state.genre,
-    search: state.search
+    searchResults: state.search
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  fetchSearch: searchResults => dispatch(fetchSearch(searchResults)),
+  fetchPopularMovies: popularMovies =>
+    dispatch(fetchPopularMovies(popularMovies)),
+  fetchPopularTv: popularTv => dispatch(fetchPopularTv(popularTv)),
+  fetchUpcoming: upcoming => dispatch(fetchUpcoming(upcoming)),
+  fetchNews: news => dispatch(fetchNews(news)),
+  fetchGenres: genres => dispatch(fetchGenres(genres))
+});
+
 export default connect(
   mapStateToProps,
-  {
-    fetchPopularMovies,
-    fetchPopularTv,
-    fetchUpcoming,
-    fetchNews,
-    fetchGenres,
-    fetchSearch
-  }
+  mapDispatchToProps
 )(MainPage);

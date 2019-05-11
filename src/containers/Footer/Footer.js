@@ -7,20 +7,20 @@ class Footer extends React.Component {
       <footer className="main-footer">
         <div className="footer-logo footer-section">
           <h2 className="logo">
-            <a href="#"> MovieTracker </a>
+            <p> MovieTracker </p>
           </h2>
         </div>
         <div className="footer-links footer-section">
           <h4>Get started</h4>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <p>Home</p>
             </li>
             <li>
-              <a href="#">Sign up</a>
+              <p>Sign up</p>
             </li>
             <li>
-              <a href="#">Downloads</a>
+              <p>Downloads</p>
             </li>
           </ul>
         </div>
@@ -28,13 +28,13 @@ class Footer extends React.Component {
           <h4>About us</h4>
           <ul>
             <li>
-              <a href="#">Company Information</a>
+              <p>Company Information</p>
             </li>
             <li>
-              <a href="#">Contact us</a>
+              <p>Contact us</p>
             </li>
             <li>
-              <a href="#">Reviews</a>
+              <p>Reviews</p>
             </li>
           </ul>
         </div>
@@ -42,27 +42,27 @@ class Footer extends React.Component {
           <h4>Support</h4>
           <ul>
             <li>
-              <a href="#">FAQ</a>
+              <p>FAQ</p>
             </li>
             <li>
-              <a href="#">Help desk</a>
+              <p>Help desk</p>
             </li>
             <li>
-              <a href="#">Forums</a>
+              <p>Forums</p>
             </li>
           </ul>
         </div>
         <div className="footer-social footer-section">
           <div className="social-networks">
-            <a href="#" className="twitter">
-              <i class="fab fa-2x fa-twitter-square" />
-            </a>
-            <a href="#" className="facebook">
-              <i class="fab fa-2x fa-facebook-square" />
-            </a>
-            <a href="#" className="google">
-              <i class="fab fa-2x fa-google-plus-square" />
-            </a>
+            <div className="twitter">
+              <i className="fab fa-2x fa-twitter-square" />
+            </div>
+            <div className="facebook">
+              <i className="fab fa-2x fa-facebook-square" />
+            </div>
+            <div className="google">
+              <i className="fab fa-2x fa-google-plus-square" />
+            </div>
           </div>
         </div>
       </footer>

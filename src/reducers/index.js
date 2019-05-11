@@ -6,6 +6,7 @@ import newsReducer from './newsReducer';
 import genreReducer from './genreReducer';
 import searchReducer from './searchReducer';
 import userReducer from './userReducer';
+import popularMovies from './popularMovies';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   news: newsReducer,
   genre: genreReducer,
   search: searchReducer,
-  user: userReducer
+  user: userReducer,
+  popularMovies: popularMovies
 });
 
 export default rootReducer;

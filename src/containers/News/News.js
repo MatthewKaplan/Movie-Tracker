@@ -42,7 +42,7 @@ export class News extends Component {
       };
       if (index === this.state.slidesPosition) {
         return (
-          <div className="slide-image" style={backgroundImage} id={stories.id}>
+          <div className="slide-image" key={Date.now()} style={backgroundImage} id={stories.id}>
             <h4>{stories.title}</h4>
           </div>
         );

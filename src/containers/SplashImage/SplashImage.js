@@ -1,13 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./_SplashImage.scss";
 import { fetchPopularMovies } from "../../actions";
 import { connect } from "react-redux";
 
 class SplashImage extends React.Component {
-  componentDidMount() {
-    this.props.fetchPopularMovies();
-  }
 
   renderPopularMovies = () => {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
@@ -15,7 +11,6 @@ class SplashImage extends React.Component {
     const movieValues = backgroundMovie ? Object.values(backgroundMovie) : null;
 
     if (movieValues) {
-      console.log(movieValues);
       const movieTitle = movieValues[4];
       let backgroundImage = {
         background: `linear-gradient(rgba(0, 0, 0, 0.555) 15%, rgba(0, 0, 0, 0) 55%, black),url(https://image.tmdb.org/t/p/original${movieValues[10]})`,
@@ -42,14 +37,11 @@ class SplashImage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    movies: state.movies
-  };
+  return {movies: state.movies};
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    fetchPopularMovies
-  }
-)(SplashImage);
+const mapDispatchToProps = dispatch => ({
+  fetchPopularMovies: (popularMovies) => dispatch(fetchPopularMovies(popularMovies))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SplashImage);

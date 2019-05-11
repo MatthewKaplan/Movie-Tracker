@@ -1,26 +1,29 @@
 import React from "react";
 import "./_NavBar.scss";
-import movieDB from "../../api/movieDB";
-import apiKey from "../../api/apiKey";
-import GenrePage from "../GenrePage/GenrePage";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fetchSearch } from "../../actions";
 import { connect } from "react-redux";
+import { fetchData } from "../../apiCalls/apiCalls";
+import { apiKey } from "../../api/apiKey"; 
+import { popularMovies } from "../../actions";
+import MovieCard from "../MovieCard/MovieCard";
 
 class NavBar extends React.Component {
   state = { error: "", userSearch: "" };
-
-  componentDidMount() {
-    this.props.fetchSearch();
-  }
 
   searchChangeHandler = event => {
     const searchTerm = event.target.value;
     this.setState({
       userSearch: searchTerm
     });
-    this.props.fetchSearch(searchTerm);
+    fetchData(`/search/movie?${apiKey}&query=${searchTerm}`)
+      .then(response => this.props.fetchSearch(response.results))
   };
+
+  handleMovieClick = () => {
+    fetchData(`/discover/movie?&${apiKey}`)
+      .then(response => this.props.popularMovies(response.results))
+  }
 
   render() {
     return (
@@ -30,13 +33,13 @@ class NavBar extends React.Component {
             <NavLink to="/home" className="nav">
               Home
             </NavLink>
-            <NavLink to="/mylist" className="nav">
+            <NavLink to="/MyList" className="nav">
               MyList
             </NavLink>
-            <NavLink to="/movies" className="nav">
+            <NavLink to="/Movies" className="nav" onClick={() => this.handleMovieClick()}>
               Movies
             </NavLink>
-            <NavLink to="/tv_shows" className="nav">
+            <NavLink to="/TV_Shows" className="nav">
               TV Shows
             </NavLink>
           </div>
@@ -59,11 +62,14 @@ class NavBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    search: state.search
+    searchResults: state.search,
+    moviesArray: state.popularMovies
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchSearch }
-)(NavBar);
+const mapDispatchToProps = dispatch => ({
+  popularMovies: (moviess) => dispatch(popularMovies(moviess)),
+  fetchSearch: (searchResults) => dispatch(fetchSearch(searchResults))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
