@@ -19,7 +19,12 @@ class GenrePage extends React.Component {
 
   render() {
     console.log(this.props.genre);
-    return <div className="genre-page">{this.renderMovieCards()}</div>;
+    return (
+      <React.Fragment>
+      <section className="backgroundImage" />
+      <div className="genre-page">{this.renderMovieCards()}</div>
+      </React.Fragment>
+    )
   }
 }
 
