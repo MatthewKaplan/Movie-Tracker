@@ -1,31 +1,31 @@
 export const fetchPopularMovies = (popularMoviess) => ({
   type: "FETCH_POPULAR_MOVIES",
-  payload: popularMoviess
+  popularMoviess
 });
 
 export const fetchPopularTv = (popularShows) => ({
   type: "FETCH_POPULAR_TV",
-  payload: popularShows
+  popularShows
 });
 
 export const fetchUpcoming = (upcomingResults) => ({
   type: "FETCH_UPCOMING",
-  payload: upcomingResults
+  upcomingResults
 });
 
 export const fetchNews = (newsResults) => ({
   type: "FETCH_NEWS",
-  payload: newsResults
+  newsResults
 });
 
 export const fetchGenres = (genreResults) => ({
   type: "FETCH_GENRES",
-  payload: genreResults
+  genreResults
 });
 
 export const fetchSearch = (searchResults) => ({
   type: 'FETCH_SEARCH',
-  payload: searchResults
+  searchResults
 })
 
 export const setUser = (user) => ({
@@ -40,5 +40,5 @@ export const createUser = (user) => ({
 
 export const popularMovies = (moviess) => ({
   type: 'POPULAR_MOVIES',
-  payload: moviess
+  moviess
 })
