@@ -20,6 +20,17 @@ const fetchNewsData = (url) => {
     )
 }
 
+const fetchUserData = (url) => {
+  return fetch(url)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error("Fetch failed")
+      } else {
+        return response.json()
+      }}
+    )
+}
+
 const fetchPost = (url, options) => {
   return fetch(url, options)
     .then(response => {
@@ -32,4 +43,4 @@ const fetchPost = (url, options) => {
 }
 
 
-export { fetchPost, fetchData, fetchNewsData };
+export { fetchPost, fetchData, fetchNewsData, fetchUserData };
