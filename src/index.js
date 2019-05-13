@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./reducers/index";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { Switch, Route } from "react-router-dom";
 
 const store = createStore(
   rootReducer,

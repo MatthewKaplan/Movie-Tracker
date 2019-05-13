@@ -36,7 +36,7 @@ class MainPage extends React.Component {
 
   renderPopularMovies = () => {
     return this.props.movies.map(movie => (
-      <MovieCard key={movie.id} title={movie.title} img={movie.backdrop_path} />
+      <MovieCard key={movie.id} wholeObj={movie} title={movie.title} img={movie.backdrop_path} />
     ));
   };
 
@@ -50,6 +50,7 @@ class MainPage extends React.Component {
     return this.props.tv.map(tvShow => (
       <MovieCard
         key={tvShow.id}
+        wholeObj={tvShow}
         title={tvShow.name}
         img={tvShow.backdrop_path}
       />
@@ -64,7 +65,7 @@ class MainPage extends React.Component {
 
   renderComingSoon = () => {
     return this.props.upcoming.map(film => (
-      <MovieCard key={film.id} title={film.title} img={film.backdrop_path} />
+      <MovieCard key={film.id} wholeObj={film} title={film.title} img={film.backdrop_path} />
     ));
   };
 
@@ -72,6 +73,7 @@ class MainPage extends React.Component {
     return this.props.searchResults.map(userSearch => (
       <MovieCard
         key={userSearch.id}
+        wholeObj={userSearch}
         title={userSearch.title}
         img={userSearch.backdrop_path}
       />
