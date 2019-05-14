@@ -5,7 +5,6 @@ import { fetchSearch } from "../../actions";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 import { apiKey } from "../../api/apiKey"; 
-import MovieCard from "../MovieCard/MovieCard";
 
 class NavBar extends React.Component {
   state = { error: "", userSearch: "" };
@@ -18,7 +17,6 @@ class NavBar extends React.Component {
     fetchData(`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${searchTerm}`)
     .then(response => this.props.fetchSearch(response.results));
   };
-
 
   render() {
     return (
@@ -46,7 +44,7 @@ class NavBar extends React.Component {
               className="search"
               type="text"
               onChange={this.searchChangeHandler}
-              placeholder="Search"
+              placeholder="Search Movies..."
             />
           </form>
           </Link>
