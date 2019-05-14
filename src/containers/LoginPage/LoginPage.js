@@ -101,8 +101,6 @@ class LoginPage extends React.Component {
                   Register
                 </button>
               </div>
-              <button>Sign in with Google</button>
-              <button>Sign in with FaceBook</button>
             </div>
           </form>
         </section>

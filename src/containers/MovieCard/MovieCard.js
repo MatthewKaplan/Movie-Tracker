@@ -74,7 +74,7 @@ class MovieCard extends React.Component {
     let whichFavoriteButton;
 
     if(!this.props.isLoggedIn) {
-      whichFavoriteButton = <button>Favorite</button>
+      whichFavoriteButton = <button>Sign in to Favorite movie</button>
     } else if (isFavorited) {
       whichFavoriteButton = (
         <button onClick={() => this.deleteFavorite(movie)}>Remove Favorite</button>

@@ -84,16 +84,20 @@ class MainPage extends React.Component {
     ));
   };
 
-  renderSearchResults = () => {
-    return this.props.searchResults.map(userSearch => (
-      <MovieCard
-        key={userSearch.id}
-        wholeObj={userSearch}
-        title={userSearch.title}
-        img={userSearch.backdrop_path}
-      />
-    ));
-  };
+  // renderSearchResults = () => {
+  //   return this.props.searchResults.map(userSearch => (
+  //     <MovieCard
+  //       key={userSearch.id}
+  //       wholeObj={userSearch}
+  //       title={userSearch.title}
+  //       img={userSearch.backdrop_path}
+  //     />
+  //   ));
+  // };
+
+  // {this.props.searchResults.length > 0 ? (
+  //   <div className="searchCardResults">{this.renderSearchResults()}</div>
+  // ) : (
 
   renderNewsResults = () => {
     fetchData(
@@ -110,91 +114,87 @@ class MainPage extends React.Component {
   render() {
     return (
       <main className="main-page">
-        {this.props.searchResults.length > 0 ? (
-          <div className="searchCardResults">{this.renderSearchResults()}</div>
-        ) : (
-          <div>
-            <SplashImage />
-            <div className="under-splash">
-              <section className="major-release-container">
-                <h1 className="container-title">Major Releases</h1>
-                <section className="major-release-section">
-                  <article className="main-release" />
-                  <article className="main-release" />
-                  <News />
-                </section>
+        <div>
+          <SplashImage />
+          <div className="under-splash">
+            <section className="major-release-container">
+              <h1 className="container-title">Major Releases</h1>
+              <section className="major-release-section">
+                <article className="main-release" />
+                <article className="main-release" />
+                <News />
               </section>
-              <section className="genre-container">
-                <h1 className="container-title">Genres</h1>
-                <section className="genres">
-                  <NavLink
-                    to="/ActionMovies"
-                    className="genre action"
-                    onClick={() => this.handleClick("&with_genres=28")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Action</h1>
-                    </div>
-                  </NavLink>
-                  <Link
-                    to="/ComedyMovies"
-                    className="genre comedy"
-                    onClick={() => this.handleClick("&with_genres=35")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Comedy</h1>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/Documentaries"
-                    className="genre documentaries"
-                    onClick={() => this.handleClick("&with_genres=99")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Documentaries</h1>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/FamilyMovies"
-                    className="genre family"
-                    onClick={() => this.handleClick("&with_genres=10751")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Family</h1>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/HorrorMovies"
-                    className="genre horror"
-                    onClick={() => this.handleClick("&with_genres=27")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Horror</h1>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/RomanceMovies"
-                    component={GenrePage}
-                    className="genre romance"
-                    onClick={() => this.handleClick("&with_genres=10749")}
-                  >
-                    <div>
-                      <h1 className="genreTitle">Romance</h1>
-                    </div>
-                  </Link>
-                </section>
-                <section className="carousel-section">
-                  <h1>Popular Movies</h1>
-                  <Carousel>{this.renderPopularMovies()}</Carousel>
-                  <h1>Popular TV Shows</h1>
-                  <Carousel>{this.renderPopularTvShows()}</Carousel>
-                  <h1>Coming to theaters soon</h1>
-                  <Carousel>{this.renderComingSoon()}</Carousel>
-                </section>
+            </section>
+            <section className="genre-container">
+              <h1 className="container-title">Genres</h1>
+              <section className="genres">
+                <NavLink
+                  to="/ActionMovies"
+                  className="genre action"
+                  onClick={() => this.handleClick("&with_genres=28")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Action</h1>
+                  </div>
+                </NavLink>
+                <Link
+                  to="/ComedyMovies"
+                  className="genre comedy"
+                  onClick={() => this.handleClick("&with_genres=35")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Comedy</h1>
+                  </div>
+                </Link>
+                <Link
+                  to="/Documentaries"
+                  className="genre documentaries"
+                  onClick={() => this.handleClick("&with_genres=99")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Documentaries</h1>
+                  </div>
+                </Link>
+                <Link
+                  to="/FamilyMovies"
+                  className="genre family"
+                  onClick={() => this.handleClick("&with_genres=10751")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Family</h1>
+                  </div>
+                </Link>
+                <Link
+                  to="/HorrorMovies"
+                  className="genre horror"
+                  onClick={() => this.handleClick("&with_genres=27")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Horror</h1>
+                  </div>
+                </Link>
+                <Link
+                  to="/RomanceMovies"
+                  component={GenrePage}
+                  className="genre romance"
+                  onClick={() => this.handleClick("&with_genres=10749")}
+                >
+                  <div>
+                    <h1 className="genreTitle">Romance</h1>
+                  </div>
+                </Link>
               </section>
-            </div>
+              <section className="carousel-section">
+                <h1>Popular Movies</h1>
+                <Carousel>{this.renderPopularMovies()}</Carousel>
+                <h1>Popular TV Shows</h1>
+                <Carousel>{this.renderPopularTvShows()}</Carousel>
+                <h1>Coming to theaters soon</h1>
+                <Carousel>{this.renderComingSoon()}</Carousel>
+              </section>
+            </section>
           </div>
-        )}
+        </div>
         <Footer />
       </main>
     );
