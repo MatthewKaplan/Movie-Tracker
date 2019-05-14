@@ -27,6 +27,8 @@ class GenrePage extends React.Component {
       whatToRender = this.renderMovieCards(this.props.tv);
     } else if (currentPath === "/Favorites") {
       whatToRender = this.renderMovieCards(this.props.favoriteList);
+    } else if (currentPath === "/SearchResults") {
+      whatToRender = this.renderMovieCards(this.props.searchResults);
     } else {
       whatToRender = this.renderMovieCards(this.props.genre);
     }
@@ -44,7 +46,8 @@ const mapStateToProps = state => ({
   genre: state.genre,
   movies: state.movies,
   tv: state.tv,
-  favoriteList: state.favoriteList
+  favoriteList: state.favoriteList,
+  searchResults: state.search
 });
 
 export default connect(

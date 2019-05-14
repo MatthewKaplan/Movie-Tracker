@@ -1,6 +1,6 @@
 import React from "react";
 import "./_NavBar.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { fetchSearch } from "../../actions";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
@@ -19,9 +19,6 @@ class NavBar extends React.Component {
     .then(response => this.props.fetchSearch(response.results));
   };
 
-  handleMovieClick = e => {
-    e.preventDefault()
-  }
 
   render() {
     return (
@@ -43,11 +40,16 @@ class NavBar extends React.Component {
           </div>
           <h1 className="header-title">Movie-Tracker</h1>
           <div className="right-page-links">
+          <Link to="/SearchResults">
+          <form className="searchForm">
             <input
               className="search"
               type="text"
               onChange={this.searchChangeHandler}
+              placeholder="Search"
             />
+          </form>
+          </Link>
             <NavLink to="/login" className="nav login">
               Login
             </NavLink>
