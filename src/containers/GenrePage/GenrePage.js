@@ -10,6 +10,7 @@ class GenrePage extends React.Component {
       <MovieCard
         key={movie.id}
         wholeObj={movie}
+        name={movie.name}
         title={movie.title}
         img={movie.backdrop_path}
       />

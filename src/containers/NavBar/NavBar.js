@@ -32,7 +32,7 @@ class NavBar extends React.Component {
               Home
             </NavLink>
             <NavLink to="/Favorites" className="nav">
-              MyList
+              My Favorites
             </NavLink>
             <NavLink to="/Movies" className="nav">
               Movies

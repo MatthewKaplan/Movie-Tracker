@@ -184,8 +184,11 @@ class MainPage extends React.Component {
                   </Link>
                 </section>
                 <section className="carousel-section">
+                  <h1>Popular Movies</h1>
                   <Carousel>{this.renderPopularMovies()}</Carousel>
+                  <h1>Popular TV Shows</h1>
                   <Carousel>{this.renderPopularTvShows()}</Carousel>
+                  <h1>Coming to theaters soon</h1>
                   <Carousel>{this.renderComingSoon()}</Carousel>
                 </section>
               </section>
