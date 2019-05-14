@@ -11,14 +11,7 @@ class GenrePage extends React.Component {
     ));
   };
 
-  renderAllMovies = () => {
-    return this.props.moviesArray.map(movie => (
-      <MovieCard key={movie.id} title={movie.title} img={movie.backdrop_path} />
-    ));
-  };
-
   render() {
-    console.log(this.props.genre);
     return (
       <React.Fragment>
       <section className="backgroundImage" />
@@ -29,8 +22,7 @@ class GenrePage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  genre: state.genre,
-  moviesArray: state.popularMovies
+  genre: state.genre
 });
 
 export default connect(

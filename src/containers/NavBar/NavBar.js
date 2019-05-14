@@ -5,7 +5,6 @@ import { fetchSearch } from "../../actions";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 import { apiKey } from "../../api/apiKey"; 
-import { popularMovies } from "../../actions";
 import MovieCard from "../MovieCard/MovieCard";
 
 class NavBar extends React.Component {
@@ -16,13 +15,12 @@ class NavBar extends React.Component {
     this.setState({
       userSearch: searchTerm
     });
-    fetchData(`/search/movie?${apiKey}&query=${searchTerm}`)
-      .then(response => this.props.fetchSearch(response.results))
+    fetchData(`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${searchTerm}`)
+    .then(response => this.props.fetchSearch(response.results));
   };
 
   handleMovieClick = () => {
-    fetchData(`/discover/movie?&${apiKey}`)
-      .then(response => this.props.popularMovies(response.results))
+    console.log('Movies')
   }
 
   render() {
@@ -62,13 +60,11 @@ class NavBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.search,
-    moviesArray: state.popularMovies
+    searchResults: state.search
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  popularMovies: (moviess) => dispatch(popularMovies(moviess)),
   fetchSearch: (searchResults) => dispatch(fetchSearch(searchResults))
 })
 
