@@ -1,19 +1,11 @@
 import React from "react";
 import "./_LoginPage.scss";
-import {fetchPost, fetchUserData} from "../../apiCalls/apiCalls";
+import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      status: ""
-    };
-  }
+  state = { name: "", email: "", password: "", status: "", error: "" };
 
   handleChange = e => {
     let value = e.target.value.toLowerCase();
@@ -34,17 +26,19 @@ class LoginPage extends React.Component {
     fetchPost(url, userOptionObject)
       .then(results => this.props.setUser(results.data))
       .then(results => this.getFavoriteMovies(results.user.id))
-      .then(results => this.setState({ status: results.status }))
+      .then(results => this.setState({ status: "success" }))
       .catch(error => console.log(error));
   };
 
   getFavoriteMovies = () => {
-    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`;
+    const url = `http://localhost:3000/api/users/${
+      this.props.user.id
+    }/favorites`;
     fetchUserData(url)
-    .then(results => this.props.favoritesList(results.data))
-    .then(results => this.props.isLoggedIn(true))
-    .catch(err => console.log(err))
-  }
+      .then(results => this.props.favoritesList(results.data))
+      .then(results => this.props.isLoggedIn(true))
+      .catch(err => this.setState({ error: err }));
+  };
 
   handleRegister = e => {
     e.preventDefault();
@@ -54,10 +48,10 @@ class LoginPage extends React.Component {
       method: "POST",
       body: JSON.stringify(userInput),
       headers: { "Content-Type": "application/json" }
-    }
+    };
     fetchPost(url, userOptionObject)
-      .then(results => this.setState({status: results.status}))
-      .catch(error => console.log(error))
+      .then(results => this.setState({ status: "success" }))
+      .catch(err => this.setState({ error: err }));
   };
 
   render() {
@@ -119,7 +113,7 @@ class LoginPage extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user)),
@@ -127,4 +121,7 @@ const mapDispatchToProps = dispatch => ({
   isLoggedIn: bool => dispatch(isLoggedIn(bool))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);
