@@ -19,8 +19,8 @@ class NavBar extends React.Component {
     .then(response => this.props.fetchSearch(response.results));
   };
 
-  handleMovieClick = () => {
-    console.log('Movies')
+  handleMovieClick = e => {
+    e.preventDefault()
   }
 
   render() {
@@ -31,10 +31,10 @@ class NavBar extends React.Component {
             <NavLink to="/home" className="nav">
               Home
             </NavLink>
-            <NavLink to="/MyList" className="nav">
+            <NavLink to="/Favorites" className="nav">
               MyList
             </NavLink>
-            <NavLink to="/Movies" className="nav" onClick={() => this.handleMovieClick()}>
+            <NavLink to="/Movies" className="nav">
               Movies
             </NavLink>
             <NavLink to="/TV_Shows" className="nav">
