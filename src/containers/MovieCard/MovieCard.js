@@ -9,10 +9,10 @@ class MovieCard extends React.Component {
       })`
     };
     return (
-      <div className="movie-card" style={movieBackdrop}>
+      <div tabindex="1" className="movie-card" style={movieBackdrop}>
         <h2>
           {this.props.title}
-          {this.props.name}
+          {/* {this.props.name} */}
         </h2>
       </div>
     );

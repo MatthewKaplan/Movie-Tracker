@@ -1,18 +1,31 @@
 @import "../../variables.scss";
 
 .movie-card {
-  @include hover-state(8);
+  // @include hover-state(8);
   margin: 0 0.4rem;
   height: 250px;
   width: 500px;
+  position: relative;
+  z-index: 4;
   background-size: cover;
-  color: white;
   background-repeat: no-repeat;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   font-size: 20px;
+  transition: 0.2s filter ease-in;
+  &:hover {
+    cursor: pointer;
+    filter: opacity(0.8);
+  }
+  &:focus {
+    filter: opacity(0.4);
+    h2 {
+      display: relative;
+      z-index: 5;
+      color: red;
+    }
+  }
 }
