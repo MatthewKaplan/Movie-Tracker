@@ -48,12 +48,6 @@ export const isLoggedIn = (bool) => ({
   isLoggedIn: bool
 })
 
-export const popularMovies = moviess => ({
-  type: "POPULAR_MOVIES",
-  favorited: false,
-  moviess
-});
-
 export const favoritesList = movies => ({
   type: "FAVORITES_LIST",
   favorited: false,

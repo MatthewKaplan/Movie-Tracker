@@ -6,7 +6,6 @@ import newsReducer from './newsReducer';
 import genreReducer from './genreReducer';
 import searchReducer from './searchReducer';
 import userReducer from './userReducer';
-import popularMovies from './popularMovies';
 import favoritesReducer from './favoritesReducer';
 import loggedInReducer from './loggedInReducer';
 
@@ -18,7 +17,6 @@ const rootReducer = combineReducers({
   genre: genreReducer,
   search: searchReducer,
   user: userReducer,
-  popularMovies: popularMovies,
   favoriteList: favoritesReducer,
   isLoggedIn: loggedInReducer
 });
