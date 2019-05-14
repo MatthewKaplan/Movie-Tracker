@@ -1,16 +1,5 @@
 const fetchData = (url) => {
-  return fetch(`https://api.themoviedb.org/3${url}`)
-    .then(response => {
-      if(!response.ok) {
-        throw new Error("Fetch failed")
-      } else {
-        return response.json()
-      }}
-    )
-}
-
-const fetchNewsData = (url) => {
-  return fetch(`https://api.nytimes.com/svc${url}`)
+  return fetch(url)
     .then(response => {
       if(!response.ok) {
         throw new Error("Fetch failed")
@@ -43,4 +32,4 @@ const fetchPost = (url, options) => {
 }
 
 
-export { fetchPost, fetchData, fetchNewsData, fetchUserData };
+export { fetchPost, fetchData, fetchUserData };

@@ -36,11 +36,10 @@ class MovieCard extends React.Component {
   };
 
   handleFavorites = (url, options) => {
-    fetchPost(url, options).then(result => {
+    fetchPost(url, options)
+      .then(result => {
       if (result.status === "success") {
-        const url = `http://localhost:3000/api/users/${
-          this.props.user.id
-        }/favorites`;
+        const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`;
         fetchUserData(url)
           .then(result => this.props.favoritesList(result.data))
           .catch(err => console.log(err));
@@ -73,7 +72,10 @@ class MovieCard extends React.Component {
     movie = { ...movie, favorited: isFavorited };
 
     let whichFavoriteButton;
-    if (isFavorited) {
+
+    if(!this.props.isLoggedIn) {
+      whichFavoriteButton = <button>Favorite</button>
+    } else if (isFavorited) {
       whichFavoriteButton = (
         <button onClick={() => this.deleteFavorite(movie)}>Remove Favorite</button>
       );
@@ -102,7 +104,8 @@ class MovieCard extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  favorites: state.favoriteList
+  favorites: state.favoriteList,
+  isLoggedIn: state.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({

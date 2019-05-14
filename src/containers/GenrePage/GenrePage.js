@@ -7,7 +7,7 @@ import MovieCard from "../MovieCard/MovieCard";
 class GenrePage extends React.Component {
   renderMovieCards = () => {
     return this.props.genre.map(movie => (
-      <MovieCard key={movie.id} title={movie.title} img={movie.backdrop_path} />
+      <MovieCard key={movie.id} wholeObj={movie} title={movie.title} img={movie.backdrop_path} />
     ));
   };
 
