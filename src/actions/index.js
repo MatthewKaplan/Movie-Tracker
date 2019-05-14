@@ -1,15 +1,18 @@
 export const fetchPopularMovies = popularMoviess => ({
   type: "FETCH_POPULAR_MOVIES",
+  favorited: false,
   popularMoviess
 });
 
 export const fetchPopularTv = popularShows => ({
   type: "FETCH_POPULAR_TV",
+  favorited: false,
   popularShows
 });
 
 export const fetchUpcoming = upcomingResults => ({
   type: "FETCH_UPCOMING",
+  favorited: false,
   upcomingResults
 });
 
@@ -20,11 +23,13 @@ export const fetchNews = newsResults => ({
 
 export const fetchGenres = genreResults => ({
   type: "FETCH_GENRES",
+  favorited: false,
   genreResults
 });
 
 export const fetchSearch = searchResults => ({
   type: "FETCH_SEARCH",
+  favorited: false,
   searchResults
 });
 
@@ -40,10 +45,12 @@ export const createUser = user => ({
 
 export const popularMovies = moviess => ({
   type: "POPULAR_MOVIES",
+  favorited: false,
   moviess
 });
 
 export const favoritesList = movies => ({
   type: "FAVORITES_LIST",
+  favorited: false,
   movies
 });
