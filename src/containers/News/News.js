@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./News.scss";
 
 export class News extends Component {
-  state = { slidesPosition: 5 };
+  state = { slidesPosition: 7 };
 
   changeSlidesPositionForward = () => {
     const { slidesPosition } = this.state;

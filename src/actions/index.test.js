@@ -4,8 +4,10 @@ import MockData from "../assets/mockData";
 describe("actions", () => {
   it("should return a type of FETCH_POPULAR_MOVIES", () => {
     const popularMoviess = MockData.popularMovies;
+    const favorited = false;
     const expected = {
       type: "FETCH_POPULAR_MOVIES",
+      favorited,
       popularMoviess
     };
 
@@ -15,8 +17,10 @@ describe("actions", () => {
 
   it("should return a type of FETCH_POPULAR_TV", () => {
     const popularShows = MockData.popularShows;
+    const favorited = false;
     const expected = {
       type: "FETCH_POPULAR_TV",
+      favorited,
       popularShows
     };
 
@@ -26,8 +30,10 @@ describe("actions", () => {
 
   it("should return a type of FETCH_UPCOMING", () => {
     const upcomingResults = MockData.upcomingMovies;
+    const favorited = false;
     const expected = {
       type: "FETCH_UPCOMING",
+      favorited,
       upcomingResults
     };
 
@@ -48,8 +54,10 @@ describe("actions", () => {
 
   it("should return a type of FETCH_GENRES", () => {
     const genreResults = MockData.genreResults;
+    const favorited = false;
     const expected = {
       type: "FETCH_GENRES",
+      favorited,
       genreResults
     };
 
@@ -59,8 +67,10 @@ describe("actions", () => {
 
   it("should return a type of FETCH_SEARCH", () => {
     const searchResults = MockData.searchResults;
+    const favorited = false;
     const expected = {
       type: "FETCH_SEARCH",
+      favorited,
       searchResults
     };
 
@@ -88,17 +98,6 @@ describe("actions", () => {
     };
 
     const result = actions.createUser(user);
-    expect(result).toEqual(expected);
-  });
-
-  it("should return a type of POPULAR_MOVIES", () => {
-    const moviess = MockData.popularMovies;
-    const expected = {
-      type: "POPULAR_MOVIES",
-      moviess
-    };
-
-    const result = actions.popularMovies(moviess);
     expect(result).toEqual(expected);
   });
 });

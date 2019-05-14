@@ -5,37 +5,37 @@ import { connect } from "react-redux";
 import MovieCard from "../MovieCard/MovieCard";
 
 class GenrePage extends React.Component {
-  renderMovieCards = (type) => {
-    console.log(type)
+  renderMovieCards = type => {
     return type.map(movie => (
-      <MovieCard key={movie.id} wholeObj={movie} title={movie.title} img={movie.backdrop_path} />
+      <MovieCard
+        key={movie.id}
+        wholeObj={movie}
+        title={movie.title}
+        img={movie.backdrop_path}
+      />
     ));
   };
 
   render() {
     let whatToRender;
-
     const currentPath = this.props.location.pathname;
-
-    console.log(currentPath)
 
     if (currentPath === "/Movies") {
       whatToRender = this.renderMovieCards(this.props.movies);
     } else if (currentPath === "/TV_Shows") {
       whatToRender = this.renderMovieCards(this.props.tv);
-    } else if (currentPath === '/Favorites') {
-      whatToRender = this.renderMovieCards(this.props.favoriteList)
+    } else if (currentPath === "/Favorites") {
+      whatToRender = this.renderMovieCards(this.props.favoriteList);
     } else {
       whatToRender = this.renderMovieCards(this.props.genre);
     }
 
-
-      return (
-        <React.Fragment>
-          <section className="backgroundImage" />
-          <div className="genre-page">{whatToRender}</div>
-        </React.Fragment>
-      );
+    return (
+      <React.Fragment>
+        <section className="backgroundImage" />
+        <div className="genre-page">{whatToRender}</div>
+      </React.Fragment>
+    );
   }
 }
 
