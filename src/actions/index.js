@@ -43,6 +43,11 @@ export const createUser = user => ({
   user
 });
 
+export const isLoggedIn = (bool) => ({
+  type: "IS_LOGGED_IN",
+  isLoggedIn: bool
+})
+
 export const popularMovies = moviess => ({
   type: "POPULAR_MOVIES",
   favorited: false,

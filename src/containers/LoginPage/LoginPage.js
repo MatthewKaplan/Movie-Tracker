@@ -1,7 +1,7 @@
 import React from "react";
 import "./_LoginPage.scss";
-import {fetchPost} from "../../apiCalls/apiCalls";
-import { setUser } from "../../actions/index";
+import {fetchPost, fetchUserData} from "../../apiCalls/apiCalls";
+import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
 
 class LoginPage extends React.Component {
@@ -33,9 +33,18 @@ class LoginPage extends React.Component {
     };
     fetchPost(url, userOptionObject)
       .then(results => this.props.setUser(results.data))
+      .then(results => this.getFavoriteMovies(results.user.id))
       .then(results => this.setState({ status: results.status }))
       .catch(error => console.log(error));
   };
+
+  getFavoriteMovies = () => {
+    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`;
+    fetchUserData(url)
+    .then(results => this.props.favoritesList(results.data))
+    .then(results => this.props.isLoggedIn(true))
+    .catch(err => console.log(err))
+  }
 
   handleRegister = e => {
     e.preventDefault();
@@ -108,8 +117,14 @@ class LoginPage extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user
+})
+
 const mapDispatchToProps = dispatch => ({
-  setUser: user => dispatch(setUser(user))
+  setUser: user => dispatch(setUser(user)),
+  favoritesList: movie => dispatch(favoritesList(movie)),
+  isLoggedIn: bool => dispatch(isLoggedIn(bool))
 });
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

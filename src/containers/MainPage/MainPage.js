@@ -18,9 +18,14 @@ import {
   fetchSearch
 } from "../../actions";
 import { connect } from "react-redux";
-import { fetchData, fetchNewsData } from "../../apiCalls/apiCalls";
+import { fetchData } from "../../apiCalls/apiCalls";
 
 class MainPage extends React.Component {
+  state = {
+    movieUrl: "https://api.themoviedb.org/3",
+    newsUrl: "https://api.nytimes.com/svc",
+    showPopUp: false
+  };
   componentDidMount() {
     this.renderNewsResults();
     this.fetchPopularMovies();
@@ -29,21 +34,26 @@ class MainPage extends React.Component {
   }
 
   fetchPopularMovies = () => {
-    fetchData(`/discover/movie?${apiKey}&sort_by=popularity.desc`).then(
-      response => this.props.fetchPopularMovies(response.results)
-    );
+    fetchData(
+      `${this.state.movieUrl}/discover/movie?${apiKey}&sort_by=popularity.desc`
+    ).then(response => this.props.fetchPopularMovies(response.results));
   };
 
   renderPopularMovies = () => {
     return this.props.movies.map(movie => (
-      <MovieCard key={movie.id} wholeObj={movie} title={movie.title} img={movie.backdrop_path} />
+      <MovieCard
+        key={movie.id}
+        wholeObj={movie}
+        title={movie.title}
+        img={movie.backdrop_path}
+      />
     ));
   };
 
   fetchPopularTvShows = () => {
-    fetchData(`/discover/tv?${apiKey}&sort_by=popularity.desc`).then(response =>
-      this.props.fetchPopularTv(response.results)
-    );
+    fetchData(
+      `${this.state.movieUrl}/discover/tv?${apiKey}&sort_by=popularity.desc`
+    ).then(response => this.props.fetchPopularTv(response.results));
   };
 
   renderPopularTvShows = () => {
@@ -58,14 +68,19 @@ class MainPage extends React.Component {
   };
 
   fetchComingSoon = () => {
-    fetchData(`/movie/upcoming?${apiKey}`).then(response =>
-      this.props.fetchUpcoming(response.results)
+    fetchData(`${this.state.movieUrl}/movie/upcoming?${apiKey}`).then(
+      response => this.props.fetchUpcoming(response.results)
     );
   };
 
   renderComingSoon = () => {
     return this.props.upcoming.map(film => (
-      <MovieCard key={film.id} wholeObj={film} title={film.title} img={film.backdrop_path} />
+      <MovieCard
+        key={film.id}
+        wholeObj={film}
+        title={film.title}
+        img={film.backdrop_path}
+      />
     ));
   };
 
@@ -81,15 +96,15 @@ class MainPage extends React.Component {
   };
 
   renderNewsResults = () => {
-    fetchNewsData(`/topstories/v2/movies.json?${nytApiKey}`).then(response =>
-      this.props.fetchNews(response.results)
-    );
+    fetchData(
+      `${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`
+    ).then(response => this.props.fetchNews(response.results));
   };
 
   handleClick = endPath => {
-    fetchData(`/discover/movie?${apiKey}${endPath}&page=3`).then(response =>
-      this.props.fetchGenres(response.results)
-    );
+    fetchData(
+      `${this.state.movieUrl}/discover/movie?${apiKey}${endPath}&page=3`
+    ).then(response => this.props.fetchGenres(response.results));
   };
 
   render() {
