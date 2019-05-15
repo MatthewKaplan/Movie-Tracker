@@ -27,6 +27,7 @@ export class LoginPage extends React.Component {
       .then(results => this.props.setUser(results.data))
       .then(results => this.getFavoriteMovies(results.user.id))
       .then(results => this.setState({ status: "success" }))
+      .then(() => this.props.history.push("/home"))
       .catch(error => console.log(error));
   };
 
@@ -61,7 +62,7 @@ export class LoginPage extends React.Component {
           <h1>Sign in</h1>
           <form>
             <div className="inputs">
-              <label for="name">Name:</label>
+              <label htmlFor="name">Name:</label>
               <input
                 type="text"
                 name="name"
@@ -69,7 +70,7 @@ export class LoginPage extends React.Component {
                 placeholder="Name..."
                 onChange={this.handleChange}
               />
-              <label for="email">Email:</label>
+              <label htmlFor="email">Email:</label>
               <input
                 type="text"
                 name="email"
@@ -77,7 +78,7 @@ export class LoginPage extends React.Component {
                 placeholder="Email..."
                 onChange={this.handleChange}
               />
-              <label for="password">Password: </label>
+              <label htmlFor="password">Password: </label>
               <input
                 type="text"
                 name="password"

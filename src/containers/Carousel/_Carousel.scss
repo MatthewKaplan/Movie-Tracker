@@ -13,11 +13,11 @@
 
 .carousel {
   position: relative;
-  border: 1px solid red;
+  // border: 1px solid red;
   z-index: 5;
   display: flex;
   min-width: 100%;
-  overflow-y: visible;
+  overflow-y: hidden;
   overflow-x: auto;
   margin: 1rem 0;
 }
