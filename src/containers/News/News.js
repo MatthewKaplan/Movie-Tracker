@@ -3,6 +3,7 @@ import { ReactComponent as Arrow } from "../../assets/arrow.svg";
 import { fetchNews } from "../../actions";
 import { connect } from "react-redux";
 import "./News.scss";
+import PropTypes from "prop-types";
 
 export class News extends Component {
   state = { slidesPosition: 7 };
@@ -66,6 +67,10 @@ export class News extends Component {
       </div>
     );
   };
+}
+
+News.propTypes = {
+  news: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => {

@@ -3,6 +3,7 @@ import "./_LoginPage.scss";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class LoginPage extends React.Component {
   state = { name: "", email: "", password: "", status: "", error: "" };
@@ -108,6 +109,13 @@ export class LoginPage extends React.Component {
     );
   }
 }
+
+LoginPage.propTypes = {
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired,
+  favoritesList: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   user: state.user

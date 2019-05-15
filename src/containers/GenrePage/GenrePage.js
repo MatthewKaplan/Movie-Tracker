@@ -1,8 +1,8 @@
 import React from "react";
 import "./GenrePage.scss";
-import { fetchGenres } from "../../actions";
 import { connect } from "react-redux";
 import MovieCard from "../MovieCard/MovieCard";
+import PropTypes from "prop-types";
 
 export class GenrePage extends React.Component {
   renderMovieCards = type => {
@@ -44,6 +44,15 @@ export class GenrePage extends React.Component {
     );
   }
 }
+
+GenrePage.propTypes = {
+  genre: PropTypes.array.isRequired,
+  movies: PropTypes.array.isRequired,
+  tv: PropTypes.array.isRequired,
+  favoriteList: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.array.isRequired,
+  searchResults: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => ({
   genre: state.genre,
