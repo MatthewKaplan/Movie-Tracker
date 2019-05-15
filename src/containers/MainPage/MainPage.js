@@ -118,6 +118,7 @@ export class MainPage extends React.Component {
               <section className="genres">
                 <NavLink
                   to="/ActionMovies"
+                  data-test="genre-click-event"
                   className="genre action"
                   onClick={() => this.handleClick("&with_genres=28")}
                 >
