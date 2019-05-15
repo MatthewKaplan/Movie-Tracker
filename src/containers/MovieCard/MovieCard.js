@@ -1,12 +1,13 @@
 import React from "react";
 import "./_MovieCard.scss";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
-import { favoritesList } from "../../actions/index";
+import { favoritesList, currentMovie } from "../../actions/index";
 import PropTypes from "prop-types";
 
 export class MovieCard extends React.Component {
-  state = { active: false };
+  state = { active: false, error: "" };
 
   toggleClass = bool => {
     // const currentState = this.state.active;
@@ -47,7 +48,7 @@ export class MovieCard extends React.Component {
         }/favorites`;
         fetchUserData(url)
           .then(result => this.props.favoritesList(result.data))
-          .catch(err => console.log(err));
+          .catch(err => this.setState({error: err}));
       }
     });
   };
@@ -74,9 +75,12 @@ export class MovieCard extends React.Component {
   };
 
   toLoginPage = () => {
-    console.log("hello?");
     this.props.routeProps.push("/login");
   };
+
+  // handleMovieClick = (currentMovie) => {
+  //   this.props.currentMovie(currentMovie)
+  // }
 
   render() {
     let movie = this.props.wholeObj;
@@ -123,26 +127,18 @@ export class MovieCard extends React.Component {
     };
     return (
       <div>
-        <article
-          className={this.state.active ? "render-details" : "render-hidden"}
-        >
-          <h2>{this.props.title}</h2>
-        </article>
+      <Link to="/MovieCardInfo" onClick={() => this.props.currentMovie(this.props.wholeObj)}>
         {whichFavoriteButton}
         <div
           tabIndex="1"
           className="movie-card"
           style={movieBackdrop}
-          onFocus={() => this.toggleClass(true)}
-          onBlur={() => {
-            this.toggleClass(false);
-          }}
         >
           <h2>
             {this.props.title}
-            {/* {this.props.name} */}
           </h2>
         </div>
+        </Link>
       </div>
     );
   }
@@ -162,10 +158,36 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  favoritesList: movie => dispatch(favoritesList(movie))
+  favoritesList: movie => dispatch(favoritesList(movie)),
+  currentMovie: movie => dispatch(currentMovie(movie))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MovieCard);
+
+
+
+// <div>
+// <article
+//   className={this.state.active ? "render-details" : "render-hidden"}
+// >
+//   <h2>{this.props.title}</h2>
+// </article>
+// {whichFavoriteButton}
+// <div
+//   tabIndex="1"
+//   className="movie-card"
+//   style={movieBackdrop}
+//   onFocus={() => this.toggleClass(true)}
+//   onBlur={() => {
+//     this.toggleClass(false);
+//   }}
+// >
+//   <h2>
+//     {this.props.title}
+//     {/* {this.props.name} */}
+//   </h2>
+// </div>
+// </div>

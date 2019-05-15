@@ -8,6 +8,7 @@ import searchReducer from './searchReducer';
 import userReducer from './userReducer';
 import favoritesReducer from './favoritesReducer';
 import loggedInReducer from './loggedInReducer';
+import currentMovieReducer from './currentMovieReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   search: searchReducer,
   user: userReducer,
   favoriteList: favoritesReducer,
-  isLoggedIn: loggedInReducer
+  isLoggedIn: loggedInReducer,
+  currentMovie: currentMovieReducer
 });
 
 export default rootReducer;

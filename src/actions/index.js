@@ -53,3 +53,8 @@ export const favoritesList = movies => ({
   favorited: false,
   movies
 });
+
+export const currentMovie = movie => ({
+  type: "CURRENT_MOVIE",
+  movie
+})
