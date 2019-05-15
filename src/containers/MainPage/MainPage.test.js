@@ -31,4 +31,12 @@ describe("MainPage", () => {
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it("should have a default state", () => {
+    expect(wrapper.state()).toEqual({
+      movieUrl: "https://api.themoviedb.org/3",
+      newsUrl: "https://api.nytimes.com/svc",
+      showPopUp: false
+    });
+  });
 });

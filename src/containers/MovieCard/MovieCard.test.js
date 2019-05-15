@@ -10,11 +10,18 @@ describe("MovieCard", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<MovieCard favorites={mockFavorites} wholeObj={mockWholeObj}/>);
+    wrapper = shallow(
+      <MovieCard favorites={mockFavorites} wholeObj={mockWholeObj} />
+    );
   });
 
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  
+
+  it("should have a default state", () => {
+    expect(wrapper.state()).toEqual({
+      active: false
+    });
+  });
 });

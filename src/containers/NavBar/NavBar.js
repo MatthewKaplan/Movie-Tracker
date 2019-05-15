@@ -88,8 +88,10 @@ export class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  searchResults: PropTypes.array.isRequired,
-  fetchSearch: PropTypes.func.isRequired
+  searchResults: PropTypes.array,
+  fetchSearch: PropTypes.func,
+  setUser: PropTypes.func,
+  isLoggedIn: PropTypes.func
 };
 
 const mapStateToProps = state => {

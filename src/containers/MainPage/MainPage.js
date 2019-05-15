@@ -193,7 +193,7 @@ MainPage.propTypes = {
   movies: PropTypes.array.isRequired,
   tv: PropTypes.array.isRequired,
   upcoming: PropTypes.array.isRequired,
-  news: PropTypes.array.isRequired,
+  news: PropTypes.array,
   genre: PropTypes.array.isRequired,
   fetchPopularMovies: PropTypes.func,
   fetchPopularTv: PropTypes.func,
