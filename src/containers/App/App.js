@@ -6,7 +6,7 @@ import GenrePage from "../GenrePage/GenrePage";
 import NotFound from "../NotFound/NotFound";
 import MovieInfo from "../MovieInfo/MovieInfo";
 import LoginPage from "../LoginPage/LoginPage";
-// import Footer from "../Footer/Footer";
+import MovieCard from "../MovieCard/MovieCard";
 import { Switch, Route } from "react-router-dom";
 
 class App extends Component {

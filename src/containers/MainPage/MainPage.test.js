@@ -46,15 +46,6 @@ describe("MainPage", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should have a default state", () => {
-    expect(wrapper.state()).toEqual({
-      movieUrl: "https://api.themoviedb.org/3",
-      newsUrl: "https://api.nytimes.com/svc",
-      showPopUp: false,
-      error: ""
-    });
-  });
-
   it("should invoke 'renderNewsResults, fetchPopularMovies, fetchPopularTvShows, fetchComingSoon' when mounted", () => {
     jest.spyOn(instance, "renderNewsResults");
     jest.spyOn(instance, "fetchPopularMovies");

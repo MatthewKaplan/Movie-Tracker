@@ -43,7 +43,12 @@ export class News extends Component {
       };
       if (index === this.state.slidesPosition) {
         return (
-          <div className="slide-image" key={Date.now()} style={backgroundImage} id={stories.id}>
+          <div
+            className="slide-image"
+            key={Date.now()}
+            style={backgroundImage}
+            id={stories.id}
+          >
             <h4>{stories.title}</h4>
           </div>
         );
@@ -71,7 +76,7 @@ export class News extends Component {
 
 News.propTypes = {
   news: PropTypes.array.isRequired
-}
+};
 
 export const mapStateToProps = state => {
   return {

@@ -13,12 +13,20 @@ export class GenrePage extends React.Component {
         name={movie.name}
         title={movie.title}
         img={movie.backdrop_path}
+        poster={movie.poster_path}
       />
     ));
   };
 
   render() {
-    const { movies, tv, favoriteList, searchResults, genre, isLoggedIn } = this.props;
+    const {
+      movies,
+      tv,
+      favoriteList,
+      searchResults,
+      genre,
+      isLoggedIn
+    } = this.props;
     let whatToRender;
     const currentPath = this.props.location.pathname;
 
@@ -37,8 +45,14 @@ export class GenrePage extends React.Component {
     return (
       <React.Fragment>
         <section className="backgroundImage" />
-        {currentPath === "/Favorites" && isLoggedIn === false ? <h1>Please Log in to veiw your favorites</h1> : null}
-        {currentPath === "/Favorites" && isLoggedIn && favoriteList.length === 0 ? <h1>Looks like you havent saved any favorites yet!</h1> : null}
+        {currentPath === "/Favorites" && isLoggedIn === false ? (
+          <h1 className="displayLogInMessage">Please sign in to veiw your favorites</h1>
+        ) : null}
+        {currentPath === "/Favorites" &&
+        isLoggedIn &&
+        favoriteList.length === 0 ? (
+          <h1 className="displayLogInMessage">It looks like you haven't saved any favorites yet.</h1>
+        ) : null}
         <div className="genre-page">{whatToRender}</div>
       </React.Fragment>
     );

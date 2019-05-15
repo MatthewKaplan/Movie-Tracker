@@ -59,10 +59,7 @@ export class LoginPage extends React.Component {
 
   render() {
     const { name, email, password } = this.state;
-    const enabled =
-          email.length > 0 &&
-          password.length > 0 &&
-          name.length > 0;
+    const enabled = email.length > 0 && password.length > 0 && name.length > 0;
     return (
       <div className="login-page">
         <section className="login-container">
