@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MovieCard } from "./MovieCard";
+import { MovieCard, mapStateToProps, mapDispatchToProps } from "./MovieCard";
+import * as actions from "../../actions/index";
 import MockData from "../../assets/mockData";
 
 let mockFavorites = MockData.favoritedMovies;
@@ -23,5 +24,32 @@ describe("MovieCard", () => {
     expect(wrapper.state()).toEqual({
       active: false
     });
+  });
+});
+
+describe("mapStateToProps", () => {
+  it("should return an object", () => {
+    const mockData = {
+      user: {},
+      favorites: [],
+      isLoggedIn: false
+    };
+    const expected = {
+      user: {},
+      isLoggedIn: false
+    };
+
+    const mockprops = mapStateToProps(mockData);
+    expect(mockprops).toEqual(expected);
+  });
+});
+
+describe("mapDispatchToProps", () => {
+  it("should call dispatch for favoritesList", () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = actions.favoritesList(mockFavorites);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.favoritesList(mockFavorites);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 });

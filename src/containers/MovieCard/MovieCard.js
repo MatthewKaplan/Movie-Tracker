@@ -160,13 +160,13 @@ MovieCard.propTypes = {
 
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   favorites: state.favoriteList,
   isLoggedIn: state.isLoggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   favoritesList: movie => dispatch(favoritesList(movie))
 });
 
