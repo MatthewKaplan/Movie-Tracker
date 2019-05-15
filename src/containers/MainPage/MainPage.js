@@ -20,7 +20,7 @@ import {
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 
-class MainPage extends React.Component {
+export class MainPage extends React.Component {
   state = {
     movieUrl: "https://api.themoviedb.org/3",
     newsUrl: "https://api.nytimes.com/svc",
@@ -83,21 +83,6 @@ class MainPage extends React.Component {
       />
     ));
   };
-
-  // renderSearchResults = () => {
-  //   return this.props.searchResults.map(userSearch => (
-  //     <MovieCard
-  //       key={userSearch.id}
-  //       wholeObj={userSearch}
-  //       title={userSearch.title}
-  //       img={userSearch.backdrop_path}
-  //     />
-  //   ));
-  // };
-
-  // {this.props.searchResults.length > 0 ? (
-  //   <div className="searchCardResults">{this.renderSearchResults()}</div>
-  // ) : (
 
   renderNewsResults = () => {
     fetchData(

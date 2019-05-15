@@ -1,15 +1,19 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import { News } from "./News";
+import MockData from "../../assets/mockData";
 
-describe("App", () => {
+let mockNews = MockData.newsResults;
+
+describe("News", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<News news={mockNews} />);
   });
 
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
+  
 });

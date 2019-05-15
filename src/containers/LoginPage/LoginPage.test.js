@@ -1,12 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import { LoginPage } from "./LoginPage";
+import MockData from "../../assets/mockData";
 
-describe("App", () => {
+describe("LoginPage", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(
+      <LoginPage />
+    );
   });
 
   it("should match the snapshot", () => {

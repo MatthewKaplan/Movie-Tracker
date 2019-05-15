@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 import { apiKey } from "../../api/apiKey"; 
 
-class NavBar extends React.Component {
+export class NavBar extends React.Component {
   state = { error: "", userSearch: "" };
 
   searchChangeHandler = event => {

@@ -80,7 +80,6 @@ describe("fetchUserData", () => {
       expect(error.message).toBe('Fetch failed')
     }
   })
-
   
 });
 

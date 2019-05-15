@@ -4,7 +4,7 @@ import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
 
-class LoginPage extends React.Component {
+export class LoginPage extends React.Component {
   state = { name: "", email: "", password: "", status: "", error: "" };
 
   handleChange = e => {

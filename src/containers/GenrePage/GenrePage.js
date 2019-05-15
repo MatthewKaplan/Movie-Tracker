@@ -4,7 +4,7 @@ import { fetchGenres } from "../../actions";
 import { connect } from "react-redux";
 import MovieCard from "../MovieCard/MovieCard";
 
-class GenrePage extends React.Component {
+export class GenrePage extends React.Component {
   renderMovieCards = type => {
     return type.map(movie => (
       <MovieCard
@@ -54,7 +54,4 @@ const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchGenres }
-)(GenrePage);
+export default connect(mapStateToProps)(GenrePage);
