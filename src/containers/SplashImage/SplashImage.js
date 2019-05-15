@@ -40,7 +40,7 @@ SplashImage.propTypes = {
   movies: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return { movies: state.movies };
 };
 

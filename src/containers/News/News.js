@@ -73,7 +73,7 @@ News.propTypes = {
   news: PropTypes.array.isRequired
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     news: state.news
   };

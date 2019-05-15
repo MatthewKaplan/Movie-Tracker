@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { News } from "./News";
+import { News, mapStateToProps } from "./News";
 import MockData from "../../assets/mockData";
 
 let mockNews = MockData.newsResults;
@@ -22,4 +22,18 @@ describe("News", () => {
     });
   });
 
+});
+
+describe("mapStateToProps", () => {
+  it("should return an object", () => {
+    const mockData = {
+      news: []
+    };
+    const expected = {
+      news: []
+    };
+
+    const mockprops = mapStateToProps(mockData);
+    expect(mockprops).toEqual(expected);
+  });
 });
