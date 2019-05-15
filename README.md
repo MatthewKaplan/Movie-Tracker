@@ -18,7 +18,7 @@ MovieTracker is a program designed to let users search for and find information 
 - React
 - Redux
 - Sass
-- Node;
+- Node
 
 ## Contributing
 
