@@ -58,10 +58,15 @@ export class LoginPage extends React.Component {
   };
 
   render() {
+    const { name, email, password } = this.state;
+    const enabled =
+          email.length > 0 &&
+          password.length > 0 &&
+          name.length > 0;
     return (
       <div className="login-page">
         <section className="login-container">
-          <h1>Sign in</h1>
+          <h1>Sign in/Register</h1>
           <form>
             <div className="inputs">
               <label htmlFor="name">Name:</label>
@@ -72,24 +77,27 @@ export class LoginPage extends React.Component {
                 placeholder="Name..."
                 onChange={this.handleChange}
                 className="name"
+                required
               />
               <label htmlFor="email">Email:</label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 value={this.state.email}
                 placeholder="Email..."
                 onChange={this.handleChange}
                 className="email"
+                required
               />
               <label htmlFor="password">Password: </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 value={this.state.password}
                 placeholder="Password..."
                 onChange={this.handleChange}
                 className="password"
+                required
               />
             </div>
             <div className="buttons">
@@ -97,12 +105,14 @@ export class LoginPage extends React.Component {
                 <button
                   className="local-login login"
                   onClick={e => this.handleSignIn(e)}
+                  disabled={!enabled}
                 >
                   Sign in
                 </button>
                 <button
                   className="local-login register"
                   onClick={e => this.handleRegister(e)}
+                  disabled={!enabled}
                 >
                   Register
                 </button>

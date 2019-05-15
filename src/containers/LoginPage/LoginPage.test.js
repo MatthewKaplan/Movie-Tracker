@@ -43,7 +43,7 @@ describe("LoginPage", () => {
     expect(wrapper.state("name")).toEqual("");
     let nameInput = { target: { value: "Matthew Kaplan", classList: "name" } };
     wrapper.find("input.name").simulate("change", nameInput);
-    expect(wrapper.state("name")).toEqual("MATTHEW KAPLAN");
+    expect(wrapper.state("name")).toEqual("matthew kaplan");
   });
 
   it("should change the state of email when user inputs email", () => {
@@ -52,7 +52,7 @@ describe("LoginPage", () => {
       target: { value: "kaplan.matthew@gmail.com", classList: "email" }
     };
     wrapper.find("input.email").simulate("change", emailInput);
-    expect(wrapper.state("email")).toEqual("KAPLAN.MATTHEW@GMAIL.COM");
+    expect(wrapper.state("email")).toEqual("kaplan.matthew@gmail.com");
   });
 
   it("should change the state of password when user inputs password", () => {
@@ -61,7 +61,7 @@ describe("LoginPage", () => {
       target: { value: "mypassword", classList: "password" }
     };
     wrapper.find("input.password").simulate("change", passwordInput);
-    expect(wrapper.state("password")).toEqual("MYPASSWORD");
+    expect(wrapper.state("password")).toEqual("mypassword");
   });
 
   it("should call fetchPost with correct params when user registers", () => {

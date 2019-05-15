@@ -76,8 +76,6 @@ export class MovieInfo extends Component {
       poster_path
     } = this.props.currentMovie;
 
-    console.log(this.props.currentMovie);
-
     let movie = this.props.currentMovie;
     let isFavorited = movie.favorited;
     isFavorited = this.checkIfFavorited(this.props.favorites, movie);

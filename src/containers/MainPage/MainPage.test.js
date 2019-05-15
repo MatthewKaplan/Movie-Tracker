@@ -50,7 +50,8 @@ describe("MainPage", () => {
     expect(wrapper.state()).toEqual({
       movieUrl: "https://api.themoviedb.org/3",
       newsUrl: "https://api.nytimes.com/svc",
-      showPopUp: false
+      showPopUp: false,
+      error: ""
     });
   });
 

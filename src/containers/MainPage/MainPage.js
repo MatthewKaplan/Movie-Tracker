@@ -10,13 +10,7 @@ import { nytApiKey } from "../../api/nytApiKey";
 import Footer from "../Footer/Footer";
 import PropTypes from "prop-types";
 import "./_MainPage.scss";
-import {
-  fetchPopularMovies,
-  fetchPopularTv,
-  fetchUpcoming,
-  fetchNews,
-  fetchGenres
-} from "../../actions";
+import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 
@@ -24,7 +18,8 @@ export class MainPage extends React.Component {
   state = {
     movieUrl: "https://api.themoviedb.org/3",
     newsUrl: "https://api.nytimes.com/svc",
-    showPopUp: false
+    showPopUp: false,
+    error: ""
   };
   componentDidMount() {
     this.renderNewsResults();
@@ -36,7 +31,9 @@ export class MainPage extends React.Component {
   fetchPopularMovies = () => {
     fetchData(
       `${this.state.movieUrl}/discover/movie?${apiKey}&sort_by=popularity.desc`
-    ).then(response => this.props.fetchPopularMovies(response.results));
+    )
+      .then(response => actions.fetchPopularMovies(response.results))
+      .catch(error => this.setState({ error }));
   };
 
   renderPopularMovies = () => {
@@ -53,7 +50,9 @@ export class MainPage extends React.Component {
   fetchPopularTvShows = () => {
     fetchData(
       `${this.state.movieUrl}/discover/tv?${apiKey}&sort_by=popularity.desc`
-    ).then(response => this.props.fetchPopularTv(response.results));
+    )
+      .then(response => actions.fetchPopularTv(response.results))
+      .catch(error => this.setState({ error }));
   };
 
   renderPopularTvShows = () => {
@@ -68,9 +67,9 @@ export class MainPage extends React.Component {
   };
 
   fetchComingSoon = () => {
-    fetchData(`${this.state.movieUrl}/movie/upcoming?${apiKey}`).then(
-      response => this.props.fetchUpcoming(response.results)
-    );
+    fetchData(`${this.state.movieUrl}/movie/upcoming?${apiKey}`)
+      .then(response => actions.fetchUpcoming(response.results))
+      .catch(error => this.setState({error}));
   };
 
   renderComingSoon = () => {
@@ -85,15 +84,17 @@ export class MainPage extends React.Component {
   };
 
   renderNewsResults = () => {
-    fetchData(
-      `${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`
-    ).then(response => this.props.fetchNews(response.results));
+    fetchData(`${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`)
+      .then(response =>actions.fetchNews(response.results))
+      .catch(error => this.setState({ error }));
   };
 
   handleClick = endPath => {
     fetchData(
       `${this.state.movieUrl}/discover/movie?${apiKey}${endPath}&page=3`
-    ).then(response => this.props.fetchGenres(response.results));
+    )
+      .then(response => actions.fetchGenres(response.results))
+      .catch(error => this.setState({ error }));
   };
 
   render() {
@@ -212,11 +213,11 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => ({
   fetchPopularMovies: popularMovies =>
-    dispatch(fetchPopularMovies(popularMovies)),
-  fetchPopularTv: popularTv => dispatch(fetchPopularTv(popularTv)),
-  fetchUpcoming: upcoming => dispatch(fetchUpcoming(upcoming)),
-  fetchNews: news => dispatch(fetchNews(news)),
-  fetchGenres: genres => dispatch(fetchGenres(genres))
+    dispatch(actions.fetchPopularMovies(popularMovies)),
+  fetchPopularTv: popularTv => dispatch(actions.fetchPopularTv(popularTv)),
+  fetchUpcoming: upcoming => dispatch(actions.fetchUpcoming(upcoming)),
+  fetchNews: news => dispatch(actions.fetchNews(news)),
+  fetchGenres: genres => dispatch(actions.fetchGenres(genres))
 });
 
 export default connect(
