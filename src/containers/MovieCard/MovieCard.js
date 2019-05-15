@@ -6,12 +6,7 @@ import { favoritesList } from "../../actions/index";
 import PropTypes from "prop-types";
 
 export class MovieCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false
-    };
-  }
+  state = { active: false };
 
   toggleClass = bool => {
     // const currentState = this.state.active;
@@ -114,6 +109,7 @@ export class MovieCard extends React.Component {
         <button
           className={this.state.active ? "render-button" : "render-hidden"}
           onMouseEnter={e => this.favoriteMovie(movie, e)}
+          data-test='favorite-btn'
         >
           Favorite
         </button>
@@ -157,8 +153,7 @@ MovieCard.propTypes = {
   favorites: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool,
   favoritesList: PropTypes.func
-
-}
+};
 
 export const mapStateToProps = state => ({
   user: state.user,

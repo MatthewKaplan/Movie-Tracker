@@ -8,12 +8,13 @@ let mockFavorites = MockData.favoritedMovies;
 let mockWholeObj = MockData.popularMovies;
 
 describe("MovieCard", () => {
-  let wrapper;
+  let wrapper, instance;
 
   beforeEach(() => {
     wrapper = shallow(
       <MovieCard favorites={mockFavorites} wholeObj={mockWholeObj} />
     );
+    instance = wrapper.instance()
   });
 
   it("should match the snapshot", () => {
@@ -25,6 +26,12 @@ describe("MovieCard", () => {
       active: false
     });
   });
+
+  it("should change value of state when 'toggleClass' is invoked", () => {
+    expect(wrapper.state("active")).toEqual(false)
+    instance.toggleClass(true)
+    expect(wrapper.state("active")).toEqual(true);
+  })
 });
 
 describe("mapStateToProps", () => {
