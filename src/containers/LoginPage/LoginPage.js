@@ -9,7 +9,7 @@ export class LoginPage extends React.Component {
   state = { name: "", email: "", password: "", status: "", error: "" };
 
   handleChange = e => {
-    let value = e.target.value.toUpperCase();
+    let value = e.target.value.toLowerCase();
     let key = e.target.classList;
     this.setState({
       [key]: value

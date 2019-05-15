@@ -46,7 +46,6 @@ export class MainPage extends React.Component {
         wholeObj={movie}
         title={movie.title}
         img={movie.backdrop_path}
-        routeProps={this.props.history}
       />
     ));
   };
@@ -64,7 +63,6 @@ export class MainPage extends React.Component {
         wholeObj={tvShow}
         title={tvShow.name}
         img={tvShow.backdrop_path}
-        routeProps={this.props.history}
       />
     ));
   };
@@ -82,7 +80,6 @@ export class MainPage extends React.Component {
         wholeObj={film}
         title={film.title}
         img={film.backdrop_path}
-        routeProps={this.props.history}
       />
     ));
   };
