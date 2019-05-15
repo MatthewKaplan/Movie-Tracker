@@ -3,7 +3,7 @@ import "./_SplashImage.scss";
 import { fetchPopularMovies } from "../../actions";
 import { connect } from "react-redux";
 
-class SplashImage extends React.Component {
+export class SplashImage extends React.Component {
 
   renderPopularMovies = () => {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
@@ -15,7 +15,6 @@ class SplashImage extends React.Component {
       let backgroundImage = {
         background: `linear-gradient(rgba(0, 0, 0, 0.555) 15%, rgba(0, 0, 0, 0) 55%, black),url(https://image.tmdb.org/t/p/original${movieValues[10]})`,
         backgroundSize: "cover"
-        // backgroundImage: `url(https://image.tmdb.org/t/p/original${movieValues[10]})`
       };
       let movieBio = movieValues[12];
 

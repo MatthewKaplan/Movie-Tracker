@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { favoritesList } from "../../actions/index";
 
-class MovieCard extends React.Component {
+export class MovieCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

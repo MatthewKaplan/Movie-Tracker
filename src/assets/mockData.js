@@ -11,6 +11,7 @@ const popularMovies = [
     original_title: "Avengers: Endgame",
     genre_ids: [12, 878, 28],
     backdrop_path: "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    favorited: false,
     adult: false,
     overview:
       "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
@@ -28,6 +29,7 @@ const popularShows = [
     vote_count: 5811,
     first_air_date: "2011-04-17",
     backdrop_path: "/qsD5OHqW7DSnaQ2afwz8Ptht1Xb.jpg",
+    favorited: false,
     original_language: "en",
     id: 1399,
     vote_average: 8.2,
@@ -50,6 +52,7 @@ const upcomingMovies = [
     original_title: "Pokémon Detective Pikachu",
     genre_ids: [9648, 10751, 80, 14, 35, 878],
     backdrop_path: "/nDP33LmQwNsnPv29GQazz59HjJI.jpg",
+    favorited: false,
     adult: false,
     overview:
       "In a world where people collect pocket-size monsters (Pokémon) to do battle, a boy comes across an intelligent monster who seeks to be a detective.",
@@ -100,6 +103,7 @@ const genreResults = [
     original_title: "Vice",
     genre_ids: [18, 36, 35],
     backdrop_path: "/7TTlvADXSxg0yzlGTZFExmw4TSC.jpg",
+    favorited: false,
     adult: false,
     overview:
       "George W. Bush picks Dick Cheney, the CEO of Halliburton Co., to be his Republican running mate in the 2000 presidential election. No stranger to politics, Cheney's impressive résumé includes stints as White House chief of staff, House Minority Whip and defense secretary. When Bush wins by a narrow margin, Cheney begins to use his newfound power to help reshape the country and the world.",
@@ -120,6 +124,28 @@ const searchResults = [
     original_title: "The Lawnmower Man",
     genre_ids: [27, 53, 878],
     backdrop_path: "/fXCoMFPV7PSwNBZb02SPRFRp7T4.jpg",
+    favorited: false,
+    adult: false,
+    overview:
+      "A simple man is turned into a genius through the application of computer science.",
+    release_date: "1992-03-05"
+  }
+];
+
+const favoritedMovies = [
+  {
+    vote_count: 318,
+    id: 10163,
+    video: false,
+    vote_average: 5.4,
+    title: "The Lawnmower Man",
+    popularity: 29.107,
+    poster_path: "/3tWLM3zMyh3KZOactn8mfjHml05.jpg",
+    original_language: "en",
+    original_title: "The Lawnmower Man",
+    genre_ids: [27, 53, 878],
+    backdrop_path: "/fXCoMFPV7PSwNBZb02SPRFRp7T4.jpg",
+    favorited: true,
     adult: false,
     overview:
       "A simple man is turned into a genius through the application of computer science.",
@@ -133,5 +159,6 @@ module.exports = {
   upcomingMovies,
   newsResults,
   genreResults,
-  searchResults
+  searchResults,
+  favoritedMovies
 };
