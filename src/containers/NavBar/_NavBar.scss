@@ -8,6 +8,7 @@
   right: 0;
   justify-content: center;
   max-width: 1280px;
+  // border: 1px solid red;
   margin: 0 auto;
 }
 
@@ -15,11 +16,8 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
-  width: 80vw;
-  .search {
-    border: 1px solid red;
-    height: 20px;
-  }
+  width: 90vw;
+  // border: 1px solid red;
 }
 
 .nav {
@@ -34,10 +32,40 @@
   // border: 1px solid red;
 }
 
+.logout-btn {
+  border: 1px solid white;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 0 12px 20px 12px;
+  margin: 0px 0.5rem;
+  // padding: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.123);
+  &:hover {
+    cursor: pointer;
+    color: black;
+    background-color: white;
+  }
+}
+
+.greeting {
+  color: white;
+  margin: 0px 0.5rem;
+}
+
+.navBar-btn {
+  // border: 1px solid red;
+  display: flex;
+  height: 20px;
+  margin: 0 0.5rem;
+  // width: 150px;
+}
+
 .header-title {
   text-align: center;
   color: $text-w;
   width: 32%;
+  font-family: "Righteous", cursive;
   // border: 1px solid red;
   margin: 0.8rem 0;
 }
@@ -45,7 +73,7 @@
 .left-page-links {
   display: flex;
   justify-content: space-around;
-  width: 32%;
+  width: 40%;
   // border: 1px solid red;
 }
 
@@ -56,8 +84,63 @@
 
 .right-page-links {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   // border: 1px solid red;
-  width: 32%;
+  width: 40%;
+}
+
+.search-box {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.068);
+  height: 30px;
+  border-radius: 40px;
+  padding: 2px;
+  border: 1px solid white;
+}
+
+.search-box:hover > .search-txt {
+  width: 180px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+  background: white;
+  color: black;
+}
+
+.search-btn {
+  color: #e84118;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.068);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  color: white;
+  cursor: pointer;
+}
+
+.search-btn > i {
+  font-size: 16px;
+}
+
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 30px;
+  width: 0px;
+  font-weight: bold;
 }
