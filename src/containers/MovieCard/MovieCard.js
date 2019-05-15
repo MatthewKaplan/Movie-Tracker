@@ -8,10 +8,18 @@ import PropTypes from "prop-types";
 export class MovieCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      active: false
+    };
   }
 
-  favoriteMovie = (movie) => {
+  toggleClass = bool => {
+    // const currentState = this.state.active;
+    this.setState({ active: bool });
+  };
+
+  favoriteMovie = (movie, e) => {
+    e.preventDefault();
     const id = this.props.user.id;
     const cleanedMovie = this.cleanForFavorite(movie, id);
     const url = "http://localhost:3000/api/users/favorites/new";
@@ -37,10 +45,11 @@ export class MovieCard extends React.Component {
   };
 
   handleFavorites = (url, options) => {
-    fetchPost(url, options)
-      .then(result => {
+    fetchPost(url, options).then(result => {
       if (result.status === "success") {
-        const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`;
+        const url = `http://localhost:3000/api/users/${
+          this.props.user.id
+        }/favorites`;
         fetchUserData(url)
           .then(result => this.props.favoritesList(result.data))
           .catch(err => console.log(err));
@@ -56,14 +65,22 @@ export class MovieCard extends React.Component {
     }
   };
 
-  deleteFavorite = (movie) => {
+  deleteFavorite = (movie, e) => {
+    e.preventDefault();
     const movieId = movie.movie_id ? movie.movie_id : movie.id;
-    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites/${movieId}`;
+    const url = `http://localhost:3000/api/users/${
+      this.props.user.id
+    }/favorites/${movieId}`;
     const userOptionObject = {
       method: "DELETE",
-      headers: {"Content-Type": "application/json"}
-    }
+      headers: { "Content-Type": "application/json" }
+    };
     this.handleFavorites(url, userOptionObject);
+  };
+
+  toLoginPage = () => {
+    console.log("hello?");
+    this.props.routeProps.push("/login");
   };
 
   render() {
@@ -74,15 +91,32 @@ export class MovieCard extends React.Component {
 
     let whichFavoriteButton;
 
-    if(!this.props.isLoggedIn) {
-      whichFavoriteButton = <button>Sign in to Favorite movie</button>
+    if (!this.props.isLoggedIn) {
+      whichFavoriteButton = (
+        <button
+          className={this.state.active ? "render-button" : "render-hidden"}
+          onMouseEnter={this.toLoginPage}
+        >
+          Sign in to Favorite movie
+        </button>
+      );
     } else if (isFavorited) {
       whichFavoriteButton = (
-        <button onClick={() => this.deleteFavorite(movie)}>Remove Favorite</button>
+        <button
+          className={this.state.active ? "render-button" : "render-hidden"}
+          onMouseEnter={e => this.deleteFavorite(movie, e)}
+        >
+          Remove Favorite
+        </button>
       );
     } else {
       whichFavoriteButton = (
-        <button onClick={() => this.favoriteMovie(movie)}>Favorite</button>
+        <button
+          className={this.state.active ? "render-button" : "render-hidden"}
+          onMouseEnter={e => this.favoriteMovie(movie, e)}
+        >
+          Favorite
+        </button>
       );
     }
 
@@ -92,12 +126,27 @@ export class MovieCard extends React.Component {
       })`
     };
     return (
-      <div tabindex="1" className="movie-card" style={movieBackdrop}>
-        <h2>
-          {this.props.title}
-          {/* {this.props.name} */}
-        </h2>
+      <div>
+        <article
+          className={this.state.active ? "render-details" : "render-hidden"}
+        >
+          <h2>{this.props.title}</h2>
+        </article>
         {whichFavoriteButton}
+        <div
+          tabIndex="1"
+          className="movie-card"
+          style={movieBackdrop}
+          onFocus={() => this.toggleClass(true)}
+          onBlur={() => {
+            this.toggleClass(false);
+          }}
+        >
+          <h2>
+            {this.props.title}
+            {/* {this.props.name} */}
+          </h2>
+        </div>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import MainPage from "../MainPage/MainPage";
 import GenrePage from "../GenrePage/GenrePage";
 import NotFound from "../NotFound/NotFound";
 import LoginPage from "../LoginPage/LoginPage";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
