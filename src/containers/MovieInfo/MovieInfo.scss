@@ -1,6 +1,24 @@
 .movieInfoContainer {
-  border: 1px solid red;
-  height: 100vh;
+  height: 80vh;
   width: 85%;
   margin: 0 auto;
+  background-size: cover;
+  // border: 2px solid red;
+}
+
+.movieInfoPoster {
+  width: 30%;
+  height: 500px;
+  background-size: cover;
+  margin-left: 20px;
+
+}
+
+.movieInfoOverview {
+  color: white;
+  font-size: 23px;
+}
+
+.movieInfoTitle {
+  color: white;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./_NavBar.scss";
 import { NavLink, Link } from "react-router-dom";
 import { fetchSearch, setUser, isLoggedIn } from "../../actions";
+import { favoritesList, currentMovie } from "../../actions/index";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 import { apiKey } from "../../api/apiKey";
