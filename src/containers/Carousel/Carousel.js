@@ -1,5 +1,6 @@
 import React from "react";
 import "./_Carousel.scss";
+import PropTypes from 'prop-types';
 
 const Carousel = (props) => {
   return (
@@ -10,5 +11,11 @@ const Carousel = (props) => {
     </div>
   );
 };
+
+
+Carousel.propTypes = {
+  children: PropTypes.array.isRequired
+}
+
 
 export default Carousel;

@@ -8,14 +8,14 @@ import News from "../News/News";
 import { apiKey } from "../../api/apiKey";
 import { nytApiKey } from "../../api/nytApiKey";
 import Footer from "../Footer/Footer";
+import PropTypes from "prop-types";
 import "./_MainPage.scss";
 import {
   fetchPopularMovies,
   fetchPopularTv,
   fetchUpcoming,
   fetchNews,
-  fetchGenres,
-  fetchSearch
+  fetchGenres
 } from "../../actions";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
@@ -189,19 +189,30 @@ export class MainPage extends React.Component {
   }
 }
 
+MainPage.propTypes = {
+  movies: PropTypes.array.isRequired,
+  tv: PropTypes.array.isRequired,
+  upcoming: PropTypes.array.isRequired,
+  news: PropTypes.array.isRequired,
+  genre: PropTypes.array.isRequired,
+  fetchPopularMovies: PropTypes.func,
+  fetchPopularTv: PropTypes.func,
+  fetchUpcoming: PropTypes.func,
+  fetchNews: PropTypes.func,
+  fetchGenres: PropTypes.func
+};
+
 const mapStateToProps = state => {
   return {
     movies: state.movies,
     tv: state.tv,
     upcoming: state.upcoming,
     news: state.news,
-    genre: state.genre,
-    searchResults: state.search
+    genre: state.genre
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchSearch: searchResults => dispatch(fetchSearch(searchResults)),
   fetchPopularMovies: popularMovies =>
     dispatch(fetchPopularMovies(popularMovies)),
   fetchPopularTv: popularTv => dispatch(fetchPopularTv(popularTv)),

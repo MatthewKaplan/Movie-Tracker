@@ -5,6 +5,7 @@ import { fetchSearch, setUser, isLoggedIn } from "../../actions";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
 import { apiKey } from "../../api/apiKey";
+import PropTypes from "prop-types";
 
 export class NavBar extends React.Component {
   state = { error: "", userSearch: "" };
@@ -85,6 +86,11 @@ export class NavBar extends React.Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  searchResults: PropTypes.array.isRequired,
+  fetchSearch: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => {
   return {

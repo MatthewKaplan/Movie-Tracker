@@ -3,6 +3,7 @@ import "./_MovieCard.scss";
 import { connect } from "react-redux";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { favoritesList } from "../../actions/index";
+import PropTypes from "prop-types";
 
 export class MovieCard extends React.Component {
   constructor(props) {
@@ -149,6 +150,14 @@ export class MovieCard extends React.Component {
       </div>
     );
   }
+}
+
+MovieCard.propTypes = {
+  user: PropTypes.object.isRequired,
+  favorites: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  favoritesList: PropTypes.func.isRequired
+
 }
 
 const mapStateToProps = state => ({
