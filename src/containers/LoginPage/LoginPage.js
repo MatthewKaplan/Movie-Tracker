@@ -9,9 +9,10 @@ export class LoginPage extends React.Component {
   state = { name: "", email: "", password: "", status: "", error: "" };
 
   handleChange = e => {
-    let value = e.target.value.toLowerCase();
+    let value = e.target.value.toUpperCase();
+    let key = e.target.classList;
     this.setState({
-      [e.target.name]: value
+      [key]: value
     });
   };
 
@@ -29,7 +30,7 @@ export class LoginPage extends React.Component {
       .then(results => this.getFavoriteMovies(results.user.id))
       .then(results => this.setState({ status: "success" }))
       .then(() => this.props.history.push("/home"))
-      .catch(error => console.log(error));
+      .catch(err => this.setState({ error: err }));
   };
 
   getFavoriteMovies = () => {
@@ -70,6 +71,7 @@ export class LoginPage extends React.Component {
                 value={this.state.name}
                 placeholder="Name..."
                 onChange={this.handleChange}
+                className="name"
               />
               <label htmlFor="email">Email:</label>
               <input
@@ -78,6 +80,7 @@ export class LoginPage extends React.Component {
                 value={this.state.email}
                 placeholder="Email..."
                 onChange={this.handleChange}
+                className="email"
               />
               <label htmlFor="password">Password: </label>
               <input
@@ -86,18 +89,19 @@ export class LoginPage extends React.Component {
                 value={this.state.password}
                 placeholder="Password..."
                 onChange={this.handleChange}
+                className="password"
               />
             </div>
             <div className="buttons">
               <div className="local-logins">
                 <button
-                  className="local-login"
+                  className="local-login login"
                   onClick={e => this.handleSignIn(e)}
                 >
                   Sign in
                 </button>
                 <button
-                  className="local-login"
+                  className="local-login register"
                   onClick={e => this.handleRegister(e)}
                 >
                   Register
