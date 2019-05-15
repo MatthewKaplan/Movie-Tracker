@@ -2,7 +2,7 @@
 
 MovieTracker is a program designed to let users search for and find information about their favorite movies. It includes the ability to login in to an account, favorite videos, search for shows, and more!
 
-[Screenshot of MainPage](https://i.imgur.com/KNuRFkV.jpg)
+[MainPage Screenshot](https://i.imgur.com/DNMinqe.jpg)
 
 ## Installation
 
@@ -14,9 +14,11 @@ MovieTracker is a program designed to let users search for and find information 
 
 ## Built with
 
-```javascript
--JavaScript - React - Redux - Sass - Node;
-```
+- JavaScript
+- React
+- Redux
+- Sass
+- Node;
 
 ## Contributing
 
