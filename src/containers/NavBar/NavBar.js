@@ -72,6 +72,7 @@ export class NavBar extends React.Component {
                     className="search-txt"
                     onChange={this.searchChangeHandler}
                     placeholder="Type to search"
+                    data-test="search-input"
                   />
                   <a className="search-btn" href="#">
                     <i className="fas fa-search" />

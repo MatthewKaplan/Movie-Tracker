@@ -3,16 +3,26 @@ import { shallow } from "enzyme";
 import { NavBar, mapStateToProps, mapDispatchToProps } from "./NavBar";
 import * as actions from "../../actions/index";
 import MockData from "../../assets/mockData";
+import { apiKey } from "../../api/apiKey";
+import { fetchData } from "../../apiCalls/apiCalls";
+
+jest.mock("../../apiCalls/apiCalls.js");
 
 let mockSearch = MockData.searchResults;
 let mockUser = { id: 1, name: "Matthew" };
 let mockIsLoggedIn = true;
 
 describe("NavBar", () => {
-  let wrapper;
+  let wrapper, instance;
+  fetchData.mockImplementation(() => Promise.resolve(1));
 
   beforeEach(() => {
     wrapper = shallow(<NavBar search={mockSearch} user={mockUser} />);
+    instance = wrapper.instance();
+  });
+
+  afterEach(() => {
+    fetchData.mockClear();
   });
 
   it("should match the snapshot", () => {
@@ -24,6 +34,21 @@ describe("NavBar", () => {
       error: "",
       userSearch: ""
     });
+  });
+
+  it("should update the value of userSearch in state as user types", () => {
+    expect(wrapper.state("userSearch")).toEqual("")
+    let searchInput = { target: { value: "The Big Green" } };
+    wrapper.find("[data-test='search-input']").simulate("change", searchInput)
+    expect(wrapper.state("userSearch")).toEqual("The Big Green")
+  });
+
+  it("should invoke 'fetchData' with the correct param when searchChangeHandler is called", () => {
+    expect(wrapper.state("userSearch")).toEqual("")
+    let searchInput = { target: { value: "The Big Green" } };
+    wrapper.find("[data-test='search-input']").simulate("change", searchInput)
+    expect(wrapper.state("userSearch")).toEqual("The Big Green")
+    expect(fetchData).toHaveBeenCalledWith("https://api.themoviedb.org/3/search/movie?" + apiKey + "&query=" + wrapper.state("userSearch"))
   });
 });
 
@@ -66,4 +91,4 @@ describe("mapDispatchToProps", () => {
     mappedProps.isLoggedIn(mockIsLoggedIn);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
-});
+})
