@@ -73,10 +73,8 @@ export class MovieInfo extends Component {
       title,
       overview,
       backdrop_path,
-      poster_path,
+      poster_path
     } = this.props.currentMovie;
-
-    console.log(this.props.currentMovie);
 
     let movie = this.props.currentMovie;
     let isFavorited = movie.favorited;
