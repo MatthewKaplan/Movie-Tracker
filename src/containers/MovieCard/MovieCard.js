@@ -9,11 +9,20 @@ export class MovieCard extends React.Component {
   state = { error: "" };
 
   render() {
-    const movieBackdrop = {
-      backgroundImage: `url(https://image.tmdb.org/t/p/original${
-        this.props.img
-      })`
-    };
+    let movieBackdrop;
+
+    if (this.props.img === undefined) {
+      movieBackdrop = {
+        backgroundImage: `url(https://image.tmdb.org/t/p/w500${this.props.poster})`
+      };
+    } else {
+      movieBackdrop = {
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${
+          this.props.img
+        })`
+      };
+    }
+
     return (
       <div>
         <Link

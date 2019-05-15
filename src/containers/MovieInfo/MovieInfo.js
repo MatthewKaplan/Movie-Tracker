@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import "./MovieInfo.scss";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchData } from "../../apiCalls/apiCalls";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { favoritesList } from "../../actions/index";
-import { apiKey } from "../../api/apiKey";
 
 export class MovieInfo extends Component {
   state = { currentMovie: [] };
@@ -69,12 +67,7 @@ export class MovieInfo extends Component {
   };
 
   render() {
-    const {
-      title,
-      overview,
-      backdrop_path,
-      poster_path
-    } = this.props.currentMovie;
+    const { overview, backdrop_path, poster_path } = this.props.currentMovie;
 
     let movie = this.props.currentMovie;
     let isFavorited = movie.favorited;

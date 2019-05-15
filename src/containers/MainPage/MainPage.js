@@ -32,7 +32,7 @@ export class MainPage extends React.Component {
     fetchData(
       `${this.state.movieUrl}/discover/movie?${apiKey}&sort_by=popularity.desc`
     )
-      .then(response => actions.fetchPopularMovies(response.results))
+      .then(response => this.props.fetchPopularMovies(response.results))
       .catch(error => this.setState({ error }));
   };
 
@@ -51,7 +51,7 @@ export class MainPage extends React.Component {
     fetchData(
       `${this.state.movieUrl}/discover/tv?${apiKey}&sort_by=popularity.desc`
     )
-      .then(response => actions.fetchPopularTv(response.results))
+      .then(response => this.props.fetchPopularTv(response.results))
       .catch(error => this.setState({ error }));
   };
 
@@ -68,8 +68,8 @@ export class MainPage extends React.Component {
 
   fetchComingSoon = () => {
     fetchData(`${this.state.movieUrl}/movie/upcoming?${apiKey}`)
-      .then(response => actions.fetchUpcoming(response.results))
-      .catch(error => this.setState({error}));
+      .then(response => this.props.fetchUpcoming(response.results))
+      .catch(error => this.setState({ error }));
   };
 
   renderComingSoon = () => {
@@ -85,7 +85,7 @@ export class MainPage extends React.Component {
 
   renderNewsResults = () => {
     fetchData(`${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`)
-      .then(response =>actions.fetchNews(response.results))
+      .then(response => this.props.fetchNews(response.results))
       .catch(error => this.setState({ error }));
   };
 
@@ -93,7 +93,7 @@ export class MainPage extends React.Component {
     fetchData(
       `${this.state.movieUrl}/discover/movie?${apiKey}${endPath}&page=3`
     )
-      .then(response => actions.fetchGenres(response.results))
+      .then(response => this.props.fetchGenres(response.results))
       .catch(error => this.setState({ error }));
   };
 
