@@ -101,12 +101,17 @@
 .major-release-container,
 .genre-container {
   margin-top: 2.5rem;
+  // border: 1px solid red;
   width: 100%;
+  h1 {
+    // border: 1px solid red;
+    padding: 1rem 0 0 0.7rem;
+  }
 }
 
 .searchCardResults {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 80px;
-  margin-top:200px;
+  margin-top: 200px;
 }

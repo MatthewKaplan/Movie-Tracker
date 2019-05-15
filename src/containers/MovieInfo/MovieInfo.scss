@@ -1,22 +1,52 @@
 .movieInfoContainer {
-  height: 80vh;
-  width: 85%;
-  margin: 0 auto;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
   background-size: cover;
-  // border: 2px solid red;
+}
+
+.movie-content > button,
+.signin-btn {
+  border: 1px solid white;
+  color: white;
+  background: rgba(0, 0, 0, 0.404);
+  position: relative;
+  height: 25px;
+  left: 30px;
+  top: 55px;
+  font-size: 14px;
+  border-radius: 25px;
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 50vw;
 }
 
 .movieInfoPoster {
-  width: 30%;
+  width: 350px;
   height: 500px;
   background-size: cover;
   margin-left: 20px;
-
+  margin: 1rem;
 }
 
 .movieInfoOverview {
   color: white;
   font-size: 23px;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.856);
+  padding: 1rem;
 }
 
 .movieInfoTitle {

@@ -73,7 +73,7 @@ export class MovieInfo extends Component {
       title,
       overview,
       backdrop_path,
-      poster_path,
+      poster_path
     } = this.props.currentMovie;
 
     console.log(this.props.currentMovie);
@@ -88,7 +88,7 @@ export class MovieInfo extends Component {
     if (!this.props.isLoggedIn) {
       whichFavoriteButton = (
         <Link to="/login">
-          <button>Sign in to Favorite movie</button>
+          <button className="signin-btn">Sign in to Favorite movie</button>
         </Link>
       );
     } else if (isFavorited) {
@@ -115,10 +115,13 @@ export class MovieInfo extends Component {
       <React.Fragment>
         <section className="backgroundImage" />
         <div className="movieInfoContainer" style={movieBackdrop}>
-          <h1 className="movieInfoTitle">{title}</h1>
-          {whichFavoriteButton}
-          <section className="movieInfoPoster" style={moviePoster} />
-          <p className="movieInfoOverview">{overview}</p>
+          <div className="content-container">
+            <div className="movie-content">
+              {whichFavoriteButton}
+              <section className="movieInfoPoster" style={moviePoster} />
+            </div>
+            <p className="movieInfoOverview">{overview}</p>
+          </div>
         </div>
       </React.Fragment>
     );

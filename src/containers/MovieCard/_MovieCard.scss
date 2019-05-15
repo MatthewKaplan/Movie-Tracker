@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 
 .movie-card {
-  // @include hover-state(8);
   margin: 0 0.4rem;
   height: 250px;
   width: 500px;
@@ -14,6 +13,15 @@
   align-items: flex-end;
   font-size: 20px;
   transition: 0.2s all ease-in;
+  h2 {
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    padding: 0.2rem 0;
+    justify-self: flex-end;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -27,35 +35,4 @@
   &:not(:focus) {
     filter: opacity(1);
   }
-}
-
-.render-hidden {
-  position: absolute;
-  visibility: hidden;
-}
-
-.render-details {
-  top: 164px;
-  margin-left: 5px;
-  width: 500px;
-  font-size: 20px;
-  text-align: center;
-  position: absolute;
-  visibility: visible;
-  // pointer-events: none;
-  z-index: 2;
-  color: white;
-}
-
-.hello {
-  border: 1px solid red;
-}
-
-.render-button {
-  // pointer-events: none;
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  z-index: 3;
-  border: 1px solid red;
 }
