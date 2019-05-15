@@ -153,20 +153,20 @@ export class MovieCard extends React.Component {
 }
 
 MovieCard.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   favorites: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
-  favoritesList: PropTypes.func.isRequired
+  isLoggedIn: PropTypes.bool,
+  favoritesList: PropTypes.func
 
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   favorites: state.favoriteList,
   isLoggedIn: state.isLoggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   favoritesList: movie => dispatch(favoritesList(movie))
 });
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { SplashImage } from "./SplashImage";
+import { SplashImage, mapStateToProps } from "./SplashImage";
 import MockData from "../../assets/mockData";
 
 let mockMoviesProps = MockData.popularMovies;
@@ -16,4 +16,18 @@ describe("SplashImage", () => {
     expect(wrapper).toMatchSnapshot();
   });
   
+});
+
+describe("mapStateToProps", () => {
+  it("should return an object", () => {
+    const mockData = {
+      movies: []
+    };
+    const expected = {
+      movies: []
+    };
+
+    const mockprops = mapStateToProps(mockData);
+    expect(mockprops).toEqual(expected);
+  });
 });

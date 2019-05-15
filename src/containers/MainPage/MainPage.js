@@ -193,7 +193,7 @@ MainPage.propTypes = {
   movies: PropTypes.array.isRequired,
   tv: PropTypes.array.isRequired,
   upcoming: PropTypes.array.isRequired,
-  news: PropTypes.array.isRequired,
+  news: PropTypes.array,
   genre: PropTypes.array.isRequired,
   fetchPopularMovies: PropTypes.func,
   fetchPopularTv: PropTypes.func,
@@ -202,7 +202,7 @@ MainPage.propTypes = {
   fetchGenres: PropTypes.func
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     movies: state.movies,
     tv: state.tv,
@@ -212,7 +212,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fetchPopularMovies: popularMovies =>
     dispatch(fetchPopularMovies(popularMovies)),
   fetchPopularTv: popularTv => dispatch(fetchPopularTv(popularTv)),

@@ -112,17 +112,17 @@ export class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-  user: PropTypes.object.isRequired,
-  setUser: PropTypes.func.isRequired,
-  favoritesList: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.func.isRequired
+  user: PropTypes.object,
+  setUser: PropTypes.func,
+  favoritesList: PropTypes.func,
+  isLoggedIn: PropTypes.func
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user)),
   favoritesList: movie => dispatch(favoritesList(movie)),
   isLoggedIn: bool => dispatch(isLoggedIn(bool))

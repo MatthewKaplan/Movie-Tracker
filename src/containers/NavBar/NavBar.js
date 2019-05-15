@@ -88,18 +88,20 @@ export class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  searchResults: PropTypes.array.isRequired,
-  fetchSearch: PropTypes.func.isRequired
+  searchResults: PropTypes.array,
+  fetchSearch: PropTypes.func,
+  setUser: PropTypes.func,
+  isLoggedIn: PropTypes.func
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     searchResults: state.search,
     user: state.user
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fetchSearch: searchResults => dispatch(fetchSearch(searchResults)),
   setUser: user => dispatch(setUser(user)),
   isLoggedIn: bool => dispatch(isLoggedIn(bool))

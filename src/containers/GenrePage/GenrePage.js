@@ -47,10 +47,10 @@ export class GenrePage extends React.Component {
 
 GenrePage.propTypes = {
   genre: PropTypes.array.isRequired,
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.array,
   tv: PropTypes.array.isRequired,
   favoriteList: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.array,
   searchResults: PropTypes.array.isRequired
 };
 
