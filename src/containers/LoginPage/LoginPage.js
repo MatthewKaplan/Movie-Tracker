@@ -58,15 +58,17 @@ export class LoginPage extends React.Component {
   };
 
   render() {
+    const currentPath = this.props.location.pathname;
     const { name, email, password } = this.state;
     const enabled = email.length > 0 && password.length > 0 && name.length > 0;
     return (
       <div className="login-page">
         <section className="login-container">
-          <h1>Sign in/Register</h1>
+          {currentPath === '/Register' ? <h1>Create your free account</h1> : <h1>Sign In:</h1> }
           <form>
-            <div className="inputs">
-              <label htmlFor="name">Name:</label>
+          <div className="inputs">
+          {currentPath === '/Register' ? 
+              <label htmlFor="name">Name:
               <input
                 type="text"
                 name="name"
@@ -75,7 +77,7 @@ export class LoginPage extends React.Component {
                 onChange={this.handleChange}
                 className="name"
                 required
-              />
+              /> </label> : null }
               <label htmlFor="email">Email:</label>
               <input
                 type="email"
@@ -99,20 +101,21 @@ export class LoginPage extends React.Component {
             </div>
             <div className="buttons">
               <div className="local-logins">
+                {currentPath === '/login' ? 
                 <button
                   className="local-login login"
                   onClick={e => this.handleSignIn(e)}
                   disabled={!enabled}
                 >
                   Sign in
-                </button>
+                </button> :
                 <button
                   className="local-login register"
                   onClick={e => this.handleRegister(e)}
                   disabled={!enabled}
                 >
                   Register
-                </button>
+                </button> }
               </div>
             </div>
           </form>

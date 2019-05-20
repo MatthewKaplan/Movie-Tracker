@@ -82,6 +82,9 @@ export class NavBar extends React.Component {
                 </div>
               </form>
             </Link>
+            <NavLink to="/Register" className="nav register login">
+            Register
+          </NavLink>
             {this.props.user.name ? renderLogout : renderLogin}
           </div>
         </header>

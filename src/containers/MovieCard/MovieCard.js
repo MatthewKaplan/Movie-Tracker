@@ -31,6 +31,7 @@ export class MovieCard extends React.Component {
         >
           <div tabIndex="1" className="movie-card" style={movieBackdrop}>
             <h2>{this.props.title}</h2>
+            <h2>{this.props.name}</h2>
           </div>
         </Link>
       </div>

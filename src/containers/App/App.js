@@ -6,7 +6,6 @@ import GenrePage from "../GenrePage/GenrePage";
 import NotFound from "../NotFound/NotFound";
 import MovieInfo from "../MovieInfo/MovieInfo";
 import LoginPage from "../LoginPage/LoginPage";
-import MovieCard from "../MovieCard/MovieCard";
 import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -29,6 +28,7 @@ class App extends Component {
           <Route path="/MovieCardInfo" component={MovieInfo} />
           <Route exact path="/home" component={MainPage} />
           <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/Register" component={LoginPage} />
           <Route path="" component={NotFound} />
         </Switch>
       </div>
