@@ -104,7 +104,10 @@ export class MainPage extends React.Component {
           <SplashImage />
           <div className="under-splash">
             <section className="major-release-container">
-              <h1 className="container-title">Major Releases</h1>
+              <div className="container-titles">
+                <h1 className="container-title">Major Releases</h1>
+                <h1 className="container-title">Movie News</h1>
+              </div>
               <section className="major-release-section">
                 <article className="main-release" />
                 <article className="main-release" />
