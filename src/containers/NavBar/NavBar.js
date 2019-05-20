@@ -24,9 +24,14 @@ export class NavBar extends React.Component {
 
   render() {
     const renderLogin = (
-      <NavLink to="/login" className="nav login">
-        Sign in
-      </NavLink>
+      <React.Fragment>
+        <NavLink to="/Register" className="nav register login">
+          Register
+        </NavLink>
+        <NavLink to="/login" className="nav login">
+          Sign in
+        </NavLink>
+      </React.Fragment>
     );
 
     const renderLogout = (
