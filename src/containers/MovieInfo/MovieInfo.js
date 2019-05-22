@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { favoritesList } from "../../actions/index";
+import { release } from "os";
 
 export class MovieInfo extends Component {
   state = { currentMovie: [] };
@@ -67,7 +68,8 @@ export class MovieInfo extends Component {
   };
 
   render() {
-    const { overview, backdrop_path, poster_path } = this.props.currentMovie;
+    console.log(this.props.currentMovie)
+    const { overview, backdrop_path, poster_path, title, name, release_date, first_air_date } = this.props.currentMovie;
 
     let movie = this.props.currentMovie;
     let isFavorited = movie.favorited;
@@ -111,7 +113,11 @@ export class MovieInfo extends Component {
               {whichFavoriteButton}
               <section className="movieInfoPoster" style={moviePoster} />
             </div>
-            <p className="movieInfoOverview">{overview}</p>
+            <div className="movieInfoOverview">
+            <h1>{title}</h1>
+            <h1>{name}</h1>
+            <p>{overview}</p>
+            </div>
           </div>
         </div>
       </React.Fragment>

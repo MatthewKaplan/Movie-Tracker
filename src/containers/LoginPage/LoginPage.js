@@ -1,5 +1,6 @@
 import React from "react";
 import "./_LoginPage.scss";
+import { NavLink, Link } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
@@ -53,18 +54,21 @@ export class LoginPage extends React.Component {
       headers: { "Content-Type": "application/json" }
     };
     fetchPost(url, userOptionObject)
-      .then(results => this.setState({ status: "success" }))
+      .then(results => this.setState({ status: "successful register" }))
       .catch(err => this.setState({ error: err }));
   };
 
   render() {
+    console.log(this.state.status)
     const currentPath = this.props.location.pathname;
     const { name, email, password } = this.state;
-    const enabled = email.length > 0 && password.length > 0 && name.length > 0;
+    const registerEnabled = email.length > 0 && password.length > 0 && name.length > 0;
+    const loginEnabled = email.length > 0 && password.length > 0;
     return (
       <div className="login-page">
         <section className="login-container">
-          {currentPath === '/Register' ? <h1>Create your free account</h1> : <h1>Sign In:</h1> }
+          {this.state.status === 'successful register' ? <h1>Congratulations on your <br/> new MovieTracker Account, <br/> continue to the <NavLink to="/login" className="login-link" onClick={() => this.setState({status: "", email: "", password: ""})}>login page</NavLink>.</h1> : <React.Fragment>
+          {currentPath === '/Register' ? <h1>Create your free MovieTracker account!</h1> : <h1>Sign In:</h1> }
           <form>
           <div className="inputs">
           {currentPath === '/Register' ? 
@@ -78,7 +82,7 @@ export class LoginPage extends React.Component {
                 className="name"
                 required
               /> </label> : null }
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email:
               <input
                 type="email"
                 name="email"
@@ -87,8 +91,8 @@ export class LoginPage extends React.Component {
                 onChange={this.handleChange}
                 className="email"
                 required
-              />
-              <label htmlFor="password">Password: </label>
+              /></label>
+              <label htmlFor="password">Password:
               <input
                 type="password"
                 name="password"
@@ -97,7 +101,7 @@ export class LoginPage extends React.Component {
                 onChange={this.handleChange}
                 className="password"
                 required
-              />
+              /></label>
             </div>
             <div className="buttons">
               <div className="local-logins">
@@ -105,20 +109,21 @@ export class LoginPage extends React.Component {
                 <button
                   className="local-login login"
                   onClick={e => this.handleSignIn(e)}
-                  disabled={!enabled}
+                  disabled={!loginEnabled}
                 >
                   Sign in
                 </button> :
                 <button
                   className="local-login register"
                   onClick={e => this.handleRegister(e)}
-                  disabled={!enabled}
+                  disabled={!registerEnabled}
                 >
                   Register
                 </button> }
               </div>
             </div>
           </form>
+          </React.Fragment>}
         </section>
       </div>
     );
