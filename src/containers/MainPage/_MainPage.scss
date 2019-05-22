@@ -37,17 +37,6 @@
   align-items: center;
   margin: 0 auto;
   width: 100%;
-
-  .main-release {
-    @include hover-state(8.5);
-    background-image: url("https://www.hypable.com/wp-content/uploads/2018/12/bladerunner2049ff.jpg");
-    background-size: cover;
-    height: 525px;
-    width: 350px;
-    &:nth-child(2) {
-      margin: 0 2.5rem 0 0.8rem;
-    }
-  }
 }
 
 .genres {
@@ -106,10 +95,8 @@
 .major-release-container,
 .genre-container {
   margin-top: 2.5rem;
-  // border: 1px solid red;
   width: 100%;
   h1 {
-    // border: 1px solid red;
     padding: 1rem 0 0 0.7rem;
   }
 }
