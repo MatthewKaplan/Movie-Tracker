@@ -55,7 +55,7 @@ export class NavBar extends React.Component {
       <div className="nav-bar">
         <header className="header">
           <div className="left-page-links">
-            <NavLink to="/home" className="nav">
+            <NavLink to="/Movie-Tracker" className="nav">
               Home
             </NavLink>
             <NavLink to="/Favorites" className="nav">

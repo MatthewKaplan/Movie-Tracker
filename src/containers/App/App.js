@@ -26,7 +26,7 @@ class App extends Component {
           <Route path="/Favorites" component={GenrePage} />
           <Route path="/TV_Shows" component={GenrePage} />
           <Route path="/MovieCardInfo" component={MovieInfo} />
-          <Route exact path="/home" component={MainPage} />
+          <Route exact path="/Movie-Tracker" component={MainPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/Register" component={LoginPage} />
           <Route path="" component={NotFound} />
