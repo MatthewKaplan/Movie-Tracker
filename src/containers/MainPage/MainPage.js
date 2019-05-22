@@ -13,6 +13,7 @@ import "./_MainPage.scss";
 import * as actions from "../../actions/index";
 import { connect } from "react-redux";
 import { fetchData } from "../../apiCalls/apiCalls";
+import MajorReleases from "../MajorReleases/MajorReleases";
 
 export class MainPage extends React.Component {
   state = {
@@ -83,6 +84,22 @@ export class MainPage extends React.Component {
     ));
   };
 
+  renderFeaturedMovies = () => {
+    let filteredMovies = [];
+    for (let i = 0; i < 2; i++) {
+      filteredMovies.push(this.props.movies[i]);
+    }
+    if (this.props.movies.length > 0) {
+      return filteredMovies.map(movie => (
+        <MajorReleases
+          key={movie.id}
+          wholeObj={movie}
+          img={movie.poster_path}
+        />
+      ));
+    }
+  };
+
   renderNewsResults = () => {
     fetchData(`${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`)
       .then(response => this.props.fetchNews(response.results))
@@ -109,8 +126,7 @@ export class MainPage extends React.Component {
                 <h1 className="container-title">Movie News</h1>
               </div>
               <section className="major-release-section">
-                <article className="main-release" />
-                <article className="main-release" />
+                {this.renderFeaturedMovies()}
                 <News />
               </section>
             </section>
@@ -177,7 +193,7 @@ export class MainPage extends React.Component {
               <section className="carousel-section">
                 <h1>Popular Movies</h1>
                 <Carousel>{this.renderPopularMovies()}</Carousel>
-                <h1>Popular TV Shows</h1>
+                <h1>Popular TV Series</h1>
                 <Carousel>{this.renderPopularTvShows()}</Carousel>
                 <h1>Coming to theaters soon</h1>
                 <Carousel>{this.renderComingSoon()}</Carousel>

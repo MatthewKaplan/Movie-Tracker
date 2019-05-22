@@ -8,7 +8,6 @@
   right: 0;
   justify-content: center;
   max-width: 1280px;
-  // border: 1px solid red;
   margin: 0 auto;
 }
 
@@ -17,7 +16,6 @@
   justify-content: space-between;
   align-content: center;
   width: 90vw;
-  // border: 1px solid red;
 }
 
 .nav {
@@ -33,7 +31,6 @@
   text-align: center;
   margin-top: 0;
   width: 32%;
-  // border: 1px solid red;
 }
 
 .logout-btn {
@@ -42,7 +39,6 @@
   font-size: 16px;
   padding: 0 12px 20px 12px;
   margin: 0px 0.5rem;
-  // padding: 12px;
   color: white;
   background-color: rgba(0, 0, 0, 0.123);
   &:hover {
@@ -58,11 +54,9 @@
 }
 
 .navBar-btn {
-  // border: 1px solid red;
   display: flex;
   height: 20px;
   margin: 0 0.5rem;
-  // width: 150px;
 }
 
 .header-title {
@@ -70,7 +64,6 @@
   color: $text-w;
   width: 32%;
   font-family: "Righteous", cursive;
-  // border: 1px solid red;
   margin: 0.8rem 0;
 }
 
@@ -78,19 +71,12 @@
   display: flex;
   justify-content: space-around;
   width: 40%;
-  // border: 1px solid red;
-}
-
-.left-page-links > nav {
-  // border: 1px solid red;
-  // color: orange;
 }
 
 .right-page-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border: 1px solid red;
   width: 40%;
 }
 
