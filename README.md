@@ -10,6 +10,14 @@ MovieTracker is a web application which allows users to search for their favorit
 | ------------- | ------------- |
 | <a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a>  | <a href="https://imgflip.com/gif/31nlou"><img src="https://i.imgflip.com/31nlou.gif" title="made at imgflip.com"/></a>  |
 
+| Login:  | Favorite: |
+| ------------- | ------------- |
+| <a href="https://imgflip.com/gif/31nmfd"><img src="https://i.imgflip.com/31nmfd.gif" title="made at imgflip.com"/></a>  | <a href="https://imgflip.com/gif/31nn4u"><img src="https://i.imgflip.com/31nn4u.gif" title="made at imgflip.com"/></a>  |
+
+| Search:  |
+| ------------- |
+| <a href="https://imgflip.com/gif/31nnt4"><img src="https://i.imgflip.com/31nnt4.gif" title="made at imgflip.com"/></a>  |
+
 ## Getting Started:
 
 These instructions will get a copy of the project up and running on your local machine for usage and testing purposes.
