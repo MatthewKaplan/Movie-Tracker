@@ -49,6 +49,26 @@
   padding: 1rem;
 }
 
+.favoriteActive {
+  background-image: url('../../assets/favoriteActive.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 80px;
+  width: 80px;
+}
+
+.favorite {
+  background-image: url('../../assets/favorite.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 80px;
+  width: 80px;
+}
+
+.fav {
+  float: right;
+}
+
 .movieInfoTitle {
   color: white;
 }
