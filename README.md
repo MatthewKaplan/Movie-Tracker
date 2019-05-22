@@ -8,7 +8,7 @@ MovieTracker is a web application which allows users to search for their favorit
 
 ### Home Page:
 
-<img src="https://media.giphy.com/media/W5C3obWhuNT07baAnw/giphy-downsized-large.gif" alt="MovieTracker Home page GIF">
+<a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a>
 
 ## Getting Started:
 
