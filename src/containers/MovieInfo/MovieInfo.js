@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { favoritesList } from "../../actions/index";
-import { release } from "os";
 
 export class MovieInfo extends Component {
   state = { currentMovie: [] };
@@ -68,8 +67,13 @@ export class MovieInfo extends Component {
   };
 
   render() {
-    console.log(this.props.currentMovie)
-    const { overview, backdrop_path, poster_path, title, name, release_date, first_air_date } = this.props.currentMovie;
+    const {
+      overview,
+      backdrop_path,
+      poster_path,
+      title,
+      name
+    } = this.props.currentMovie;
 
     let movie = this.props.currentMovie;
     let isFavorited = movie.favorited;
@@ -81,18 +85,22 @@ export class MovieInfo extends Component {
     if (!this.props.isLoggedIn) {
       whichFavoriteButton = (
         <Link to="/login">
-          <button className="signin-btn">Sign in to Favorite movie</button>
+          <button className="signin-btn fav">Sign in to Favorite movie</button>
         </Link>
       );
     } else if (isFavorited) {
       whichFavoriteButton = (
-        <button onClick={() => this.deleteFavorite(movie)}>
-          Remove Favorite
-        </button>
+        <div
+          onClick={() => this.deleteFavorite(movie)}
+          className="favoriteActive fav"
+        />
       );
     } else {
       whichFavoriteButton = (
-        <button onClick={() => this.favoriteMovie(movie)}>Favorite</button>
+        <div
+          onClick={() => this.favoriteMovie(movie)}
+          className="favorite fav"
+        />
       );
     }
 
@@ -110,13 +118,13 @@ export class MovieInfo extends Component {
         <div className="movieInfoContainer" style={movieBackdrop}>
           <div className="content-container">
             <div className="movie-content">
-              {whichFavoriteButton}
               <section className="movieInfoPoster" style={moviePoster} />
             </div>
             <div className="movieInfoOverview">
-            <h1>{title}</h1>
-            <h1>{name}</h1>
-            <p>{overview}</p>
+              <h1>{title}</h1>
+              <h1>{name}</h1>
+              <p>{overview}</p>
+              {whichFavoriteButton}
             </div>
           </div>
         </div>

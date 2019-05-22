@@ -1,6 +1,6 @@
 import React from "react";
 import "./_LoginPage.scss";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
 import { setUser, favoritesList, isLoggedIn } from "../../actions/index";
 import { connect } from "react-redux";
