@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Movie-Tracker/static/css/main.ffa5c65b.chunk.css",
+    "main.js": "/Movie-Tracker/static/js/main.eb67307b.chunk.js",
+    "main.js.map": "/Movie-Tracker/static/js/main.eb67307b.chunk.js.map",
+    "runtime~main.js": "/Movie-Tracker/static/js/runtime~main.51f8b371.js",
+    "runtime~main.js.map": "/Movie-Tracker/static/js/runtime~main.51f8b371.js.map",
+    "static/js/2.70601c7f.chunk.js": "/Movie-Tracker/static/js/2.70601c7f.chunk.js",
+    "static/js/2.70601c7f.chunk.js.map": "/Movie-Tracker/static/js/2.70601c7f.chunk.js.map",
+    "index.html": "/Movie-Tracker/index.html",
+    "precache-manifest.e965cf6aae1b20b7a5adc9b450ab3b99.js": "/Movie-Tracker/precache-manifest.e965cf6aae1b20b7a5adc9b450ab3b99.js",
+    "service-worker.js": "/Movie-Tracker/service-worker.js",
+    "static/css/main.ffa5c65b.chunk.css.map": "/Movie-Tracker/static/css/main.ffa5c65b.chunk.css.map",
+    "static/media/arrow.a5758567.svg": "/Movie-Tracker/static/media/arrow.a5758567.svg",
+    "static/media/MovieInfo.scss": "/Movie-Tracker/static/media/favoriteActive.306e4f47.svg"
+  }
+}
