@@ -6,9 +6,9 @@ MovieTracker is a web application which allows users to search for their favorit
 
 <img src="src/assets/media/MovieTracker-HomePage.jpg" alt="MovieTracker Home page">
 
-### Home Page:
-
-<a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a>
+| Home Page:  | Register: |
+| ------------- | ------------- |
+| <a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a>  | <a href="https://imgflip.com/gif/31nlou"><img src="https://i.imgflip.com/31nlou.gif" title="made at imgflip.com"/></a>  |
 
 ## Getting Started:
 
