@@ -30,7 +30,7 @@ export class LoginPage extends React.Component {
       .then(results => this.props.setUser(results.data))
       .then(results => this.getFavoriteMovies(results.user.id))
       .then(results => this.setState({ status: "success" }))
-      .then(() => this.props.history.push("/home"))
+      .then(() => this.props.history.push("/Movie-Tracker"))
       .catch(err => this.setState({ error: err }));
   };
 
