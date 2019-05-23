@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/home/static/css/main.a44c9231.chunk.css",
-    "main.js": "/home/static/js/main.4c3cb100.chunk.js",
-    "main.js.map": "/home/static/js/main.4c3cb100.chunk.js.map",
-    "runtime~main.js": "/home/static/js/runtime~main.0990ee84.js",
-    "runtime~main.js.map": "/home/static/js/runtime~main.0990ee84.js.map",
-    "static/js/2.70601c7f.chunk.js": "/home/static/js/2.70601c7f.chunk.js",
-    "static/js/2.70601c7f.chunk.js.map": "/home/static/js/2.70601c7f.chunk.js.map",
-    "index.html": "/home/index.html",
-    "precache-manifest.f7ed1ebb081f2a6c2718d490a41134ef.js": "/home/precache-manifest.f7ed1ebb081f2a6c2718d490a41134ef.js",
-    "service-worker.js": "/home/service-worker.js",
-    "static/css/main.a44c9231.chunk.css.map": "/home/static/css/main.a44c9231.chunk.css.map",
-    "static/media/arrow.a5758567.svg": "/home/static/media/arrow.a5758567.svg",
-    "static/media/MovieInfo.scss": "/home/static/media/favoriteActive.306e4f47.svg"
+    "main.css": "/Movie-Tracker/home/static/css/main.57d52595.chunk.css",
+    "main.js": "/Movie-Tracker/home/static/js/main.fb876891.chunk.js",
+    "main.js.map": "/Movie-Tracker/home/static/js/main.fb876891.chunk.js.map",
+    "runtime~main.js": "/Movie-Tracker/home/static/js/runtime~main.9f9abea6.js",
+    "runtime~main.js.map": "/Movie-Tracker/home/static/js/runtime~main.9f9abea6.js.map",
+    "static/js/2.70601c7f.chunk.js": "/Movie-Tracker/home/static/js/2.70601c7f.chunk.js",
+    "static/js/2.70601c7f.chunk.js.map": "/Movie-Tracker/home/static/js/2.70601c7f.chunk.js.map",
+    "index.html": "/Movie-Tracker/home/index.html",
+    "precache-manifest.8bdf550774a34ca055008e5c3af4692f.js": "/Movie-Tracker/home/precache-manifest.8bdf550774a34ca055008e5c3af4692f.js",
+    "service-worker.js": "/Movie-Tracker/home/service-worker.js",
+    "static/css/main.57d52595.chunk.css.map": "/Movie-Tracker/home/static/css/main.57d52595.chunk.css.map",
+    "static/media/arrow.a5758567.svg": "/Movie-Tracker/home/static/media/arrow.a5758567.svg",
+    "static/media/MovieInfo.scss": "/Movie-Tracker/home/static/media/favoriteActive.306e4f47.svg"
   }
 }
