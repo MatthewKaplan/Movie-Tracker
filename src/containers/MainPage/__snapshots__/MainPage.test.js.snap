@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MainPage renderFeaturedMovies should match snapshot if movies length is less than zero 1`] = `
+<MainPage
+  movies={Array []}
+/>
+`;
+
 exports[`MainPage should match the snapshot 1`] = `ShallowWrapper {}`;

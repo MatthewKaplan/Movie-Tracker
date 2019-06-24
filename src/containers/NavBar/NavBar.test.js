@@ -78,6 +78,14 @@ describe("NavBar", () => {
   });
 });
 
+describe("LogIn button", () => {
+  it("should render the Login button", () => {
+    mockUser = {}
+    let wrapper = shallow(<NavBar user={mockUser} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+})
+
 describe("mapStateToProps", () => {
   it("should return an object", () => {
     const mockData = {

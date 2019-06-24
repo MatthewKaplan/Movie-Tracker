@@ -4,7 +4,7 @@ MovieTracker is a web application which allows users to search for their favorit
 
 ## Application deployed at (No backend features): 
 
-`https://matthewkaplan.github.io/Movie-Tracker/`
+[https://matthewkaplan.github.io/Movie-Tracker/](https://matthewkaplan.github.io/Movie-Tracker/)
 
 ## Preview: 
 
@@ -58,7 +58,7 @@ $ npm t -- --coverage --watchAll=false
 ```
 
 <p align="center">
-  <img src="https://i.imgur.com/ffuvKXp.png" alt="project test coverage">
+  <img src="https://i.imgur.com/AaqKyle.png" alt="project test coverage">
 </p>
 
 ## Project Tools:

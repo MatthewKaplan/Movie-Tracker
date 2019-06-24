@@ -175,7 +175,11 @@ describe("MainPage", () => {
       const path = "&with_genres=10749";
       instance.fetchGenre(path);
       expect(fetchData).toHaveBeenCalledWith(
-        wrapper.state("movieUrl") + "/discover/movie?" + apiKey + path + "&page=3"
+        wrapper.state("movieUrl") +
+          "/discover/movie?" +
+          apiKey +
+          path +
+          "&page=3"
       );
     });
 
@@ -233,7 +237,26 @@ describe("MainPage", () => {
       wrapper.find("[data-test='romance-movies-btn']").simulate("click");
       expect(instance.fetchGenre).toHaveBeenCalledWith(path);
     });
-  })
+  });
+
+  describe("renderFeaturedMovies", () => {
+    it("should return the correct value", () => {
+      const results = instance.renderFeaturedMovies();
+      expect(results).toHaveLength(2);
+    });
+
+    it("should match snapshot if movies length is less than zero", () => {
+      mockMoviesProps = [];
+
+      wrapper = <MainPage movies={mockMoviesProps} />;
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it("should return the correct value", () => {
+      const results = instance.renderFeaturedMovies();
+      expect(results).toEqual(undefined);
+    });
+  });
 });
 
 describe("mapStateToProps", () => {

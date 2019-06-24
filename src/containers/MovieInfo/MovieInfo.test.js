@@ -19,6 +19,7 @@ const mockCleanForFavorite = jest.fn();
 const mockFavoritesList = jest.fn();
 const favoriteMovieMock = jest.fn();
 const mockFetchFavoritesList = jest.fn();
+const mockDeleteFavorite = jest.fn();
 const mockUrl = "http://localhost:3000/api/users/favorites/new";
 const mockObject = {
   method: "POST",
@@ -48,6 +49,7 @@ describe("MovieInfo", () => {
         result={mockResult}
         fetchFavoritesList={mockFetchFavoritesList}
         handleError={mockHandleError}
+        deleteFavorite={mockDeleteFavorite}
       />
     );
     instance = wrapper.instance();
@@ -179,7 +181,7 @@ describe("MovieInfo", () => {
 
   describe("renderFavoriteBtn", () => {
     it("should prompt the user to sign in to favorite a movie", () => {
-      const mockIsLoggedIn = false;
+      mockIsLoggedIn = false;
       let wrapper = shallow(
         <MovieInfo
           user={mockUser}
@@ -201,7 +203,30 @@ describe("MovieInfo", () => {
     });
 
     it("should prompt the user to favorite a movie if they'd like", () => {
-      const mockIsLoggedIn = true;
+      mockIsLoggedIn = true;
+      const mockNotFavoritedMovie = MockData.notFavoritedMovie;
+
+      let wrapper = shallow(
+        <MovieInfo
+          user={mockUser}
+          currentMovie={mockNotFavoritedMovie}
+          favorites={mockWholeObj}
+          favoritesList={mockFavoritesList}
+          isLoggedIn={mockIsLoggedIn}
+          deleteFavorite={mockDeleteFavorite}
+        />
+      );
+      let instance = wrapper.instance();
+      let MockFn = jest.spyOn(wrapper.instance(), "favoriteMovie");
+
+      expect(wrapper.state().favorited).toEqual(false);
+      shallow(<div>{instance.renderFavoriteBtn()}</div>);
+      wrapper.find("[data-test='favorite-movie-btn']").simulate("click");
+      expect(MockFn).toHaveBeenCalled();
+    });
+
+    it("should prompt the user to delete a favorited movie if they'd like", () => {
+      mockIsLoggedIn = true;
       const mockNotFavoritedMovie = MockData.notFavoritedMovie;
 
       let wrapper = shallow(
@@ -215,9 +240,14 @@ describe("MovieInfo", () => {
       );
       let instance = wrapper.instance();
 
-      expect(wrapper.state().favorited).toEqual(false);
-      const result = shallow(<div>{instance.renderFavoriteBtn()}</div>);
-      expect(result).toEqual({});
+      let MockFn = jest.spyOn(wrapper.instance(), "deleteFavorite");
+      wrapper.setState({ favorited: true });
+      expect(wrapper.state().favorited).toEqual(true);
+      shallow(<div>{instance.renderFavoriteBtn()}</div>);
+      wrapper.setState({ favorited: true });
+      expect(wrapper.state().favorited).toEqual(true);
+      wrapper.find("[data-test='delete-favorite-btn']").simulate("click");
+      expect(MockFn).toHaveBeenCalled();
     });
   });
 });
