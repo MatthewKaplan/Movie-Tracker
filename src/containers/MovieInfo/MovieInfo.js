@@ -94,9 +94,9 @@ export class MovieInfo extends Component {
     if (this.props.isLoggedIn && favorited === true) {
       return (
         <div
-        data-test="delete-favorite-btn"
-        className="favoriteActive fav"
-        onClick={() => this.deleteFavorite(movie)}
+          data-test="delete-favorite-btn"
+          className="favoriteActive fav"
+          onClick={() => this.deleteFavorite(movie)}
         />
       );
     }
