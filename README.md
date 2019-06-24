@@ -70,8 +70,8 @@ $ npm t -- --coverage --watchAll=false
 - Redux
 
 ## Tested With:
-Jest
-Enzyme
+- Jest
+- Enzyme
 
 ## Contributing:
 
