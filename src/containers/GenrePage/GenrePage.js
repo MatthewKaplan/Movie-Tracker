@@ -18,42 +18,44 @@ export class GenrePage extends React.Component {
     ));
   };
 
-  render() {
-    const {
-      movies,
-      tv,
-      favoriteList,
-      searchResults,
-      genre,
-      isLoggedIn
-    } = this.props;
-    let whatToRender;
-    const currentPath = this.props.location.pathname;
+  whatToRender = path => {
+    const { movies, tv, favoriteList, searchResults, genre } = this.props;
 
-    if (currentPath === "/Movies") {
-      whatToRender = this.renderMovieCards(movies);
-    } else if (currentPath === "/TV_Shows") {
-      whatToRender = this.renderMovieCards(tv);
-    } else if (currentPath === "/Favorites") {
-      whatToRender = this.renderMovieCards(favoriteList);
-    } else if (currentPath === "/SearchResults") {
-      whatToRender = this.renderMovieCards(searchResults);
+    if (path === "/Movies") {
+      return this.renderMovieCards(movies);
+    } else if (path === "/TV_Shows") {
+      return this.renderMovieCards(tv);
+    } else if (path === "/Favorites") {
+      return this.renderMovieCards(favoriteList);
+    } else if (path === "/SearchResults") {
+      return this.renderMovieCards(searchResults);
     } else {
-      whatToRender = this.renderMovieCards(genre);
+      return this.renderMovieCards(genre);
     }
+  };
+
+  renderFavoritesMessage = path => {
+    const { favoriteList, isLoggedIn } = this.props;
+
+    if (path === "/Favorites" && isLoggedIn === false) {
+      return "Please sign in to veiw your favorites.";
+    }
+
+    if (path === "/Favorites" && isLoggedIn && favoriteList.length === 0) {
+      return "It looks like you haven't saved any favorites yet.";
+    }
+  };
+
+  render() {
+    const currentPath = this.props.location.pathname;
 
     return (
       <React.Fragment>
         <section className="backgroundImage" />
-        {currentPath === "/Favorites" && isLoggedIn === false ? (
-          <h1 className="displayLogInMessage">Please sign in to veiw your favorites</h1>
-        ) : null}
-        {currentPath === "/Favorites" &&
-        isLoggedIn &&
-        favoriteList.length === 0 ? (
-          <h1 className="displayLogInMessage">It looks like you haven't saved any favorites yet.</h1>
-        ) : null}
-        <div className="genre-page">{whatToRender}</div>
+        <h1 className="displayLogInMessage">
+          {this.renderFavoritesMessage(currentPath)}
+        </h1>
+        <div className="genre-page">{this.whatToRender(currentPath)}</div>
       </React.Fragment>
     );
   }
@@ -64,11 +66,11 @@ GenrePage.propTypes = {
   movies: PropTypes.array,
   tv: PropTypes.array.isRequired,
   favoriteList: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.array,
+  isLoggedIn: PropTypes.bool,
   searchResults: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   genre: state.genre,
   movies: state.movies,
   tv: state.tv,

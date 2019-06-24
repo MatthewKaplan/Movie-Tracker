@@ -100,4 +100,16 @@ describe("actions", () => {
     const result = actions.createUser(user);
     expect(result).toEqual(expected);
   });
+
+
+  it("should return a type of HANDLE_ERROR", () => {
+    const errorMessage = "Mock Error Message";
+    const expected = {
+      type: "HANDLE_ERROR",
+      errorMessage
+    };
+
+    const result = actions.handleError(errorMessage);
+    expect(result).toEqual(expected);
+  });
 });

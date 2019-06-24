@@ -28,7 +28,7 @@ export class NavBar extends React.Component {
         <NavLink to="/Register" className="nav register login">
           Register
         </NavLink>
-        <NavLink to="/login" className="nav login">
+        <NavLink to="/login" data-test="login-btn" className="nav login">
           Sign in
         </NavLink>
       </React.Fragment>
@@ -37,10 +37,11 @@ export class NavBar extends React.Component {
     const renderLogout = (
       <div className="navBar-btn">
         <p className="greeting">
-          Hello, {this.props.user ? this.props.user.name : null}.
+          Hello, {this.props.user && this.props.user.name}.
         </p>
         <button
           className="logout-btn"
+          data-test="logout-btn"
           onClick={() => {
             this.props.setUser({});
             this.props.isLoggedIn(false);

@@ -8,28 +8,35 @@ import PropTypes from "prop-types";
 export class MovieCard extends React.Component {
   state = { error: "" };
 
-  render() {
-    let movieBackdrop;
-
+  posterToRender = () => {
     if (this.props.img === undefined) {
-      movieBackdrop = {
-        backgroundImage: `url(https://image.tmdb.org/t/p/w500${this.props.poster})`
+      return {
+        backgroundImage: `url(https://image.tmdb.org/t/p/w500${
+          this.props.poster
+        })`
       };
     } else {
-      movieBackdrop = {
+      return {
         backgroundImage: `url(https://image.tmdb.org/t/p/original${
           this.props.img
         })`
       };
     }
+  };
 
+  render() {
     return (
       <div>
         <Link
           to="/MovieCardInfo"
+          data-test="current-movie"
           onClick={() => this.props.currentMovie(this.props.wholeObj)}
         >
-          <div tabIndex="1" className="movie-card" style={movieBackdrop}>
+          <div
+            tabIndex="1"
+            className="movie-card"
+            style={this.posterToRender()}
+          >
             <h2>{this.props.title}</h2>
             <h2>{this.props.name}</h2>
           </div>

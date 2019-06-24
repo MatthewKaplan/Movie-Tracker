@@ -16,6 +16,7 @@ export class MajorReleases extends Component {
           to="/MovieCardInfo"
           onClick={() => this.props.currentMovie(this.props.wholeObj)}
           className="major-release-section"
+          data-test='major-release'
         >
           <div className="major-release" style={movieBackdrop} />
         </Link>

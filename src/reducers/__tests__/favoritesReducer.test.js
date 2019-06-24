@@ -2,7 +2,7 @@ import favoritesReducer from "../favoritesReducer";
 import * as actions from "../../actions";
 import MockData from "../../assets/mockData";
 
-const movies = MockData.favoritedMovies;
+const movies = MockData.favoritedMoviesArr;
 
 describe("favoritesReducer", () => {
   it("should return state on default", () => {
