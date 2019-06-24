@@ -43,10 +43,10 @@ export const createUser = user => ({
   user
 });
 
-export const isLoggedIn = (bool) => ({
+export const isLoggedIn = bool => ({
   type: "IS_LOGGED_IN",
   isLoggedIn: bool
-})
+});
 
 export const favoritesList = movies => ({
   type: "FAVORITES_LIST",
@@ -57,4 +57,9 @@ export const favoritesList = movies => ({
 export const currentMovie = movie => ({
   type: "CURRENT_MOVIE",
   movie
-})
+});
+
+export const handleError = errorMessage => ({
+  type: "HANDLE_ERROR",
+  errorMessage
+});

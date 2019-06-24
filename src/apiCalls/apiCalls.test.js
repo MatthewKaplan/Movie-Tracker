@@ -23,22 +23,24 @@ describe("fetchData", () => {
     expect(fetch).toHaveBeenCalledWith(mockUrl);
   });
 
-  it('should return the correct data', async () => {
-    const result = await fetchData(mockUrl)
-    expect(result).toEqual(mockData)
-  })
+  it("should return the correct data", async () => {
+    const result = await fetchData(mockUrl);
+    expect(result).toEqual(mockData);
+  });
 
-  it('should throw an error if the response is not ok', async () => {
-    window.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-      ok: false
-    }))
+  it("should throw an error if the response is not ok", async () => {
+    window.fetch = jest.fn().mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: false
+      })
+    );
 
     try {
-      await fetchData(mockUrl)
-    } catch(error) {
-      expect(error.message).toBe('Fetch failed')
+      await fetchData(mockUrl);
+    } catch (error) {
+      expect(error.message).toBe("Fetch failed");
     }
-  })
+  });
 });
 
 describe("fetchUserData", () => {
@@ -64,65 +66,85 @@ describe("fetchUserData", () => {
     expect(fetch).toHaveBeenCalledWith(mockUrl);
   });
 
-  it('should return the correct data', async () => {
-    const result = await fetchUserData(mockUrl)
-    expect(result).toEqual(mockData)
-  })
+  it("should return the correct data", async () => {
+    const result = await fetchUserData(mockUrl);
+    expect(result).toEqual(mockData);
+  });
 
-  it.skip('should throw an error if the response is not ok', async () => {
-    window.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-      ok: false
-    }))
+  it("should throw an error if the response is not ok", async () => {
+    window.fetch = jest.fn().mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: false
+      })
+    );
 
     try {
-      await fetchData(mockUrl)
-    } catch(error) {
-      expect(error.message).toBe('Fetch failed')
+      await fetchUserData(mockUrl);
+    } catch (error) {
+      expect(error.message).toBe("Fetch failed");
     }
-  })
-  
+  });
 });
 
 describe("fetchPost", () => {
   let mockUrl;
   let mockData;
   let mockOptions;
+  let mockBody;
 
   beforeEach(() => {
     mockUrl = "www.someurl.com";
+    mockBody = {
+      name: "matt",
+      email: "matt@mail.com",
+      password: "password",
+      status: "",
+      error: ""
+    };
     mockOptions = {
       method: "POST",
-      body:
-        '{"name":"matt","email":"matt@mail.com","password":"password","status":"","error":""}',
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
+      body: JSON.stringify(mockBody),
+      headers: { "Content-Type": "application/json" }
+    }
     mockData = {
-      first: "Matthew",
-      last: "Kaplan"
-    };
+      name: "matt",
+      email: "matt@mail.com",
+      password: "password",
+      status: "",
+      error: ""
+    }
+
+    window.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: jest.fn(() =>
+          Promise.resolve(mockData)
+        )
+      })
+    );
   });
 
-  it("calls fetch with the correct params", () => {
-    fetchPost(mockUrl, mockOptions);
+  it("calls fetch with the correct params", async () => {
+    await fetchPost(mockUrl, mockOptions);
     expect(fetch).toHaveBeenCalledWith(mockUrl, mockOptions);
   });
 
-  it('should return the correct data', async () => {
-    const result = await fetchPost(mockUrl, mockOptions)
-    expect(result).toEqual(mockData)
-  })
+  it("should return the correct data", async () => {
+    const result = await fetchPost(mockUrl, mockOptions);
+    expect(result).toEqual(mockData);
+  });
 
-  it('should throw an error if the response is not ok', async () => {
-    window.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-      ok: false
-    }))
+  it("should throw an error if the response is not ok", async () => {
+    window.fetch = jest.fn().mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: false
+      })
+    );
 
     try {
-      await fetchPost(mockUrl)
-    } catch(error) {
-      expect(error.message).toBe('unable to favorite')
+      await fetchPost(mockUrl);
+    } catch (error) {
+      expect(error.message).toBe("unable to favorite");
     }
-  })
+  });
 });

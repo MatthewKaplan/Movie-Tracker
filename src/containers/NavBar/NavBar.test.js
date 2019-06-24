@@ -11,13 +11,22 @@ jest.mock("../../apiCalls/apiCalls.js");
 let mockSearch = MockData.searchResults;
 let mockUser = { id: 1, name: "Matthew" };
 let mockIsLoggedIn = true;
+const isLoggedInMock = jest.fn();
+const mockSetUser = jest.fn();
 
 describe("NavBar", () => {
   let wrapper, instance;
   fetchData.mockImplementation(() => Promise.resolve(1));
 
   beforeEach(() => {
-    wrapper = shallow(<NavBar search={mockSearch} user={mockUser} />);
+    wrapper = shallow(
+      <NavBar
+        search={mockSearch}
+        user={mockUser}
+        setUser={mockSetUser}
+        isLoggedIn={isLoggedInMock}
+      />
+    );
     instance = wrapper.instance();
   });
 
@@ -37,18 +46,35 @@ describe("NavBar", () => {
   });
 
   it("should update the value of userSearch in state as user types", () => {
-    expect(wrapper.state("userSearch")).toEqual("")
+    expect(wrapper.state("userSearch")).toEqual("");
     let searchInput = { target: { value: "The Big Green" } };
-    wrapper.find("[data-test='search-input']").simulate("change", searchInput)
-    expect(wrapper.state("userSearch")).toEqual("The Big Green")
+    wrapper.find("[data-test='search-input']").simulate("change", searchInput);
+    expect(wrapper.state("userSearch")).toEqual("The Big Green");
   });
 
   it("should invoke 'fetchData' with the correct param when searchChangeHandler is called", () => {
-    expect(wrapper.state("userSearch")).toEqual("")
+    expect(wrapper.state("userSearch")).toEqual("");
     let searchInput = { target: { value: "The Big Green" } };
-    wrapper.find("[data-test='search-input']").simulate("change", searchInput)
-    expect(wrapper.state("userSearch")).toEqual("The Big Green")
-    expect(fetchData).toHaveBeenCalledWith("https://api.themoviedb.org/3/search/movie?" + apiKey + "&query=" + wrapper.state("userSearch"))
+    wrapper.find("[data-test='search-input']").simulate("change", searchInput);
+    expect(wrapper.state("userSearch")).toEqual("The Big Green");
+    expect(fetchData).toHaveBeenCalledWith(
+      "https://api.themoviedb.org/3/search/movie?" +
+        apiKey +
+        "&query=" +
+        wrapper.state("userSearch")
+    );
+  });
+
+  describe("logout button", () => {
+    it("should invoke 'setUser' with the correct param when the user clicks the log out button", () => {
+      wrapper.find("[data-test='logout-btn']").simulate("click");
+      expect(mockSetUser).toHaveBeenCalledWith({});
+    });
+
+    it("should invoke 'isLoggedIn' with the correct param when the user clicks the log out button", () => {
+      wrapper.find("[data-test='logout-btn']").simulate("click");
+      expect(isLoggedInMock).toHaveBeenCalledWith(false);
+    });
   });
 });
 
@@ -91,4 +117,4 @@ describe("mapDispatchToProps", () => {
     mappedProps.isLoggedIn(mockIsLoggedIn);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
-})
+});

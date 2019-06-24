@@ -34,9 +34,8 @@ export class News extends Component {
     const slideDisplay = this.props.news.map((stories, index) => {
       const result =
         stories.multimedia.length > 1
-          ? Object.values(stories.multimedia[4])
-          : null;
-      const newArr = result ? result[0] : null;
+          && Object.values(stories.multimedia[4]);
+      const newArr = result && result[0];
 
       let backgroundImage = {
         backgroundImage: `url(${newArr})`
@@ -62,11 +61,13 @@ export class News extends Component {
           {slideDisplay}
           <Arrow
             className="arrow-one arrow"
-            onClick={this.changeSlidesPositionForward}
+            data-test='arrow-forward'
+            onClick={() => this.changeSlidesPositionForward()}
           />
           <Arrow
             className="arrow-two arrow"
-            onClick={this.changeSlidesPositionBack}
+            data-test='arrow-back'
+            onClick={() => this.changeSlidesPositionBack()}
           />
         </div>
       </div>

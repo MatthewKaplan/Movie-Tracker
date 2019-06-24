@@ -3,10 +3,10 @@ import "./MovieInfo.scss";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPost, fetchUserData } from "../../apiCalls/apiCalls";
-import { favoritesList } from "../../actions/index";
+import { favoritesList, handleError } from "../../actions/index";
 
 export class MovieInfo extends Component {
-  state = { currentMovie: [] };
+  state = { currentMovie: [], favorited: false };
 
   favoriteMovie = movie => {
     const id = this.props.user.id;
@@ -33,24 +33,35 @@ export class MovieInfo extends Component {
     };
   };
 
-  handleFavorites = (url, options) => {
-    fetchPost(url, options).then(result => {
-      if (result.status === "success") {
-        const url = `http://localhost:3000/api/users/${
-          this.props.user.id
-        }/favorites`;
-        fetchUserData(url)
-          .then(result => this.props.favoritesList(result.data))
-          .catch(err => this.setState({ error: err }));
-      }
-    });
+  handleFavorites = async (url, options) => {
+    try {
+      await fetchPost(url, options);
+      const favoritesUrl = `http://localhost:3000/api/users/${
+        this.props.user.id
+      }/favorites`;
+      this.fetchFavoritesList(favoritesUrl);
+    } catch (error) {
+      this.props.handleError(error.message);
+    }
+  };
+
+  fetchFavoritesList = async url => {
+    try {
+      const favoritesResults = await fetchUserData(url);
+      this.props.favoriteList(favoritesResults.data);
+    } catch (error) {
+      this.props.handleError(error.message);
+    }
   };
 
   checkIfFavorited = (favorites, movie) => {
     if (!movie.favorited) {
-      return favorites.some(favorite => favorite.movie_id === movie.id);
+      return (
+        favorites.some(favorite => favorite.movie_id === movie.id) &&
+        this.setState({ favorited: false })
+      );
     } else {
-      return true;
+      return true && this.setState({ favorited: true });
     }
   };
 
@@ -66,6 +77,40 @@ export class MovieInfo extends Component {
     this.handleFavorites(url, userOptionObject);
   };
 
+  renderFavoriteBtn = () => {
+    let movie = this.props.currentMovie;
+    let isFavorited = movie.favorited;
+    isFavorited = this.checkIfFavorited(this.props.favorites, movie);
+    movie = { ...movie, favorited: isFavorited };
+    const { favorited } = this.state;
+
+    if (!this.props.isLoggedIn) {
+      return (
+        <Link to="/login">
+          <button className="signin-btn fav">Sign in to Favorite movie</button>
+        </Link>
+      );
+    }
+    if (this.props.isLoggedIn && favorited === true) {
+      return (
+        <div
+        data-test="delete-favorite-btn"
+        className="favoriteActive fav"
+        onClick={() => this.deleteFavorite(movie)}
+        />
+      );
+    }
+    if (this.props.isLoggedIn && favorited === false) {
+      return (
+        <div
+          data-test="favorite-movie-btn"
+          onClick={() => this.favoriteMovie(movie)}
+          className="favorite fav"
+        />
+      );
+    }
+  };
+
   render() {
     const {
       overview,
@@ -74,35 +119,6 @@ export class MovieInfo extends Component {
       title,
       name
     } = this.props.currentMovie;
-
-    let movie = this.props.currentMovie;
-    let isFavorited = movie.favorited;
-    isFavorited = this.checkIfFavorited(this.props.favorites, movie);
-    movie = { ...movie, favorited: isFavorited };
-
-    let whichFavoriteButton;
-
-    if (!this.props.isLoggedIn) {
-      whichFavoriteButton = (
-        <Link to="/login">
-          <button className="signin-btn fav">Sign in to Favorite movie</button>
-        </Link>
-      );
-    } else if (isFavorited) {
-      whichFavoriteButton = (
-        <div
-          onClick={() => this.deleteFavorite(movie)}
-          className="favoriteActive fav"
-        />
-      );
-    } else {
-      whichFavoriteButton = (
-        <div
-          onClick={() => this.favoriteMovie(movie)}
-          className="favorite fav"
-        />
-      );
-    }
 
     const movieBackdrop = {
       backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`
@@ -124,7 +140,7 @@ export class MovieInfo extends Component {
               <h1>{title}</h1>
               <h1>{name}</h1>
               <p>{overview}</p>
-              {whichFavoriteButton}
+              {this.renderFavoriteBtn()}
             </div>
           </div>
         </div>
@@ -133,7 +149,7 @@ export class MovieInfo extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   isLoggedIn: state.isLoggedIn,
   currentMovie: state.currentMovie,
@@ -141,7 +157,8 @@ const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  favoritesList: movie => dispatch(favoritesList(movie))
+  favoritesList: movie => dispatch(favoritesList(movie)),
+  handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
 export default connect(

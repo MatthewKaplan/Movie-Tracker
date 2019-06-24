@@ -9,6 +9,7 @@ import userReducer from './userReducer';
 import favoritesReducer from './favoritesReducer';
 import loggedInReducer from './loggedInReducer';
 import currentMovieReducer from './currentMovieReducer';
+import handleErrorReducer from './handleErrorReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   favoriteList: favoritesReducer,
   isLoggedIn: loggedInReducer,
-  currentMovie: currentMovieReducer
+  currentMovie: currentMovieReducer,
+  errorMessage: handleErrorReducer
 });
 
 export default rootReducer;

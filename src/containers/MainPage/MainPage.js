@@ -23,18 +23,22 @@ export class MainPage extends React.Component {
     error: ""
   };
   componentDidMount() {
-    this.renderNewsResults();
+    this.fetchNewsResults();
     this.fetchPopularMovies();
     this.fetchPopularTvShows();
     this.fetchComingSoon();
   }
 
-  fetchPopularMovies = () => {
-    fetchData(
-      `${this.state.movieUrl}/discover/movie?${apiKey}&sort_by=popularity.desc`
-    )
-      .then(response => this.props.fetchPopularMovies(response.results))
-      .catch(error => this.setState({ error }));
+  fetchPopularMovies = async () => {
+    const url = `${
+      this.state.movieUrl
+    }/discover/movie?${apiKey}&sort_by=popularity.desc`;
+    try {
+      const popularMovies = await fetchData(url);
+      this.props.fetchPopularMovies(popularMovies.results);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   renderPopularMovies = () => {
@@ -48,12 +52,16 @@ export class MainPage extends React.Component {
     ));
   };
 
-  fetchPopularTvShows = () => {
-    fetchData(
-      `${this.state.movieUrl}/discover/tv?${apiKey}&sort_by=popularity.desc`
-    )
-      .then(response => this.props.fetchPopularTv(response.results))
-      .catch(error => this.setState({ error }));
+  fetchPopularTvShows = async () => {
+    const url = `${
+      this.state.movieUrl
+    }/discover/tv?${apiKey}&sort_by=popularity.desc`;
+    try {
+      const popularTv = await fetchData(url);
+      this.props.fetchPopularTv(popularTv.results);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   renderPopularTvShows = () => {
@@ -67,10 +75,14 @@ export class MainPage extends React.Component {
     ));
   };
 
-  fetchComingSoon = () => {
-    fetchData(`${this.state.movieUrl}/movie/upcoming?${apiKey}`)
-      .then(response => this.props.fetchUpcoming(response.results))
-      .catch(error => this.setState({ error }));
+  fetchComingSoon = async () => {
+    const url = `${this.state.movieUrl}/movie/upcoming?${apiKey}`;
+    try {
+      const upcoming = await fetchData(url);
+      this.props.fetchUpcoming(upcoming.results);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   renderComingSoon = () => {
@@ -100,18 +112,26 @@ export class MainPage extends React.Component {
     }
   };
 
-  renderNewsResults = () => {
-    fetchData(`${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`)
-      .then(response => this.props.fetchNews(response.results))
-      .catch(error => this.setState({ error }));
+  fetchNewsResults = async () => {
+    const url = `${this.state.newsUrl}/topstories/v2/movies.json?${nytApiKey}`;
+    try {
+      const newsResults = await fetchData(url);
+      this.props.fetchNews(newsResults.results);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
-  handleClick = endPath => {
-    fetchData(
-      `${this.state.movieUrl}/discover/movie?${apiKey}${endPath}&page=3`
-    )
-      .then(response => this.props.fetchGenres(response.results))
-      .catch(error => this.setState({ error }));
+  fetchGenre = async endPath => {
+    const url = `${
+      this.state.movieUrl
+    }/discover/movie?${apiKey}${endPath}&page=3`;
+    try {
+      const genreResults = await fetchData(url);
+      this.props.fetchGenres(genreResults.results);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   render() {
@@ -135,9 +155,9 @@ export class MainPage extends React.Component {
               <section className="genres">
                 <NavLink
                   to="/ActionMovies"
-                  data-test="genre-click-event"
+                  data-test="action-movies-btn"
                   className="genre action"
-                  onClick={() => this.handleClick("&with_genres=28")}
+                  onClick={() => this.fetchGenre("&with_genres=28")}
                 >
                   <div>
                     <h1 className="genreTitle">Action</h1>
@@ -145,8 +165,9 @@ export class MainPage extends React.Component {
                 </NavLink>
                 <Link
                   to="/ComedyMovies"
+                  data-test="comedy-movies-btn"
                   className="genre comedy"
-                  onClick={() => this.handleClick("&with_genres=35")}
+                  onClick={() => this.fetchGenre("&with_genres=35")}
                 >
                   <div>
                     <h1 className="genreTitle">Comedy</h1>
@@ -154,8 +175,9 @@ export class MainPage extends React.Component {
                 </Link>
                 <Link
                   to="/Documentaries"
+                  data-test="documentaries-btn"
                   className="genre documentaries"
-                  onClick={() => this.handleClick("&with_genres=99")}
+                  onClick={() => this.fetchGenre("&with_genres=99")}
                 >
                   <div>
                     <h1 className="genreTitle">Documentaries</h1>
@@ -163,8 +185,9 @@ export class MainPage extends React.Component {
                 </Link>
                 <Link
                   to="/FamilyMovies"
+                  data-test="family-movies-btn"
                   className="genre family"
-                  onClick={() => this.handleClick("&with_genres=10751")}
+                  onClick={() => this.fetchGenre("&with_genres=10751")}
                 >
                   <div>
                     <h1 className="genreTitle">Family</h1>
@@ -172,8 +195,9 @@ export class MainPage extends React.Component {
                 </Link>
                 <Link
                   to="/HorrorMovies"
+                  data-test="horror-movies-btn"
                   className="genre horror"
-                  onClick={() => this.handleClick("&with_genres=27")}
+                  onClick={() => this.fetchGenre("&with_genres=27")}
                 >
                   <div>
                     <h1 className="genreTitle">Horror</h1>
@@ -181,9 +205,10 @@ export class MainPage extends React.Component {
                 </Link>
                 <Link
                   to="/RomanceMovies"
+                  data-test="romance-movies-btn"
                   component={GenrePage}
                   className="genre romance"
-                  onClick={() => this.handleClick("&with_genres=10749")}
+                  onClick={() => this.fetchGenre("&with_genres=10749")}
                 >
                   <div>
                     <h1 className="genreTitle">Romance</h1>

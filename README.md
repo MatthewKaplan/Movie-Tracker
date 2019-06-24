@@ -12,7 +12,7 @@ MovieTracker is a web application which allows users to search for their favorit
 
 | Home Page:  | Register: |
 | ------------- | ------------- |
-| <a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a>  | <a href="https://imgflip.com/gif/31nlou"><img src="https://i.imgflip.com/31nlou.gif" title="made at imgflip.com"/></a>  |
+| <p align="center"><a href="https://imgflip.com/gif/31lf53"><img src="https://i.imgflip.com/31lf53.gif" title="made at imgflip.com"/></a></p>  | <p align="center"><a href="https://imgflip.com/gif/31nlou"><img src="https://i.imgflip.com/31nlou.gif" title="made at imgflip.com"/></a></p>  |
 
 | Login:  | Favorite: |
 | ------------- | ------------- |
@@ -41,6 +41,26 @@ launch in your browser:
 $ npm start
 ```
 
+## Testing Project:
+
+After following the <b>Getting Started</b> instructions you may test the project by doing the following.
+
+test all files:
+
+```
+$ npm test
+```
+
+test the total coverage of the project:
+
+```
+$ npm t -- --coverage --watchAll=false
+```
+
+<p align="center">
+  <img src="https://i.imgur.com/ffuvKXp.png" alt="project test coverage">
+</p>
+
 ## Project Tools:
 HTMl
 Javascript
@@ -67,3 +87,9 @@ The New York Times API
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+---
+
+**[Back to top](https://github.com/MatthewKaplan/Movie-Tracker#movietracker)**
+
+---
