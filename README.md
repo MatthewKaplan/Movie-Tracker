@@ -62,12 +62,12 @@ $ npm t -- --coverage --watchAll=false
 </p>
 
 ## Project Tools:
-HTMl
-Javascript
-React
-Sass
-React-Router
-Redux
+- HTMl
+- Javascript
+- React
+- Sass
+- React-Router
+- Redux
 
 ## Tested With:
 Jest
