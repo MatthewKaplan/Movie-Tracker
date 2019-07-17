@@ -6,7 +6,7 @@ import "./News.scss";
 import PropTypes from "prop-types";
 
 export class News extends Component {
-  state = { slidesPosition: 7 };
+  state = { slidesPosition: 3 };
 
   changeSlidesPositionForward = () => {
     const { slidesPosition } = this.state;
