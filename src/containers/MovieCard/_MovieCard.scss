@@ -1,38 +1,48 @@
 @import "../../variables.scss";
 
 .movie-card {
-  margin: 0 0.4rem;
-  height: 250px;
-  width: 500px;
-  position: relative;
-  z-index: 1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  font-size: 20px;
-  transition: 0.2s all ease-in;
-  h2 {
-    color: white;
-    background-color: black;
-    text-align: center;
-    font-size: 16px;
-    width: 100%;
-    padding: 0.2rem 0;
-    justify-self: flex-end;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &:focus {
-    cursor: default;
-    filter: opacity(0.5);
-    h2 {
-      opacity: 0;
-    }
-  }
-  &:not(:focus) {
-    filter: opacity(1);
-  }
+	margin: 0 0.4rem;
+	height: 250px;
+	width: 500px;
+	position: relative;
+	z-index: 1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	font-size: 20px;
+	transition: 0.2s all ease-in;
+	h2 {
+		color: white;
+		background-color: black;
+		text-align: center;
+		font-size: 16px;
+		width: 100%;
+		padding: 0.2rem 0;
+		justify-self: flex-end;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	&:focus {
+		cursor: default;
+		filter: opacity(0.5);
+		h2 {
+			opacity: 0;
+		}
+	}
+	&:not(:focus) {
+		filter: opacity(1);
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.movie-card {
+		height: 105px;
+		width: 185px;
+		h2 {
+			font-size: 12px;
+		}
+	}
 }
