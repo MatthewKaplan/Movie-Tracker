@@ -6,6 +6,7 @@ import GenrePage from "../GenrePage/GenrePage";
 import NotFound from "../NotFound/NotFound";
 import MovieInfo from "../MovieInfo/MovieInfo";
 import LoginPage from "../LoginPage/LoginPage";
+import UserLogin from "../UserLogin/UserLogin";
 import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -28,7 +29,7 @@ class App extends Component {
           <Route path="/MovieCardInfo" component={MovieInfo} />
           <Route path="/Movie-Tracker" component={MainPage} />
           <Route path="/login" component={LoginPage} />
-          <Route path="/Register" component={LoginPage} />
+          <Route path="/Register" component={UserLogin} />
           <Route path="" component={NotFound} />
         </Switch>
       </div>
