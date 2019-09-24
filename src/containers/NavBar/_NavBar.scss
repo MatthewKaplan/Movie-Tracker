@@ -1,137 +1,143 @@
 @import "../../variables.scss";
 
 .nav-bar {
-  display: flex;
-  position: absolute;
-  z-index: 3;
-  left: 0;
-  right: 0;
-  justify-content: center;
-  max-width: 1280px;
-  margin: 0 auto;
+	display: flex;
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	right: 0;
+	justify-content: center;
+	max-width: 1280px;
+	margin: 0 auto;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  width: 90vw;
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	width: 90vw;
 }
 
 .nav {
-  margin-top: 1.5rem;
-  color: white;
+	margin-top: 1.5rem;
+	color: white;
 }
 
 .register {
-  margin-left: 220px;
+	margin-left: 220px;
 }
 
 .login {
-  text-align: center;
-  margin-top: 0;
-  width: 32%;
+	text-align: center;
+	margin-top: 0;
+	width: 32%;
 }
 
 .logout-btn {
-  border: 1px solid white;
-  border-radius: 25px;
-  font-size: 16px;
-  padding: 0 12px 20px 12px;
-  margin: 0px 0.5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.123);
-  &:hover {
-    cursor: pointer;
-    color: black;
-    background-color: white;
-  }
+	border: 1px solid white;
+	border-radius: 25px;
+	font-size: 16px;
+	padding: 0 12px 20px 12px;
+	margin: 0px 0.5rem;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.123);
+	&:hover {
+		cursor: pointer;
+		color: black;
+		background-color: white;
+	}
 }
 
 .greeting {
-  color: white;
-  margin: 0px 0.5rem;
-  text-transform: uppercase;
+	color: white;
+	margin: 0px 0.5rem;
+	text-transform: uppercase;
 }
 
 .navBar-btn {
-  display: flex;
-  height: 20px;
-  margin: 0 0.5rem;
+	display: flex;
+	height: 20px;
+	margin: 0 0.5rem;
 }
 
 .header-title {
-  text-align: center;
-  color: $text-w;
-  width: 32%;
-  font-family: "Righteous", cursive;
-  margin: 0.8rem 0;
+	text-align: center;
+	color: $text-w;
+	width: 32%;
+	font-family: "Righteous", cursive;
+	margin: 0.8rem 0;
 }
 
 .left-page-links {
-  display: flex;
-  justify-content: space-around;
-  width: 40%;
+	display: flex;
+	justify-content: space-around;
+	width: 40%;
 }
 
 .right-page-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 40%;
 }
 
 .search-box {
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.068);
-  height: 30px;
-  border-radius: 40px;
-  padding: 2px;
-  border: 1px solid white;
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0, 0, 0, 0.068);
+	height: 30px;
+	border-radius: 40px;
+	padding: 2px;
+	border: 1px solid white;
 }
 
 .search-box:hover > .search-txt {
-  width: 180px;
-  padding: 0 6px;
+	width: 180px;
+	padding: 0 6px;
 }
 
 .search-box:hover > .search-btn {
-  background: white;
-  color: black;
+	background: white;
+	color: black;
 }
 
 .search-btn {
-  color: #e84118;
-  float: right;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.068);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  color: white;
-  cursor: pointer;
+	color: #e84118;
+	float: right;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.068);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
+	color: white;
+	cursor: pointer;
 }
 
 .search-btn > i {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .search-txt {
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: white;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 30px;
-  width: 0px;
-  font-weight: bold;
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.4s;
+	line-height: 30px;
+	width: 0px;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 414px) {
+	.nav-bar {
+		display: none;
+	}
 }

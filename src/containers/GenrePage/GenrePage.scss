@@ -18,3 +18,9 @@
   margin: 100px;
   text-align: center;
 }
+
+@media screen and (min-width: 414px) {
+  .backgroundImage {
+    display: none;
+  }
+}

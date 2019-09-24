@@ -9,12 +9,12 @@ export class SplashImage extends React.Component {
 
     if (movieValues) {
       if (info === "title") {
-        return movieValues[4];
+        return movieValues[8];
       }
       if (info === "background") {
         let backgroundImage = {
           background: `linear-gradient(rgba(0, 0, 0, 0.555) 15%, rgba(0, 0, 0, 0) 55%, black),url(https://image.tmdb.org/t/p/original${
-            movieValues[10]
+            movieValues[6]
           })`,
           backgroundSize: "cover"
         };
