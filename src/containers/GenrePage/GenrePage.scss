@@ -1,26 +1,34 @@
 .genre-page {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin: 50px auto;
-  justify-items: center;
-  width: 1280px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+	margin: 50px auto;
+	justify-items: center;
+	width: 1280px;
 }
 
 .backgroundImage {
-  background-image: url("https://i.imgur.com/o41mm5B.jpg");
-  height: 100px;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+	background-image: url("https://i.imgur.com/o41mm5B.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .displayLogInMessage {
-  margin: 100px;
-  text-align: center;
+	margin: 100px;
+	text-align: center;
 }
 
-@media screen and (min-width: 414px) {
-  .backgroundImage {
-    display: none;
-  }
+@media screen and (max-width: 414px) {
+	.genre-page-component {
+		.genre-page {
+			grid-gap: 10px;
+			margin: 25px auto;
+			width: 100%;
+		}
+	}
+
+	.backgroundImage {
+		display: none;
+	}
 }

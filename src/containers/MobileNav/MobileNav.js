@@ -17,7 +17,9 @@ class MobileNav extends Component {
 			<div className="mobile-nav-component" id="header">
 				<nav>
 					<div className="name">
-						<h3>Movie Tracker</h3>
+						<NavLink to="/Movie-Tracker" className="nav">
+							<h3>Movie Tracker</h3>
+						</NavLink>
 					</div>
 					<div className="hamburger" onClick={() => this.toggleSideBar()}>
 						<div className="line" />
