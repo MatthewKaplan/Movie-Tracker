@@ -1,4 +1,4 @@
-# MovieTracker
+# MovieTracker <img src="https://i.imgur.com/JyhlEMB.png" width="200" align="right" />
 
 MovieTracker is a web application which allows users to search for their favorite movies or television shows by title, genre, or popularity. Users also have the ability to create a MovieTracker account and save their favorite movies to view later.
 
@@ -7,6 +7,9 @@ MovieTracker is a web application which allows users to search for their favorit
 [https://matthewkaplan.github.io/Movie-Tracker/](https://matthewkaplan.github.io/Movie-Tracker/)
 
 ## Preview: 
+
+<img src="https://i.imgur.com/TtvucnT.png" width="900" />
+
 
 <img src="src/assets/media/MovieTracker-HomePage.jpg" alt="MovieTracker Home page">
 
@@ -18,9 +21,6 @@ MovieTracker is a web application which allows users to search for their favorit
 | ------------- | ------------- |
 | <a href="https://imgflip.com/gif/31nmfd"><img src="https://i.imgflip.com/31nmfd.gif" title="made at imgflip.com" width="800" height="300"/></a>  | <a href="https://imgflip.com/gif/31nn4u"><img src="https://i.imgflip.com/31nn4u.gif" title="made at imgflip.com" width="800" height="300"/></a>  |
 
-| Search:  |
-| ------------- |
-| <a href="https://imgflip.com/gif/31nnt4"><img src="https://i.imgflip.com/31nnt4.gif" title="made at imgflip.com" width="425" height="300" /></a>  |
 
 ## Getting Started:
 
